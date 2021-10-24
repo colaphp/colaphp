@@ -2,6 +2,6 @@
 
 return [
     'files' => [
-        app_path() . '/helpers.php'
+        app_path() . '/Support/helpers.php'
     ]
 ];
