@@ -1,6 +1,6 @@
-# 安装
+# DaoPHP
 
-### composer 安装
+### 安装
 
 **1、设置阿里云composer代理**
 
@@ -11,7 +11,6 @@
 **2、composer安装**
 
 `composer create-project daophp/daophp`
-
 
 **3、执行安装**
 
@@ -32,3 +31,7 @@ daemon方式运行(用于正式环境)
 **5、访问**
 
 浏览器访问 `http://ip地址:8080`
+
+### License
+
+MIT
