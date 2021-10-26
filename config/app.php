@@ -6,11 +6,7 @@ return [
     'default_themes' => 'default',
 
     'providers' => [
-        \Swift\Container\ContainerProvider::class,
+        \Swift\Database\DatabaseProvider::class,
         \Swift\Session\SessionProvider::class,
-        \Swift\Database\LaravelProvider::class,
-        \Swift\Redis\RedisProvider::class,
-        \Swift\Log\LogProvider::class,
-        \Swift\Translation\TranslationProvider::class,
-    ]
+    ],
 ];
