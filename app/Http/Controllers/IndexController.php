@@ -22,7 +22,7 @@ class IndexController extends Controller
 
     /**
      * @param Request $request
-     * @return Response|string
+     * @return Response
      */
     public function view(Request $request): Response
     {
