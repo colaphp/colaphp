@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Exception;
 use Firebase\JWT\JWT;
+use Swift\Http\Response;
 use Swift\Support\Carbon;
 
 /**
