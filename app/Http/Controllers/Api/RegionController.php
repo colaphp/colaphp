@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Model\Region;
@@ -8,7 +8,7 @@ use Swift\Http\Response;
 
 /**
  * Class RegionController
- * @package App\Api\Controllers
+ * @package App\Http\Controllers\Api
  */
 class RegionController extends Controller
 {
