@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Controllers;
+namespace App\Http\Controllers\Console;
 
 use App\Http\Controllers\Controller;
 use Swift\Http\Request;
@@ -8,7 +8,7 @@ use Swift\Http\Response;
 
 /**
  * Class IndexController
- * @package App\Console\Controllers
+ * @package App\Http\Controllers\Console
  */
 class IndexController extends Controller
 {

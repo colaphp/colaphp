@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Api\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Swift\Http\Response;
 
 /**
  * Class IndexController
- * @package App\Api\Controllers
+ * @package App\Http\Controllers\Api
  */
 class IndexController extends Controller
 {
