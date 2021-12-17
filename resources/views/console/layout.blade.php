@@ -80,7 +80,7 @@
         &copy; daophp.com
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/gh/sentsin/layui@v2.6.8/dist/layui.all.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/sentsin/layui@v2.6.8/dist/layui.js"></script>
 <script src="/static/console/js/app.js"></script>
 </body>
 </html>
