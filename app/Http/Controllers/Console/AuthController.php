@@ -18,16 +18,16 @@ class AuthController extends Controller
      */
     public function login(Request $request): Response
     {
-        if ($request->method() === 'POST') {
+        if ($request->has('ok')) {
             // save auth
             $request->session()->set('auth', [
                 'user_id' => 1
             ]);
 
-            return redirect('/console');
+            return $this->succeed('console');
         }
 
-        return view('auth/login');
+        return $this->failed('failed.');
     }
 
     /**
@@ -36,11 +36,11 @@ class AuthController extends Controller
      */
     public function forgot(Request $request): Response
     {
-        if ($request->isAjax()) {
-            // do action
+        if ($request->has('ok')) {
+            return $this->succeed('forgot');
         }
 
-        return view('auth/forgot');
+        return $this->failed('auth/forgot');
     }
 
     /**
@@ -50,9 +50,9 @@ class AuthController extends Controller
     public function reset(Request $request): Response
     {
         if ($request->isAjax()) {
-            // do action
+            return $this->succeed('reset');
         }
 
-        return view('auth/reset');
+        return $this->failed('auth/reset');
     }
 }
