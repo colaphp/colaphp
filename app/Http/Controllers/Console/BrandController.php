@@ -14,6 +14,6 @@ class BrandController extends Controller
 {
     public function index(Request $request): Response
     {
-        return $this->succeed('admin Brand Controller');
+        return view('brand/index');
     }
 }

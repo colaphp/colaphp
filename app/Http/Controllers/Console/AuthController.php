@@ -27,7 +27,7 @@ class AuthController extends Controller
             return $this->succeed('console');
         }
 
-        return $this->failed('failed.');
+        return view('auth/login');
     }
 
     /**
@@ -40,7 +40,7 @@ class AuthController extends Controller
             return $this->succeed('forgot');
         }
 
-        return $this->failed('auth/forgot');
+        return view('auth/forgot');
     }
 
     /**
@@ -53,6 +53,6 @@ class AuthController extends Controller
             return $this->succeed('reset');
         }
 
-        return $this->failed('auth/reset');
+        return view('auth/reset');
     }
 }

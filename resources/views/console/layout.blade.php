@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="/favicon.ico"/>
     <title>{{ $title ?? 'untitled' }}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sentsin/layui@v2.6.8/dist/css/layui.css">
-    <link rel="stylesheet" href="/admin/css/app.css">
+    <link rel="stylesheet" href="/static/admin/css/app.css">
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -81,6 +81,6 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/gh/sentsin/layui@v2.6.8/dist/layui.js"></script>
-<script src="/admin/js/app.js"></script>
+<script src="/static/admin/js/app.js"></script>
 </body>
 </html>

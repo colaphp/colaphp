@@ -7,13 +7,13 @@
     <link rel="shortcut icon" href="/favicon.ico"/>
     <title>{{ $title ?? 'untitled' }}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sentsin/layui@v2.6.8/dist/css/layui.css">
-    <link rel="stylesheet" href="/static/auth/css/app.css">
+    <link rel="stylesheet" href="/static/admin/css/auth.css">
 </head>
 <body>
 <div class="container">
     @yield('content')
 </div>
 <script src="https://cdn.jsdelivr.net/gh/sentsin/layui@v2.6.8/dist/layui.js"></script>
-<script src="/static/auth/js/app.js"></script>
+<script src="/static/admin/js/auth.js"></script>
 </body>
 </html>
