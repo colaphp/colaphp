@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Swift\Contracts\Middleware;
 use Swift\Http\Request;
 use Swift\Http\Response;
+use Swift\Support\Str;
 
 /**
  * Class Authenticate
@@ -19,19 +20,20 @@ class Authenticate implements Middleware
      */
     public function process(Request $request, callable $next): Response
     {
-        $uris = explode('/', $request->path());
-        $guard = $uris[1] ?? 'user';
+        $uris = explode('/', Str::lower($request->path()));
+        list($prefix, $guard, $controller) = array_pad($uris, 3, null);
 
-        $session = $request->session();
+        if ($controller !== 'auth') {
+            $session = $request->session();
 
-        if (!$session->has('auth_' . $guard)) {
-            return json([
-                'error' => 1,
-                'errors' => [
-                    'code' => 403,
-                    'message' => 'Forbidden',
-                ],
-            ]);
+            if (!$session->has('auth_' . $guard)) {
+                if ($request->isAjax()) {
+                    return json(['error' => 1, 'errors' => ['code' => 403, 'message' => 'Forbidden']]);
+                } else {
+                    $callback = urlencode($request->path());
+                    return redirect('/' . $guard . '/auth/login?callback=' . $callback);
+                }
+            }
         }
 
         return $next($request);
