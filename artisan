@@ -14,7 +14,7 @@ $app = new Application();
 $app->add(new ServeCommand());
 $commands = glob(app_path('Command/*.php'));
 foreach ($commands as $command) {
-    $bool = preg_match('/(app\/.+?)\.php/', $command, $matches);
+    $bool = preg_match('/(app\/Command\/.+?)\.php/', $command, $matches);
     if ($bool !== false && isset($matches[1])) {
         $command = str_replace('/', '\\', ucfirst($matches[1]));
         $app->add(new $command());
