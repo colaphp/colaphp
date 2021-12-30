@@ -14,7 +14,7 @@ class RegionController extends Controller
 {
     public function index(): Response
     {
-        $data = Region::limit(100)->get();
+        $data = Region::all();
         return $this->succeed($data);
     }
 }
