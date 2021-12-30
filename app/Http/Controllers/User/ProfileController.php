@@ -18,6 +18,6 @@ class ProfileController extends Controller
      */
     public function index(Request $request): Response
     {
-        return $this->succeed('user Profile Controller');
+        return view('profile/index');
     }
 }

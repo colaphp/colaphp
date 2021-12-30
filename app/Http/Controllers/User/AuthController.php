@@ -18,7 +18,7 @@ class AuthController extends Controller
      */
     public function login(Request $request): Response
     {
-        return $this->succeed('auth/login');
+        return view('auth/login');
     }
 
     /**
@@ -27,7 +27,7 @@ class AuthController extends Controller
      */
     public function register(Request $request): Response
     {
-        return $this->succeed('auth/login');
+        return view('auth/login');
     }
 
     /**
@@ -36,7 +36,7 @@ class AuthController extends Controller
      */
     public function forgot(Request $request): Response
     {
-        return $this->succeed('auth/forgot');
+        return view('auth/forgot');
     }
 
     /**
@@ -45,6 +45,6 @@ class AuthController extends Controller
      */
     public function reset(Request $request): Response
     {
-        return $this->succeed('auth/reset');
+        return view('auth/reset');
     }
 }
