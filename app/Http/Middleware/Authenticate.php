@@ -19,12 +19,19 @@ class Authenticate implements Middleware
      */
     public function process(Request $request, callable $next): Response
     {
-        if (stripos($request->path(), '/console/auth') === false) {
-            $session = $request->session();
+        $uris = explode('/', $request->path());
+        $guard = $uris[1] ?? 'user';
 
-            if (!$session->has('auth')) {
-                return redirect('/console/auth/login');
-            }
+        $session = $request->session();
+
+        if (!$session->has('auth_' . $guard)) {
+            return json([
+                'error' => 1,
+                'errors' => [
+                    'code' => 403,
+                    'message' => 'Forbidden',
+                ],
+            ]);
         }
 
         return $next($request);

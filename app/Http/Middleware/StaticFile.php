@@ -27,7 +27,7 @@ class StaticFile implements Middleware
         /** @var Response $response */
         $response = $next($request);
 
-        // 增加跨域http头
+        // Add cross domain HTTP header
         /*$response->withHeaders([
             'Access-Control-Allow-Origin'      => '*',
             'Access-Control-Allow-Credentials' => 'true',
