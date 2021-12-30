@@ -21,17 +21,17 @@ class Authenticate implements Middleware
     public function process(Request $request, callable $next): Response
     {
         $uris = explode('/', Str::lower($request->path()));
-        list($prefix, $guard, $controller) = array_pad($uris, 3, null);
+        list($prefix, $module, $controller) = array_pad($uris, 3, null);
 
         if ($controller !== 'auth') {
             $session = $request->session();
 
-            if (!$session->has('auth_' . $guard)) {
+            if (!$session->has('auth_' . $module)) {
                 if ($request->isAjax()) {
                     return json(['error' => 1, 'errors' => ['code' => 403, 'message' => 'Forbidden']]);
                 } else {
                     $callback = urlencode($request->path());
-                    return redirect('/' . $guard . '/auth/login?callback=' . $callback);
+                    return redirect('/' . $module . '/auth/login?callback=' . $callback);
                 }
             }
         }
