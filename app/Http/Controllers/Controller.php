@@ -45,7 +45,7 @@ abstract class Controller
      */
     protected function succeed($data, array $header = []): Response
     {
-        return $this->response([
+        return json([
             'error' => 0,
             'data' => $data,
         ])->withHeaders($header);
@@ -58,7 +58,7 @@ abstract class Controller
      */
     protected function failed($message): Response
     {
-        return $this->response([
+        return json([
             'error' => 1,
             'errors' => [
                 'code' => $this->getErrorCode(),
@@ -68,29 +68,12 @@ abstract class Controller
     }
 
     /**
-     * 返回 Json 数据格式
-     * @param $data
-     * @param string $client_name
-     * @return Response
-     */
-    protected function response($data, string $client_name = 'X-Client-Id'): Response
-    {
-        $client_id = request()->header($client_name);
-
-        if (empty($client_id)) {
-            $client_id = md5(request()->session()->getId());
-        }
-
-        return json($data)->withHeaders([$client_name => $client_id]);
-    }
-
-    /**
      * 返回用户数据的属性
      * @param null $token
      * @param string $header
-     * @return mixed
+     * @return string
      */
-    public function auth($token = null, string $header = 'X-Token')
+    public function auth($token = null, string $header = 'X-Token'): string
     {
         if (is_null($token)) {
             $token = request()->header($header);
