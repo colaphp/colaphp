@@ -25,7 +25,7 @@ return [
         ]
     ],
 
-    'session_name' => '_session',
+    'session_name' => 'PHPSESSID',
     'lifetime' => env('SESSION_LIFETIME', 1440),
     'path' => '/',
     'domain' => env('SESSION_DOMAIN', ''),
