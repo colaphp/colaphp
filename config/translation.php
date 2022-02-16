@@ -6,5 +6,5 @@ return [
     // Fallback language
     'fallback_locale' => ['zh_CN', 'en'],
     // Folder where language files are stored
-    'path' => base_path() . '/language',
+    'path' => base_path() . '/lang',
 ];
