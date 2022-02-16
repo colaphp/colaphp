@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'handler' => \Swift\View\Blade::class,
+    'handler' => \Swift\View\View::class,
     'paths' => [
         resource_path('views')
     ],
