@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/favicon.ico"/>
     <title>{{ $title ?? 'untitled' }}</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sentsin/layui@v2.6.8/dist/css/layui.css">
+    <link rel="stylesheet" href="/static/vendor/layui@v2.6.8/css/layui.css">
     <link rel="stylesheet" href="/themes/default/css/app.css">
 </head>
 <body>
 <div class="container">
     @yield('content')
 </div>
-<script src="https://cdn.jsdelivr.net/gh/sentsin/layui@v2.6.8/dist/layui.js"></script>
+<script src="/static/vendor/layui@v2.6.8/layui.js"></script>
 <script src="/themes/default/js/app.js"></script>
 </body>
 </html>
