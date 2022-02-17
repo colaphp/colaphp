@@ -9,7 +9,7 @@
   "license": "MIT",
   "require": {
     "php": "^8.0.2",
-    "daophp/framework": "^1.0"
+    "daophp/framework": "^1.0.6"
   },
   "autoload": {
     "psr-4": {
