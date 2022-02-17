@@ -10,14 +10,14 @@
     <meta name="format-detection" content="telephone=no">
     <link rel="shortcut icon" href="/favicon.ico"/>
     <title>{{ $title ?? 'untitled' }}</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sentsin/layui@v2.6.8/dist/css/layui.css">
+    <link rel="stylesheet" href="/static/vendor/layui@v2.6.8/css/layui.css">
     <link rel="stylesheet" href="/static/user/css/app.css">
 </head>
 <body>
 
 @yield('content')
 
-<script src="https://cdn.jsdelivr.net/gh/sentsin/layui@v2.6.8/dist/layui.js"></script>
+<script src="/static/vendor/layui@v2.6.8/layui.js"></script>
 <script src="/static/user/js/app.js"></script>
 </body>
 </html>

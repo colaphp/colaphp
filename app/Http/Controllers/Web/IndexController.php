@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Http\Controllers\Controller;
 use Swift\Http\Request;
 use Swift\Http\Response;
 
