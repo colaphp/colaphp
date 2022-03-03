@@ -17,12 +17,12 @@ class Monitor
     /**
      * @var array
      */
-    protected $_paths = [];
+    protected array $_paths = [];
 
     /**
      * @var array
      */
-    protected $_extensions = [];
+    protected array $_extensions = [];
 
     /**
      * FileMonitor constructor.
@@ -134,7 +134,7 @@ class Monitor
             if (preg_match('/VmRSS\s*?:\s*?(\d+?)\s*?kB/', $status, $match)) {
                 $mem = $match[1];
             }
-            $mem = (int)($mem/1024);
+            $mem = (int)($mem / 1024);
             if ($mem >= $memory_limit) {
                 posix_kill($pid, SIGINT);
             }
@@ -159,15 +159,15 @@ class Monitor
         if ($memory_limit == -1) {
             return 0;
         }
-        $unit = $memory_limit[strlen($memory_limit)-1];
+        $unit = $memory_limit[strlen($memory_limit) - 1];
         if ($unit == 'G') {
-            $memory_limit = 1024*(int)$memory_limit;
-        } else if ($unit == 'M') {
+            $memory_limit = 1024 * (int)$memory_limit;
+        } elseif ($unit == 'M') {
             $memory_limit = (int)$memory_limit;
-        } else if ($unit == 'K') {
-            $memory_limit = (int)($memory_limit/1024);
+        } elseif ($unit == 'K') {
+            $memory_limit = (int)($memory_limit / 1024);
         } else {
-            $memory_limit = (int)($memory_limit/(1024*1024));
+            $memory_limit = (int)($memory_limit / (1024 * 1024));
         }
         if ($memory_limit < 30) {
             $memory_limit = 30;
