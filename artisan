@@ -6,8 +6,6 @@ require __DIR__ . '/vendor/autoload.php';
 use Swift\Foundation\Console\ServeCommand;
 use Symfony\Component\Console\Application;
 
-define('BASE_PATH', realpath(__DIR__ . '/'));
-
 $app = new Application();
 
 // register commands
