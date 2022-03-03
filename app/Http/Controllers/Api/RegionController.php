@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Model\Region;
+use App\Models\Region;
 use Swift\Http\Response;
 
 /**

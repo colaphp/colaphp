@@ -1,28 +1,28 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Swift\Database\Model;
 
 /**
- * Class User
- * @package App\Model
+ * Class Region
+ * @package App\Models
  */
-class User extends Model
+class Region extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'users';
+    protected $table = 'region';
 
     /**
      * The primary key associated with the table.
      *
      * @var string
      */
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'region_id';
 
     /**
      * Indicates if the model should be timestamped.

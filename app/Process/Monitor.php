@@ -2,6 +2,7 @@
 
 namespace App\Process;
 
+use FilesystemIterator;
 use Workerman\Timer;
 use Workerman\Worker;
 use RecursiveDirectoryIterator;
