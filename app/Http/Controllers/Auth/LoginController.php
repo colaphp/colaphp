@@ -36,7 +36,7 @@ class LoginController extends Controller
             return $this->failed($e->getMessage());
         }
 
-        if ($request->session()->get('CAPTCHA') !== $data['captcha']) {
+        if ($request->session()->get(USER_CAPTCHA) !== $data['captcha']) {
             return $this->failed('图片验证码不正确');
         }
 
