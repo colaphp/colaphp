@@ -53,23 +53,21 @@ class GenerateCommand extends Command
             if (Str::endsWith($table, '_relation') || in_array($table, $this->ignoreTable)) {
                 continue;
             }
-            $prefix = Str::substr(Str::ucfirst($table), 0, 3);
-            $model = Str::studly(Str::substr($table, 4));
-            $this->entity($prefix, $model . 'Entity', $table, $db);
-            $this->model($prefix, $model, $table);
+            $model = Str::studly($table);
+            $this->entity($model . 'Entity', $table, $db);
+            $this->model($model, $table);
         }
 
         return Command::SUCCESS;
     }
 
     /**
-     * @param $prefix
      * @param $entity
      * @param $table
      * @param $database
      * @return void
      */
-    private function entity($prefix, $entity, $table, $database)
+    private function entity($entity, $table, $database)
     {
         $annotation = '';
         $content = '';
@@ -111,7 +109,7 @@ EOF;
 
         }
 
-        $namespace = 'App\Entity\\' . $prefix;
+        $namespace = 'App\Entity';
         $persistentContent = <<<EOF
 <?php
 
@@ -129,7 +127,7 @@ class $entity
     $content
 }
 EOF;
-        $folder = app_path('Entity/' . $prefix);
+        $folder = app_path('Entity');
         if (!is_dir($folder)) {
             mkdir($folder, 0777, true);
         }
@@ -137,14 +135,13 @@ EOF;
     }
 
     /**
-     * @param $prefix
      * @param $model
      * @param $table
      * @return void
      */
-    private function model($prefix, $model, $table)
+    private function model($model, $table)
     {
-        $namespace = 'App\Models\\' . $prefix;
+        $namespace = 'App\Models';
         $content = <<<EOF
 <?php
 
@@ -181,7 +178,7 @@ class $model extends Model
 }
 EOF;
 
-        $folder = app_path('Models/' . $prefix);
+        $folder = app_path('Models');
         if (!is_dir($folder)) {
             mkdir($folder, 0777, true);
         }
