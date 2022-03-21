@@ -2,10 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Services\Auth\PassportService;
 use Swift\Contracts\Middleware;
 use Swift\Http\Request;
 use Swift\Http\Response;
-use Swift\Support\Str;
 
 /**
  * Class Authenticate
@@ -20,19 +20,16 @@ class Authenticate implements Middleware
      */
     public function process(Request $request, callable $next): Response
     {
-        $uris = explode('/', Str::lower($request->path()));
-        list($prefix, $module, $controller) = array_pad($uris, 3, null);
+        $token = $request->cookie(USER_TOKEN, '');
 
-        if ($controller !== 'auth') {
-            $session = $request->session();
+        $passportService = new PassportService();
+        $payload = $passportService->getPayloadByToken($token);
 
-            if (!$session->has('auth_' . $module)) {
-                if ($request->isAjax()) {
-                    return json(['error' => 1, 'errors' => ['code' => 403, 'message' => 'Forbidden']]);
-                } else {
-                    $callback = urlencode($request->path());
-                    return redirect('/' . $module . '/auth/login?callback=' . $callback);
-                }
+        if (!isset($payload['uid'])) {
+            if ($request->expectsJson()) {
+                return json(['error' => 1, 'errors' => ['code' => 401, 'message' => 'Unauthorized']]);
+            } else {
+                return redirect('/auth/login?callback=' . urlencode($request->fullUrl()));
             }
         }
 

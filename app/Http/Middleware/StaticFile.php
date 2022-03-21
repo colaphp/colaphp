@@ -20,7 +20,7 @@ class StaticFile implements Middleware
     public function process(Request $request, callable $next): Response
     {
         // 禁止访问.开头的隐藏文件
-        if (strpos($request->path(), '/.') !== false) {
+        if (str_contains($request->path(), '/.')) {
             return response('<h1>403 forbidden</h1>', 403);
         }
 
