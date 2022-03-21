@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Swift\Http\Request;
 use Swift\Http\Response;
 
 /**
- * Class ProfileController
- * @package App\Http\Controllers\User
+ * Class ResetController
+ * @package App\Http\Controllers\Auth
  */
-class ProfileController extends Controller
+class ResetController extends Controller
 {
     /**
      * @param Request $request
@@ -18,6 +18,6 @@ class ProfileController extends Controller
      */
     public function index(Request $request): Response
     {
-        return view('profile/index');
+        return $this->succeed('auth/reset');
     }
 }
