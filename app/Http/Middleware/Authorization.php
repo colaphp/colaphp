@@ -19,11 +19,7 @@ class Authorization implements Middleware
      */
     public function process(Request $request, callable $next): Response
     {
-        $session = $request->session();
-
-        if ($session->has('auth')) {
-            // check auth rule
-        }
+        // check auth rule
 
         return $next($request);
     }

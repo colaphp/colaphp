@@ -6,7 +6,19 @@ use Swift\Contracts\Middleware;
 use Swift\Http\Request;
 use Swift\Http\Response;
 
-class VerifyCsrfToken
+/**
+ * Class VerifyCsrfToken
+ * @package App\Http\Middleware
+ */
+class VerifyCsrfToken implements Middleware
 {
-
+    /**
+     * @param Request $request
+     * @param callable $next
+     * @return Response
+     */
+    public function process(Request $request, callable $next): Response
+    {
+        return $next($request);
+    }
 }
