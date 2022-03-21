@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'enable' => false,
-    'middleware' => [ // Static file Middleware
-        // \App\Http\Middleware\StaticFile::class,
+    'enable' => true,
+    'middleware' => [
+        App\Http\Middleware\StaticFile::class,
     ],
 ];

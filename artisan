@@ -29,7 +29,7 @@ try {
     $config = new ExistingConfiguration($configurations);
     $dependencyFactory = DependencyFactory::fromConnection($config, new ExistingConnection($connection));
 
-    $cli = new Application('PHPMall Console Tools');
+    $cli = new Application('Console Tools');
     $cli->setCatchExceptions(true);
 
     // register commands
