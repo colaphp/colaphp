@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'enable' => true,
+    'enable' => env('APP_DEBUG', false),
     'middleware' => [
         App\Http\Middleware\StaticFile::class,
     ],
