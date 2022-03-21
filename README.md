@@ -34,4 +34,4 @@ daemon方式运行(用于正式环境)
 
 ### License
 
-MIT
+Apache-2.0
