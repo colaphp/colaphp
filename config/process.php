@@ -10,9 +10,9 @@ return [
             'monitor_dir' => [
                 app_path(),
                 config_path(),
-                base_path() . '/bootstrap',
-                base_path() . '/resources',
-                base_path() . '/.env',
+                base_path('bootstrap'),
+                base_path('resources'),
+                base_path('.env'),
             ],
             // Files with these suffixes will be monitored
             'monitor_extensions' => [

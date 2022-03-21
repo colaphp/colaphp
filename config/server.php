@@ -9,9 +9,10 @@ return [
     'user' => env('SERVER_PROCESS_USER', ''),
     'group' => env('SERVER_PROCESS_GROUP', ''),
     'reusePort' => false,
-    'pid_file' => runtime_path() . '/app.pid',
-    'status_file' => runtime_path() . '/app.status',
-    'stdout_file' => runtime_path() . '/logs/stdout.log',
-    'log_file' => runtime_path() . '/logs/app.log',
+    'event_loop' => '',
+    'pid_file' => runtime_path('app.pid'),
+    'status_file' => runtime_path('app.status'),
+    'stdout_file' => runtime_path('logs/stdout.log'),
+    'log_file' => runtime_path('logs/app.log'),
     'max_package_size' => 10 * 1024 * 1024
 ];
