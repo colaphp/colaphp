@@ -3,25 +3,19 @@
 return [
     'type' => 'file', // or redis or redis_cluster
 
-    'handler' => \Swift\Session\FileSessionHandler::class,
+    'handler' => Swift\Session\FileSessionHandler::class,
 
     'config' => [
         'file' => [
-            'save_path' => runtime_path() . '/sessions',
+            'save_path' => runtime_path('sessions'),
         ],
         'redis' => [
             'host' => env('REDIS_HOST', '127.0.0.1'),
             'port' => env('REDIS_PORT', 6379),
-            'auth' => env('REDIS_PASSWORD', null),
+            'auth' => env('REDIS_PASSWORD'),
             'timeout' => 2,
             'database' => env('REDIS_DB', '0'),
             'prefix' => 'redis_session_',
-        ],
-        'redis_cluster' => [
-            'host'    => ['127.0.0.1:7000', '127.0.0.1:7001', '127.0.0.1:7001'],
-            'timeout' => 2,
-            'auth'    => '',
-            'prefix'  => 'redis_session_',
         ]
     ],
 

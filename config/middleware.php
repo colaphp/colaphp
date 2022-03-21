@@ -2,16 +2,20 @@
 
 return [
     '' => [
-        //
+        // Global middleware
     ],
-    'Api' => [
-        \App\Http\Middleware\AccessControl::class,
+    'Auth' => [
+        App\Http\Middleware\RedirectIfAuthenticated::class,
     ],
-    'Console' => [
-        \App\Http\Middleware\Authenticate::class,
-        \App\Http\Middleware\Authorization::class,
+    'Shop' => [
+        App\Http\Middleware\HandleCors::class,
+    ],
+    'Seller' => [
+        App\Http\Middleware\Authenticate::class,
+        App\Http\Middleware\Authorization::class,
     ],
     'User' => [
-        \App\Http\Middleware\Authenticate::class,
+        App\Http\Middleware\HandleCors::class,
+        App\Http\Middleware\Authenticate::class,
     ],
 ];
