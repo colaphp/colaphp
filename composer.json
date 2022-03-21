@@ -6,10 +6,12 @@
     "high performance",
     "http service"
   ],
-  "license": "MIT",
+  "license": "Apache-2.0",
   "require": {
     "php": "^8.0.2",
-    "daophp/framework": "^1.0.6"
+    "daophp/framework": "^1.0.12",
+    "doctrine/migrations": "^3.4",
+    "phpoffice/phpspreadsheet": "^1.21"
   },
   "autoload": {
     "psr-4": {
