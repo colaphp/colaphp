@@ -9,7 +9,7 @@
   "license": "Apache-2.0",
   "require": {
     "php": "^8.0.2",
-    "daophp/framework": "^1.0.12",
+    "daophp/framework": "^1.0.14",
     "doctrine/migrations": "^3.4",
     "phpoffice/phpspreadsheet": "^1.21"
   },
