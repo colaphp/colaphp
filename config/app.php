@@ -1,6 +1,6 @@
 <?php
 
-use Swift\Http\Request;
+use App\Http\Requests\Request;
 
 return [
     'debug' => env('APP_DEBUG', false),

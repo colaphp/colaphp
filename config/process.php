@@ -27,5 +27,10 @@ return [
         'handler'  => \App\Process\Websocket::class,
         'listen' => 'websocket://0.0.0.0:8888',
         'count'  => 10,
-    ],*/
+    ],
+    'rpc'  => [
+        'handler' => \App\Process\Rpc::class,
+        'listen'  => 'text://0.0.0.0:8888', // 这里用了text协议，也可以用frame或其它协议
+        'count'   => 8, // 可以设置多进程
+    ]*/
 ];

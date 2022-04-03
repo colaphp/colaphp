@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\Auth\PassportService;
+use App\Services\User\UserService;
 use Exception;
-use Firebase\JWT\JWT;
 use Swift\Http\Response;
-use Swift\Support\Carbon;
 
 /**
  * Class Controller
@@ -16,7 +16,7 @@ abstract class Controller
     /**
      * @var int
      */
-    protected int $errorCode = 0;
+    protected int $errorCode = 1;
 
     /**
      * @return int
@@ -54,32 +54,43 @@ abstract class Controller
     /**
      * 返回异常数据到客户端
      * @param $message
+     * @param int $errorCode
      * @return Response
      */
-    protected function failed($message): Response
+    protected function failed($message, int $errorCode = 1): Response
     {
+        if ($errorCode > 0) {
+            $this->setErrorCode($errorCode);
+        }
+
         return json([
-            'error' => 1,
-            'errors' => [
-                'code' => $this->getErrorCode(),
-                'message' => $message,
-            ],
+            'error' => $this->getErrorCode(),
+            'message' => $message,
         ]);
     }
 
     /**
      * 返回用户数据的属性
-     * @param null $token
-     * @param string $header
-     * @return string
+     * @param $token
+     * @return array
+     * @throws Exception
      */
-    public function auth($token = null, string $header = 'X-Token'): string
+    protected function auth($token = null): array
     {
         if (is_null($token)) {
-            $token = request()->header($header);
+            $token = request()->cookie(USER_TOKEN, '');
         }
 
-        return $this->JWTDecode($token);
+        $passportService = new PassportService();
+        $payload = $passportService->getPayloadByToken($token);
+
+        if (isset($payload['uid'])) {
+            $userService = new UserService();
+            $userOutput = $userService->findOne($payload['uid']);
+            return $userOutput->toArray();
+        }
+
+        return [];
     }
 
 }
