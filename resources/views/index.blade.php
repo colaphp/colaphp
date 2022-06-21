@@ -1,7 +1,7 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
-    <div class="message">
-        Welcome to phpmall. ٩(๑❛ᴗ❛๑)۶
+    <div>
+        Welcome
     </div>
 @endsection

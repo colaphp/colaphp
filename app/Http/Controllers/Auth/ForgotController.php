@@ -18,6 +18,6 @@ class ForgotController extends Controller
      */
     public function forgot(Request $request): Response
     {
-        return $this->succeed('auth/forgot');
+        return $this->success('auth/forgot');
     }
 }

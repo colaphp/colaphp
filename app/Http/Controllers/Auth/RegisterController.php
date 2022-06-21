@@ -34,11 +34,11 @@ class RegisterController extends Controller
                 'captcha' => Validator::length(4, 6)->setName('验证码')
             ]);
         } catch (ValidationException $e) {
-            return $this->failed($e->getMessage());
+            return $this->error($e->getMessage());
         }
 
         if ($request->session()->get(USER_CAPTCHA) !== $data['captcha']) {
-            return $this->failed('图片验证码不正确');
+            return $this->error('图片验证码不正确');
         }
 
         $registerInput = new RegisterInput();
@@ -50,7 +50,7 @@ class RegisterController extends Controller
             return $this->registerResponse($registerInput, 'username');
         } catch (Exception $e) {
             Log::error($e->getMessage());
-            return $this->failed('用户注册失败');
+            return $this->error('用户注册失败');
         }
     }
 
@@ -68,11 +68,11 @@ class RegisterController extends Controller
                 'captcha' => Validator::length(4, 6)->setName('短信验证码')
             ]);
         } catch (ValidationException $e) {
-            return $this->failed($e->getMessage());
+            return $this->error($e->getMessage());
         }
 
         if ($request->session()->get(USER_CAPTCHA) !== $data['captcha']) {
-            return $this->failed('图片验证码不正确');
+            return $this->error('图片验证码不正确');
         }
 
         $registerInput = new RegisterInput();
@@ -85,7 +85,7 @@ class RegisterController extends Controller
             return $this->registerResponse($registerInput, 'email');
         } catch (Exception $e) {
             Log::error($e->getMessage());
-            return $this->failed('用户注册失败');
+            return $this->error('用户注册失败');
         }
     }
 
@@ -102,11 +102,11 @@ class RegisterController extends Controller
                 'sms_code' => Validator::length(4, 6)->setName('短信验证码')
             ]);
         } catch (ValidationException $e) {
-            return $this->failed($e->getMessage());
+            return $this->error($e->getMessage());
         }
 
         if ($request->session()->get(USER_SMS_CODE . $data['mobile']) !== $data['sms_code']) {
-            return $this->failed('短信验证码不正确');
+            return $this->error('短信验证码不正确');
         }
 
         $registerInput = new RegisterInput();
@@ -119,7 +119,7 @@ class RegisterController extends Controller
             return $this->registerResponse($registerInput, 'mobile');
         } catch (Exception $e) {
             Log::error($e->getMessage());
-            return $this->failed('手机号注册失败');
+            return $this->error('手机号注册失败');
         }
     }
 
@@ -135,6 +135,6 @@ class RegisterController extends Controller
         $passportService = new PassportService();
         $userId = $passportService->register($registerInput, $registerType);
         $token = $passportService->createToken($userId);
-        return $this->succeed($token)->cookie(USER_TOKEN, $token, 0, '/', '', false, true);
+        return $this->success($token)->cookie(USER_TOKEN, $token, 0, '/', '', false, true);
     }
 }

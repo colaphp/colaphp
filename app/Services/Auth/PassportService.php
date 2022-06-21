@@ -6,6 +6,7 @@ use App\Services\Auth\Internal\Input\LoginInput;
 use App\Services\Auth\Internal\Input\MobileLoginInput;
 use App\Services\Auth\Internal\Input\RegisterInput;
 use Exception;
+use Firebase\JWT\Key;
 use Swift\Auth\Authorization;
 use Swift\Auth\BearerTokenExtractor;
 use Swift\Auth\JWT;
@@ -14,10 +15,6 @@ use Swift\Http\Request;
 use Swift\Support\Carbon;
 use Throwable;
 
-/**
- * Class PassportService
- * @package App\Services\Auth
- */
 class PassportService
 {
     /**
@@ -29,14 +26,7 @@ class PassportService
     public function login(LoginInput $loginInput): int
     {
         $passport = $loginInput->getUsername();
-
-        if (filter_var($passport, FILTER_VALIDATE_EMAIL) !== false) {
-            $condition = 'email';
-        } elseif (preg_match(MOBILE_REGEX, $passport)) {
-            $condition = 'mobile';
-        } else {
-            $condition = 'username';
-        }
+        $condition = $this->username($passport);
 
         $user = DB::table('ums_user')->where($condition, $passport)->where('status', 1)->first();
         if (is_null($user)) {
@@ -65,7 +55,7 @@ class PassportService
             throw new Exception('登录用户不存在');
         }
 
-        if (password_verify($mobileLoginInput->getCaptcha(), $user->remember_token)) {
+        if (password_verify($mobileLoginInput->getSmsCode(), $user->remember_token)) {
             return $user->id;
         }
 
@@ -90,15 +80,16 @@ class PassportService
             $condition[$registerType] = $registerInput->getMobile();
         }
 
-        if (!empty($condition)) {
-            $user = DB::table('ums_user')->where(key($condition), value($condition))->first();
-            if (is_null($user)) {
-                return DB::table('ums_user')->insertGetId($registerInput->toArray());
-            }
-            throw new Exception('注册信息已存在');
+        if (empty($condition)) {
+            throw new Exception('注册类型异常');
         }
 
-        throw new Exception('注册类型异常');
+        $user = DB::table('ums_user')->where(key($condition), value($condition))->first();
+        if (is_null($user)) {
+            return DB::table('ums_user')->insertGetId($registerInput->toArray());
+        }
+
+        throw new Exception('注册信息已存在');
     }
 
     /**
@@ -120,6 +111,18 @@ class PassportService
 
         $jwt = new JWT(config('jwt'));
         return (new Authorization($jwt))->createToken($payload);
+
+
+
+
+        $time = \Illuminate\Support\Carbon::now()->timestamp;
+
+        $config = config('jwt');
+        $payload = $config['payload'];
+        $payload['exp'] = $time + $expire;
+        $payload['data'] = [$uid];
+
+        return \Firebase\JWT\JWT::encode($payload, $config['key'], 'HS256');
     }
 
     /**
@@ -153,6 +156,26 @@ class PassportService
             return (new Authorization($jwt))->getPayloadByToken($token);
         } catch (Throwable $e) {
             return [];
+        }
+
+
+        $decoded = (array)\Firebase\JWT\JWT::decode($token, new Key(config('jwt.key'), 'HS256'));
+        return $decoded['data'] ?? [];
+    }
+
+    /**
+     * 根据用户获取登录类型
+     * @param string $username
+     * @return string
+     */
+    private function username(string $username): string
+    {
+        if (filter_var($username, FILTER_VALIDATE_EMAIL) !== false) {
+            return 'email';
+        } elseif (preg_match('/^1[3-9]\d{9}/', $username)) {
+            return 'mobile';
+        } else {
+            return 'username';
         }
     }
 }

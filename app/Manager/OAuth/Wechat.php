@@ -64,13 +64,13 @@ class Wechat
         $code = $request->get('code');
 
         if (empty($code)) {
-            return $this->failed('Wechat authorization callback failed');
+            return $this->error('Wechat authorization callback failed');
         }
 
         $user = $this->wechat->oauth->userFromCode($code);
 
         $userId = $this->userService->userInfoUpdateOrInsert($user);
 
-        return $this->succeed($userId);
+        return $this->success($userId);
     }
 }

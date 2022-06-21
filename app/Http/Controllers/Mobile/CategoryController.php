@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api;
-
-use Illuminate\Http\JsonResponse;
+namespace App\Http\Controllers\Mobile;
 
 class CategoryController extends BaseController
 {
     /**
-     * @return JsonResponse
+     * @return
      */
-    public function index(): JsonResponse
+    public function index()
     {
         return $this->success('category');
     }
