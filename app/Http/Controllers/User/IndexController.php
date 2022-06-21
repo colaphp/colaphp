@@ -11,6 +11,6 @@ class IndexController extends BaseController
      */
     public function index(): Response
     {
-        return view('user.index');
+        return view('user');
     }
 }
