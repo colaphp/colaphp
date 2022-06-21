@@ -1,17 +1,27 @@
 {
   "name": "phpmall/phpmall",
   "type": "project",
-  "description": "High performance HTTP Service Framework.",
+  "description": "一款开源的多商户商城系统",
   "keywords": [
     "high performance",
-    "http service"
+    "http service",
+    "phpmall", "e-commerce"
   ],
+  "homepage": "https://www.phpmall.net/",
   "license": "Apache-2.0",
   "require": {
     "php": "^8.0.2",
     "doctrine/migrations": "^3.4",
     "phpmall/framework": "^1.0.14",
-    "phpoffice/phpspreadsheet": "^1.21"
+    "phpoffice/phpspreadsheet": "^1.21",
+    "firebase/php-jwt": "^6.1",
+    "gregwar/captcha": "^1.1",
+    "guzzlehttp/guzzle": "^7.2",
+    "intervention/image": "^2.7",
+    "overtrue/laravel-easy-sms": "^2.0",
+    "overtrue/laravel-pinyin": "^4.0",
+    "overtrue/laravel-wechat": "^7.0",
+    "yansongda/laravel-pay": "^3.1"
   },
   "autoload": {
     "psr-4": {

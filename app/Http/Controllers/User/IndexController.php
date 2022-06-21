@@ -2,22 +2,28 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
-use Swift\Http\Request;
-use Swift\Http\Response;
+use App\Enums\AuthType;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\JsonResponse;
+use Spatie\RouteDiscovery\Attributes\Route;
 
-/**
- * Class IndexController
- * @package App\Http\Controllers\User
- */
-class IndexController extends Controller
+class IndexController extends BaseController
 {
     /**
-     * @param Request $request
-     * @return Response
+     * @return Renderable
      */
-    public function index(Request $request): Response
+    public function index(): Renderable
     {
-        return view('index/index');
+        return view('user.index');
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    #[Route(method: 'POST', fullUri: 'user/logout', name: 'user.logout')]
+    public function logout(): JsonResponse
+    {
+        session([AuthType::USER => null]);
+        return $this->success('注销成功');
     }
 }

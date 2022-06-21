@@ -1,0 +1,180 @@
+@import url(../font/font_2627952_8gysn4vlf75.css);
+
+.pms-common-container * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+a, a:focus, a:hover {
+    text-decoration: none
+}
+
+a {
+    color: #222;
+    outline: none
+}
+
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%
+}
+
+body {
+    color: #222;
+    font-size: 14px;
+    font-family: Helvetica, Helvetica Neue, Arial, Hiragino Sans GB, STHeiti, Microsoft YaHei, WenQuanYi Micro Hei, SimSun, sans-serif
+}
+
+blockquote, body, code, dd, dl, dt, fieldset, h1, h2, h3, h4, h5, h6, li, ol, p, pre, ul {
+    margin: 0;
+    padding: 0
+}
+
+dl, li, menu, ol, ul {
+    list-style: none
+}
+
+button, input, select, textarea {
+    border: none;
+    outline: none;
+    vertical-align: middle;
+    background-color: transparent;
+    font-family: Helvetica, Helvetica Neue, Arial, Hiragino Sans GB, STHeiti, Microsoft YaHei, WenQuanYi Micro Hei, SimSun, sans-serif;
+    font-size: 14px;
+    -webkit-transition: .2s;
+    transition: .2s
+}
+
+button::-webkit-input-placeholder, input::-webkit-input-placeholder, select::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #aaa;
+    -webkit-transition: .2s;
+    transition: .2s
+}
+
+button:disabled, button[disabled], input:disabled, input[disabled], select:disabled, select[disabled], textarea:disabled, textarea[disabled] {
+    background-color: #e9e9e9;
+    cursor: not-allowed
+}
+
+button:focus, input:focus, select:focus, textarea:focus {
+    caret-color: #ed2920
+}
+
+button:focus::-webkit-input-placeholder, input:focus::-webkit-input-placeholder, select:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholder {
+    color: silver
+}
+
+select {
+    cursor: pointer
+}
+
+.vhide {
+    display: none !important
+}
+
+a {
+    text-decoration: none
+}
+
+.g-wrapper {
+    width: 1190px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.g-clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    font-size: 0;
+    visibility: hidden;
+    clear: both
+}
+
+.m-top {
+    position: relative;
+    z-index: 999;
+    line-height: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background: #f4f4f4
+}
+
+.m-top, .m-top a, .m-top span {
+    font-size: 12px;
+    color: rgba(0, 0, 0, .85)
+}
+
+.m-top .link {
+    margin-left: 12px
+}
+
+.m-top .link:first-child {
+    margin-left: 0
+}
+
+.m-top .link.active, .m-top .link:hover {
+    color: #ed2920
+}
+
+.m-top .item {
+    position: relative;
+    display: inline-block;
+    height: 12px;
+    line-height: 12px;
+    padding: 0 10px;
+    border-left: 1px solid #dbdbdb;
+    vertical-align: middle;
+    font-size: 12px
+}
+
+.m-top .item:first-child {
+    border-left: none
+}
+
+.m-top .top-welcome {
+    float: left
+}
+
+.m-top .top-welcome .item:first-child {
+    padding-left: 0
+}
+
+.m-top .top-welcome .top-welcome-name {
+    max-width: 230px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-style: normal;
+    display: inline-block;
+    vertical-align: top
+}
+
+.m-top .top-links {
+    float: right;
+    position: relative;
+    font-size: 0
+}
+
+.m-top .top-links .count {
+    font-style: normal;
+    color: #ed2920
+}
+
+.m-top .top-links .item_split {
+    display: inline-block;
+    height: 12px;
+    border-left: 1px solid #dbdbdb;
+    vertical-align: middle
+}
+
+.m-top .top-links .item_tel {
+    padding: 0 0 0 15px;
+    height: 20px;
+    border-left: 0
+}
+
+.m-top .top-links .item_tel .tel {
+    width: 121px;
+    height: 20px
+}

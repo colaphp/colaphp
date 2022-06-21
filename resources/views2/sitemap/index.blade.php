@@ -1,0 +1,3 @@
+{layout name="layout" /}
+
+sitemap
