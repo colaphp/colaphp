@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Managers\OAuth;
+namespace App\Manager\OAuth;
 
 use App\Services\User\UserService;
 use App\Services\Wechat\WechatService;

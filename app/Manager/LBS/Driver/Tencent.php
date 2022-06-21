@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Managers\LBS\Driver;
+namespace App\Manager\LBS\Driver;
 
-use App\Managers\LBS\Contract\LbsContract;
+use App\Manager\LBS\Contract\LbsContract;
 
 class Tencent implements LbsContract
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Managers\Express;
+namespace App\Manager\Express;
 
 class ExpressManager
 {

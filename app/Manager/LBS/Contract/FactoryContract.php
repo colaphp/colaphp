@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Managers\LBS\Contract;
+namespace App\Manager\LBS\Contract;
 
 interface FactoryContract
 {

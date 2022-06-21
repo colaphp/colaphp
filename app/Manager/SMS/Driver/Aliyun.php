@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Managers\SMS\Driver;
+namespace App\Manager\SMS\Driver;
 
 class Aliyun
 {
