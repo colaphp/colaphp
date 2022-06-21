@@ -1,43 +1,40 @@
 {
-  "name": "phpmall/phpmall",
-  "type": "project",
-  "description": "一款开源的多商户商城系统",
-  "keywords": [
-    "high performance",
-    "http service",
-    "phpmall", "e-commerce"
-  ],
-  "homepage": "https://www.phpmall.net/",
-  "license": "Apache-2.0",
-  "require": {
-    "php": "^8.1",
-    "doctrine/migrations": "^3.4",
-    "phpmall/framework": "^1.0.14",
-    "phpoffice/phpspreadsheet": "^1.21",
-    "firebase/php-jwt": "^6.1",
-    "gregwar/captcha": "^1.1",
-    "guzzlehttp/guzzle": "^7.2",
-    "intervention/image": "^2.7",
-    "overtrue/laravel-easy-sms": "^2.0",
-    "overtrue/laravel-pinyin": "^4.0",
-    "overtrue/laravel-wechat": "^7.0",
-    "yansongda/laravel-pay": "^3.1"
-  },
-  "autoload": {
-    "psr-4": {
-      "App\\": "app/"
-    }
-  },
-  "scripts": {
-    "post-root-package-install": [
-      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-    ]
-  },
-  "config": {
-    "optimize-autoloader": true,
-    "preferred-install": "dist",
-    "sort-packages": true
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+    "name": "phpmall/phpmall",
+    "type": "project",
+    "description": "一款开源的多商户商城系统",
+    "keywords": [
+        "e-commerce",
+        "phpmall",
+        "B2B2C",
+        "high performance"
+    ],
+    "homepage": "https://www.phpmall.net/",
+    "license": "Apache-2.0",
+    "require": {
+        "php": "^8.1",
+        "doctrine/migrations": "^3.5",
+        "overtrue/easy-sms": "^2.2",
+        "overtrue/pinyin": "^4.0",
+        "overtrue/wechat": "^5.27",
+        "phpmall/framework": "^1.0.14",
+        "phpoffice/phpspreadsheet": "^1.23",
+        "yansongda/pay": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
