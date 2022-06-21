@@ -2,7 +2,7 @@
 
 namespace app\manager\lbs;
 
-use App\Managers\LBS\Contract\RepositoryContract;
+use App\Manager\LBS\Contract\RepositoryContract;
 
 class Repository implements RepositoryContract
 {

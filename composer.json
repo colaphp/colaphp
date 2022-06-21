@@ -15,9 +15,9 @@
         "doctrine/migrations": "^3.5",
         "overtrue/easy-sms": "^2.2",
         "overtrue/pinyin": "^4.0",
-        "overtrue/wechat": "^5.27",
         "phpmall/framework": "^1.0.14",
         "phpoffice/phpspreadsheet": "^1.23",
+        "w7corp/easywechat": "^5.27",
         "yansongda/pay": "^3.1"
     },
     "autoload": {

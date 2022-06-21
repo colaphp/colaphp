@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Managers\SMS\Contract;
+namespace App\Manager\SMS\Contract;
 
 interface SmsContract
 {

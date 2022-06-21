@@ -2,7 +2,7 @@
 
 namespace app\manager\lbs;
 
-use App\Managers\LBS\Contract\FactoryContract;
+use App\Manager\LBS\Contract\FactoryContract;
 
 class LBSManager implements FactoryContract
 {
