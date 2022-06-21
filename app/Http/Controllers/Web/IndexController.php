@@ -27,7 +27,7 @@ class IndexController extends Controller
      */
     public function view(Request $request): Response
     {
-        return view('view', ['name' => 'daophp']);
+        return view('view', ['name' => 'phpmall']);
     }
 
     /**
