@@ -14,26 +14,19 @@ use Swift\Http\Response;
 abstract class Controller
 {
     /**
-     * @var int
+     * 模板变量
+     * @var array
      */
-    protected int $errorCode = 1;
+    protected array $vars = [];
 
     /**
-     * @return int
+     * 变量赋值
+     * @param $name
+     * @param $value
      */
-    protected function getErrorCode(): int
+    protected function assign($name, $value): void
     {
-        return $this->errorCode;
-    }
-
-    /**
-     * @param $errorCode
-     * @return $this
-     */
-    protected function setErrorCode($errorCode): static
-    {
-        $this->errorCode = $errorCode;
-        return $this;
+        $this->vars = array_merge($this->vars, [$name => $value]);
     }
 
     /**
@@ -43,30 +36,29 @@ abstract class Controller
      * @param array $header 发送的Header信息
      * @return Response
      */
-    protected function succeed($data, array $header = []): Response
+    protected function success($data, array $header = []): Response
     {
         return json([
-            'error' => 0,
+            'code' => 0,
+            'message' => 'ok',
             'data' => $data,
         ])->withHeaders($header);
     }
 
     /**
      * 返回异常数据到客户端
-     * @param $message
-     * @param int $errorCode
+     * @param string $message 错误信息
+     * @param int $code 错误码
+     * @param array $headers 发送的Header信息
      * @return Response
      */
-    protected function failed($message, int $errorCode = 1): Response
+    protected function error(string $message = '', int $code = 400, array $headers = []): Response
     {
-        if ($errorCode > 0) {
-            $this->setErrorCode($errorCode);
-        }
-
         return json([
-            'error' => $this->getErrorCode(),
+            'code' => $code,
             'message' => $message,
-        ]);
+            'data' => null,
+        ])->withHeaders($headers);
     }
 
     /**
@@ -78,7 +70,7 @@ abstract class Controller
     protected function auth($token = null): array
     {
         if (is_null($token)) {
-            $token = request()->cookie(USER_TOKEN, '');
+            $token = request()->header('X-Token', request()->cookie(USER_TOKEN));
         }
 
         $passportService = new PassportService();

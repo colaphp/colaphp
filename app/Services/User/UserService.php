@@ -7,16 +7,21 @@ use App\Models\User;
 class UserService
 {
     /**
-     * @var \App\Models\User
+     * @var User
      */
     private User $user;
 
     /**
      * UserService constructor.
-     * @param \App\Models\User $user
+     * @param User $user
      */
     public function __construct(User $user)
     {
         $this->user = $user;
+    }
+
+    public function findOne(int $userId)
+    {
+        return null;
     }
 }

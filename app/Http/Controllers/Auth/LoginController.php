@@ -26,33 +26,37 @@ class LoginController extends Controller
      */
     public function index(Request $request): Response
     {
-        try {
-            $data = Validator::input($request->post(), [
-                'passport' => Validator::notBlank()->setName('账号'),
-                'password' => Validator::length(6, 64)->setName('密码'),
-                'captcha' => Validator::length(4, 6)->setName('验证码')
-            ]);
-        } catch (ValidationException $e) {
-            return $this->failed($e->getMessage());
+        if ($request->isAjax()) {
+            try {
+                $data = Validator::input($request->post(), [
+                    'passport' => Validator::notBlank()->setName('账号'),
+                    'password' => Validator::length(6, 64)->setName('密码'),
+                    'captcha' => Validator::length(4, 6)->setName('验证码')
+                ]);
+            } catch (ValidationException $e) {
+                return $this->error($e->getMessage());
+            }
+
+            if ($request->session()->get(USER_CAPTCHA) !== $data['captcha']) {
+                return $this->error('图片验证码不正确');
+            }
+
+            $loginInput = new LoginInput();
+            $loginInput->setUsername($request->post('username'));
+            $loginInput->setPassword($request->post('password'));
+
+            try {
+                $passportService = new PassportService();
+                $userId = $passportService->login($loginInput);
+                $token = $passportService->createToken($userId);
+                return $this->success($token)->cookie(USER_TOKEN, $token, 0, '/', '', false, true);
+            } catch (Exception $e) {
+                Log::error($e->getMessage());
+                return $this->error('用户名或密码不正确');
+            }
         }
 
-        if ($request->session()->get(USER_CAPTCHA) !== $data['captcha']) {
-            return $this->failed('图片验证码不正确');
-        }
-
-        $loginInput = new LoginInput();
-        $loginInput->setUsername($request->post('username'));
-        $loginInput->setPassword($request->post('password'));
-
-        try {
-            $passportService = new PassportService();
-            $userId = $passportService->login($loginInput);
-            $token = $passportService->createToken($userId);
-            return $this->succeed($token)->cookie(USER_TOKEN, $token, 0, '/', '', false, true);
-        } catch (Exception $e) {
-            Log::error($e->getMessage());
-            return $this->failed('用户名或密码不正确');
-        }
+        return view('auth.login');
     }
 
     /**
@@ -68,11 +72,11 @@ class LoginController extends Controller
                 'sms_code' => Validator::length(4, 6)->setName('短信验证码')
             ]);
         } catch (ValidationException $e) {
-            return $this->failed($e->getMessage());
+            return $this->error($e->getMessage());
         }
 
         if ($request->session()->get(USER_SMS_CODE . $data['mobile']) !== $data['sms_code']) {
-            return $this->failed('短信验证码不正确');
+            return $this->error('短信验证码不正确');
         }
 
         $mobileLoginInput = new MobileLoginInput();
@@ -83,10 +87,10 @@ class LoginController extends Controller
             $passportService = new PassportService();
             $userId = $passportService->loginByMobile($mobileLoginInput);
             $token = $passportService->createToken($userId);
-            return $this->succeed($token)->cookie(USER_TOKEN, $token, 0, '/', '', false, true);
+            return $this->success($token)->cookie(USER_TOKEN, $token, 0, '/', '', false, true);
         } catch (Exception $e) {
             Log::error($e->getMessage());
-            return $this->failed('手机验证码不正确');
+            return $this->error('手机验证码不正确');
         }
     }
 

@@ -10,7 +10,7 @@
   "homepage": "https://www.phpmall.net/",
   "license": "Apache-2.0",
   "require": {
-    "php": "^8.0.2",
+    "php": "^8.1",
     "doctrine/migrations": "^3.4",
     "phpmall/framework": "^1.0.14",
     "phpoffice/phpspreadsheet": "^1.21",

@@ -2,8 +2,8 @@
 
 namespace App\Enums;
 
-class CaptchaType
+enum CaptchaType
 {
-    const IMG = 'CAPTCHA';
-    const SMS = 'SMS_CODE_';
+    case  CAPTCHA;
+    case  SMS_CODE;
 }

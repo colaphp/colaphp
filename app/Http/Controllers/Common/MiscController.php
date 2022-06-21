@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Common;
 
 use App\Http\Controllers\Controller;
 use Gregwar\Captcha\CaptchaBuilder;
@@ -16,7 +16,7 @@ use Swift\Log\Log;
 
 /**
  * Class MiscController
- * @package App\Http\Controllers\Web
+ * @package App\Http\Controllers\Common
  */
 class MiscController extends Controller
 {
@@ -27,7 +27,7 @@ class MiscController extends Controller
      */
     public function csrf(Request $request): Response
     {
-        return $this->succeed($request->sessionId());
+        return $this->success($request->sessionId());
     }
 
     /**
@@ -63,11 +63,11 @@ class MiscController extends Controller
                 'captcha' => Validator::length(4, 6)->setName('验证码')
             ]);
         } catch (ValidationException $e) {
-            return $this->failed($e->getMessage());
+            return $this->error($e->getMessage());
         }
 
         if ($data['captcha'] !== $request->session()->get(USER_CAPTCHA)) {
-            return $this->failed('图片验证码不正确');
+            return $this->error('图片验证码不正确');
         }
 
         $seed = mt_rand(100000, 999999);
@@ -83,10 +83,10 @@ class MiscController extends Controller
                     'code' => $seed
                 ],
             ]);
-            return $this->succeed('短信验证码发送成功');
+            return $this->success('短信验证码发送成功');
         } catch (InvalidArgumentException|NoGatewayAvailableException $e) {
             Log::error($e->getMessage());
-            return $this->failed('短信验证码发送失败');
+            return $this->error('短信验证码发送失败');
         }
     }
 }

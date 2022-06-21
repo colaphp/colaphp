@@ -18,6 +18,6 @@ class ResetController extends Controller
      */
     public function index(Request $request): Response
     {
-        return $this->succeed('auth/reset');
+        return $this->success('auth/reset');
     }
 }

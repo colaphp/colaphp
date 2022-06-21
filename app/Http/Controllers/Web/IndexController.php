@@ -36,7 +36,7 @@ class IndexController extends Controller
      */
     public function json(Request $request): Response
     {
-        return $this->succeed(['msg' => 'ok']);
+        return $this->success(['msg' => 'ok']);
     }
 
     /**
@@ -48,8 +48,8 @@ class IndexController extends Controller
         $file = $request->file('upload');
         if ($file && $file->isValid()) {
             $file->move(public_path() . '/files/myfile.' . $file->getUploadExtension());
-            return $this->succeed(['msg' => 'upload success']);
+            return $this->success(['msg' => 'upload success']);
         }
-        return $this->succeed(['msg' => 'file not found']);
+        return $this->success(['msg' => 'file not found']);
     }
 }
