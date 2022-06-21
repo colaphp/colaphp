@@ -2,21 +2,23 @@
 
 namespace App\Http\Controllers\Console;
 
-use App\Http\Controllers\Controller;
-use Swift\Http\Request;
-use Swift\Http\Response;
+use App\Enums\AuthType;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Contracts\Support\Renderable;
 
-/**
- * Class IndexController
- * @package App\Http\Controllers\Console
- */
-class IndexController extends Controller
+class IndexController extends BaseController
 {
-    public function index(Request $request): Response
+    public function index(): Renderable
     {
-        $session = $request->session();
-        $session->set('name', 'phpmall');
+        return view('index');
+    }
 
-        return view('index/index');
+    /**
+     * @return JsonResponse
+     */
+    public function logout(): JsonResponse
+    {
+        session([AuthType::ADMIN => null]);
+        return $this->success('logout');
     }
 }
