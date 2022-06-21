@@ -15,7 +15,7 @@ class IndexController extends Controller
     public function index(Request $request): Response
     {
         $session = $request->session();
-        $session->set('name', 'daophp');
+        $session->set('name', 'phpmall');
 
         return view('index/index');
     }

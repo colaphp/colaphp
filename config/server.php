@@ -4,7 +4,7 @@ return [
     'listen' => 'http://127.0.0.1:8080',
     'transport' => 'tcp',
     'context' => [],
-    'name' => 'daophp',
+    'name' => 'phpmall',
     'count' => env('SERVER_PROCESS_COUNT', cpu_count() * 2),
     'user' => env('SERVER_PROCESS_USER', ''),
     'group' => env('SERVER_PROCESS_GROUP', ''),

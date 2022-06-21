@@ -1,3 +1,3 @@
 # Release Notes
 
-## [Unreleased](https://github.com/daophp/daophp)
+## [Unreleased](https://github.com/phpmall/phpmall)

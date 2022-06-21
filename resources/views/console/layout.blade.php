@@ -77,7 +77,7 @@
     </div>
 
     <div class="layui-footer">
-        &copy; daophp.com
+        &copy; phpmall.net
     </div>
 </div>
 <script src="/static/vendor/layui@v2.6.8/layui.js"></script>

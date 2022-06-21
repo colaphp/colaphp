@@ -1,4 +1,4 @@
-# DaoPHP
+# phpmall
 
 ### 安装
 
@@ -10,11 +10,11 @@
 
 **2、composer安装**
 
-`composer create-project daophp/daophp`
+`composer create-project phpmall/phpmall`
 
 **3、执行安装**
 
-进入daophp目录，运行
+进入phpmall目录，运行
 
 `composer install`
 

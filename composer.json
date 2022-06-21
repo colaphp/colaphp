@@ -1,5 +1,5 @@
 {
-  "name": "daophp/daophp",
+  "name": "phpmall/phpmall",
   "type": "project",
   "description": "High performance HTTP Service Framework.",
   "keywords": [
@@ -9,8 +9,8 @@
   "license": "Apache-2.0",
   "require": {
     "php": "^8.0.2",
-    "daophp/framework": "^1.0.14",
     "doctrine/migrations": "^3.4",
+    "phpmall/framework": "^1.0.14",
     "phpoffice/phpspreadsheet": "^1.21"
   },
   "autoload": {
