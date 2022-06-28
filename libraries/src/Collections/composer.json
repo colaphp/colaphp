@@ -1,0 +1,25 @@
+{
+    "name": "swift/collections",
+    "description": "The Swift Collections package.",
+    "license": "MIT",
+    "homepage": "https://www.phpmall.net",
+    "support": {
+        "issues": "https://github.com/phpmall/framework/issues",
+        "source": "https://github.com/phpmall/framework"
+    },
+    "require": {
+        "php": "^8.0.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Swift\\Support\\": ""
+        },
+        "files": [
+            "helpers.php"
+        ]
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev"
+}
