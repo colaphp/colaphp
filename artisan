@@ -3,13 +3,13 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-use Doctrine\DBAL\DriverManager;
-use Doctrine\Migrations\Configuration\Migration\ConfigurationArray;
-use Doctrine\Migrations\Configuration\Migration\ExistingConfiguration;
-use Doctrine\Migrations\DependencyFactory;
-use Doctrine\Migrations\Configuration\Connection\ExistingConnection;
-use Doctrine\Migrations\Tools\Console\Command;
 use Dotenv\Dotenv;
+use Phinx\Console\Command\Create;
+use Phinx\Console\Command\Migrate;
+use Phinx\Console\Command\Rollback;
+use Phinx\Console\Command\SeedCreate;
+use Phinx\Console\Command\SeedRun;
+use Phinx\Console\Command\Status;
 use Swift\Foundation\Console\ServeCommand;
 use Symfony\Component\Console\Application;
 
@@ -24,15 +24,10 @@ if (class_exists('Dotenv\Dotenv') && file_exists(base_path() . '/.env')) {
 try {
     require_once __DIR__ . '/bootstrap/app.php';
     $database = require __DIR__ . '/config/database.php';
-    $connection = DriverManager::getConnection($database['migrations']['connection']);
-    $configurations = (new ConfigurationArray($database['migrations']['options']))->getConfiguration();
-    $config = new ExistingConfiguration($configurations);
-    $dependencyFactory = DependencyFactory::fromConnection($config, new ExistingConnection($connection));
 
     $cli = new Application('Console Tools');
     $cli->setCatchExceptions(true);
 
-    // register commands
     $cli->add(new ServeCommand());
     $commands = glob(app_path('Console/Commands/*.php'));
     foreach ($commands as $file) {
@@ -43,20 +38,18 @@ try {
             $cli->add(new $command());
         }
     }
+
     $cli->addCommands([
-        new Command\DumpSchemaCommand($dependencyFactory),
-        new Command\ExecuteCommand($dependencyFactory),
-        new Command\GenerateCommand($dependencyFactory),
-        new Command\LatestCommand($dependencyFactory),
-        new Command\ListCommand($dependencyFactory),
-        new Command\MigrateCommand($dependencyFactory),
-        new Command\RollupCommand($dependencyFactory),
-        new Command\StatusCommand($dependencyFactory),
-        new Command\SyncMetadataCommand($dependencyFactory),
-        new Command\VersionCommand($dependencyFactory),
+        new Create(),
+        new Migrate(),
+        new Rollback(),
+        new Status(),
+        new SeedCreate(),
+        new SeedRun(),
     ]);
 
     $cli->run();
-} catch (\Doctrine\DBAL\Exception|Exception $e) {
-    echo $e->getMessage() . PHP_EOL;
+} catch (Exception $e) {
+    die($e->getMessage() . PHP_EOL);
 }
+

@@ -109,7 +109,7 @@ EOF;
 
         }
 
-        $namespace = 'App\Entity';
+        $namespace = 'App\Models\Entity';
         $persistentContent = <<<EOF
 <?php
 
@@ -127,7 +127,7 @@ class $entity
     $content
 }
 EOF;
-        $folder = app_path('Entity');
+        $folder = app_path('Models/Entity');
         if (!is_dir($folder)) {
             mkdir($folder, 0777, true);
         }
