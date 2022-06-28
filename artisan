@@ -9,17 +9,8 @@ use Doctrine\Migrations\Configuration\Migration\ExistingConfiguration;
 use Doctrine\Migrations\DependencyFactory;
 use Doctrine\Migrations\Configuration\Connection\ExistingConnection;
 use Doctrine\Migrations\Tools\Console\Command;
-use Dotenv\Dotenv;
 use Swift\Foundation\Console\ServeCommand;
 use Symfony\Component\Console\Application;
-
-if (class_exists('Dotenv\Dotenv')) {
-    if (method_exists('Dotenv\Dotenv', 'createUnsafeImmutable')) {
-        Dotenv::createUnsafeImmutable(base_path())->load();
-    } else {
-        Dotenv::createMutable(base_path())->load();
-    }
-}
 
 try {
     require_once __DIR__ . '/bootstrap/app.php';

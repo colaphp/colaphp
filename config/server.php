@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'listen' => 'http://0.0.0.0:8080',
+    'listen' => 'http://127.0.0.1:8080',
     'transport' => 'tcp',
     'context' => [],
-    'name' => 'phpmall',
+    'name' => 'PHPMall',
     'count' => env('SERVER_PROCESS_COUNT', cpu_count() * 2),
     'user' => env('SERVER_PROCESS_USER', ''),
     'group' => env('SERVER_PROCESS_GROUP', ''),
