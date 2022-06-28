@@ -83,10 +83,10 @@ class GenerateCommand extends Command
             if (in_array($type, ['varchar', 'char', 'text', 'mediumtext'])) {
                 $type = 'string';
             }
-            if ($type == 'decimal') {
+            if (in_array($type, ['decimal', 'float'])) {
                 $type = 'float';
             }
-            if ($type == 'datetime') {
+            if (in_array($type, ['datetime', 'date'])) {
                 $type = '\DateTime';
             }
             $comment = $column->COLUMN_COMMENT;
