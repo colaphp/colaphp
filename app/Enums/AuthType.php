@@ -2,10 +2,10 @@
 
 namespace App\Enums;
 
-enum AuthType
+class AuthType
 {
-    case ADMIN;
-    case SUPPLIER;
-    case SELLER;
-    case USER;
+    const ADMIN = 'AUTH_ADMIN';
+    const SUPPLIER = 'AUTH_SUPPLIER';
+    const SELLER = 'AUTH_SELLER';
+    const USER = 'AUTH_USER';
 }
