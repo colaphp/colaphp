@@ -9,7 +9,7 @@ class SocializeService
     /**
      * @var array
      */
-    private array $supportOAuthType = [
+    private array $supportType = [
         'wechat',
     ];
 
@@ -21,7 +21,7 @@ class SocializeService
      */
     public function authorize(string $type): string
     {
-        if (!in_array($type, $this->supportOAuthType)) {
+        if (!in_array($type, $this->supportType)) {
             throw new Exception('Unsupported OAuth type ' . $type);
         }
 
