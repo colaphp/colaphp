@@ -11,7 +11,7 @@
     "homepage": "https://www.phpmall.net/",
     "license": "Apache-2.0",
     "require": {
-        "php": "^8.1",
+        "php": "^8.0.2",
         "phpmall/framework": "dev-master"
     },
     "autoload": {
@@ -40,7 +40,7 @@
     "repositories": [
         {
             "type": "path",
-            "url": "libraries/"
+            "url": "includes/"
         }
     ]
 }

@@ -63,7 +63,7 @@ class DatabaseProvider implements Bootstrap
             Timer::add(55, function () use ($connections) {
                 foreach ($connections as $key => $item) {
                     if ($item['driver'] == 'mysql') {
-                        Db::connection($key)->select('select 1');
+                        DB::connection($key)->select('select 1');
                     }
                 }
             });
