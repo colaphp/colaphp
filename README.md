@@ -4,16 +4,8 @@
 
 ### 开发准备
 
-- 运行环境要求 PHP8.0。
-- 下载并安装 Microsoft Visual C++ Redistributable for Visual Studio 2019，地址：https://visualstudio.microsoft.com/zh-hans/downloads/
-- 下载 PHP8 https://windows.php.net/download/#php-8.0-ts-vs16-x64 ，并解压到 bin/php 目录下
-- 安装 sourcetree https://www.sourcetreeapp.com/
-
-### 设置阿里云composer代理**
-
-由于国内访问composer比较慢，建议设置阿里云composer镜像，运行如下命令设置阿里云代理
-
-`composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/`
+- 运行环境要求 PHP8.0，并将 `php` 命令加入到系统环境变量
+- 安装GitGUI，推荐 SourceTree https://www.sourcetreeapp.com/
 
 ### 升级 composer
 
