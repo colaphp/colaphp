@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Console;
 use App\Enums\AuthType;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Contracts\Support\Renderable;
+use Swift\Http\Response;
 
 class AuthController extends Controller
 {
@@ -26,9 +26,9 @@ class AuthController extends Controller
 
     /**
      * @param Request $request
-     * @return JsonResponse|Renderable
+     * @return
      */
-    public function forgot(Request $request): Renderable|Json
+    public function forgot(Request $request): Response
     {
         if ($request->isPost()) {
             return $this->success('forgot');
@@ -39,9 +39,9 @@ class AuthController extends Controller
 
     /**
      * @param Request $request
-     * @return JsonResponse|Renderable
+     * @return Response
      */
-    public function reset(Request $request): Renderable|Json
+    public function reset(Request $request): Response
     {
         if ($request->isPost()) {
             return $this->success('reset');

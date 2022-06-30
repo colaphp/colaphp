@@ -10,7 +10,7 @@ use App\Services\Auth\Internal\Input\MobileLoginInput;
 use App\Services\Auth\Internal\Input\RegisterInput;
 use App\Services\Auth\PassportService;
 use Exception;
-use Illuminate\Contracts\Support\Renderable;
+use Swift\Http\Response;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -26,10 +26,10 @@ class AuthController extends Controller
     /**
      * 用户密码登录
      * @param Request $request
-     * @return Renderable
+     * @return Response
      */
     #[Route(fullUri: 'login', name: 'user.auth.login')]
-    public function login(Request $request): Renderable
+    public function login(Request $request): Response
     {
         return view('user.login', $request->all());
     }
@@ -153,10 +153,10 @@ class AuthController extends Controller
     /**
      * 用户注册
      * @param Request $request
-     * @return Renderable
+     * @return Response
      */
     #[Route(fullUri: 'register', name: 'user.auth.register')]
-    public function register(Request $request): Renderable
+    public function register(Request $request): Response
     {
         return view('user.register', $request->all());
     }
@@ -303,10 +303,10 @@ class AuthController extends Controller
     /**
      * 忘记密码
      * @param Request $request
-     * @return Renderable
+     * @return Response
      */
     #[Route(fullUri: 'forget', name: 'user.auth.forget')]
-    public function forget(Request $request): Renderable
+    public function forget(Request $request): Response
     {
         return view('user.forget', $request->all());
     }
@@ -326,10 +326,10 @@ class AuthController extends Controller
     /**
      * 重设登录
      * @param Request $request
-     * @return Renderable
+     * @return Response
      */
     #[Route(fullUri: 'reset', name: 'user.auth.reset')]
-    public function reset(Request $request): Renderable
+    public function reset(Request $request): Response
     {
         return view('user.reset', $request->all());
     }

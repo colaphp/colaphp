@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Web;
 
-use Illuminate\Contracts\Support\Renderable;
+use Swift\Http\Response;
 
 class CommentController extends BaseController
 {
-    public function index(): Renderable
+    public function index(): Response
     {
         return view('index');
     }
