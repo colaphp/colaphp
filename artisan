@@ -3,7 +3,6 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-use Dotenv\Dotenv;
 use Phinx\Console\Command\Create;
 use Phinx\Console\Command\Migrate;
 use Phinx\Console\Command\Rollback;
@@ -13,27 +12,17 @@ use Phinx\Console\Command\Status;
 use Swift\Foundation\Console\ServeCommand;
 use Symfony\Component\Console\Application;
 
-if (class_exists('Dotenv\Dotenv') && file_exists(base_path() . '/.env')) {
-    if (method_exists('Dotenv\Dotenv', 'createUnsafeImmutable')) {
-        Dotenv::createUnsafeImmutable(base_path())->load();
-    } else {
-        Dotenv::createMutable(base_path())->load();
-    }
-}
-
 try {
     require_once __DIR__ . '/bootstrap/app.php';
-    $database = require __DIR__ . '/config/database.php';
-
-    $cli = new Application('Console Tools');
+    $cli = new Application('PHPMall Console');
     $cli->setCatchExceptions(true);
 
     $cli->add(new ServeCommand());
     $commands = glob(app_path('Console/Commands/*.php'));
+    $pattern = '/(app\/Console\/Commands\/.+?)\.php/';
     foreach ($commands as $file) {
-        $file = str_replace('\\', '/', $file);
-        $result = preg_match('/(app\/Console\/Commands\/.+?)\.php/', $file, $matches);
-        if ($result !== false && isset($matches[1])) {
+        preg_match($pattern, str_replace('\\', '/', $file), $matches);
+        if (isset($matches[1])) {
             $command = ucfirst(str_replace('/', '\\', $matches[1]));
             $cli->add(new $command());
         }
@@ -52,4 +41,3 @@ try {
 } catch (Exception $e) {
     die($e->getMessage() . PHP_EOL);
 }
-
