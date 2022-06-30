@@ -2,7 +2,7 @@
 
 namespace App\Support;
 
-use Swift\Support\Str;
+use Cola\Support\Str;
 
 /**
  * Trait SimpleAccess

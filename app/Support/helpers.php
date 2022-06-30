@@ -1,8 +1,5 @@
 <?php
 
-// 手机号正则
-const MOBILE_REGEX = '/^1[3-9][0-9]\d{8}$/';
-
 /**
  * @param string $url
  * @return string
@@ -13,15 +10,6 @@ function asset(string $url): string
 }
 
 /**
- * @return string
- */
-function csrf_token(): string
-{
-    return request()->sessionId();
-}
-
-/**
- * 生成前台主题链接
  * @param string $url
  * @return string
  */

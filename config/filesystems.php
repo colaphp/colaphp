@@ -50,7 +50,7 @@ return [
          * 本地对象存储
          */
         'local' => [
-            'adapter' => Swift\Filesystem\Adapter\LocalAdapter::class,
+            'adapter' => Cola\Filesystem\Adapter\LocalAdapter::class,
             'root' => runtime_path('storage'),
             'dirname' => '/storage',
             'domain' => 'http://127.0.0.1:8000'
@@ -60,7 +60,7 @@ return [
          * 阿里云对象存储
          */
         'oss' => [
-            'adapter' => Swift\Filesystem\Adapter\OssAdapter::class,
+            'adapter' => Cola\Filesystem\Adapter\OssAdapter::class,
             'accessKeyId' => 'xxxxxxxxxxxx',
             'accessKeySecret' => 'xxxxxxxxxxxx',
             'bucket' => 'resty',
@@ -73,7 +73,7 @@ return [
          * 腾讯云对象存储
          */
         'cos' => [
-            'adapter' => Swift\Filesystem\Adapter\CosAdapter::class,
+            'adapter' => Cola\Filesystem\Adapter\CosAdapter::class,
             'secretId' => 'xxxxxxxxxxxxx',
             'secretKey' => 'xxxxxxxxxxxx',
             'bucket' => 'resty',
@@ -86,7 +86,7 @@ return [
          * 七牛云对象存储
          */
         'qiniu' => [
-            'adapter' => Swift\Filesystem\Adapter\QiniuAdapter::class,
+            'adapter' => Cola\Filesystem\Adapter\QiniuAdapter::class,
             'accessKey' => 'xxxxxxxxxxxxx',
             'secretKey' => 'xxxxxxxxxxxxx',
             'bucket' => 'resty',

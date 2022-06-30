@@ -3,7 +3,7 @@
 return [
     'type' => 'file', // or redis or redis_cluster
 
-    'handler' => Swift\Session\FileSessionHandler::class,
+    'handler' => Cola\Session\FileSessionHandler::class,
 
     'config' => [
         'file' => [

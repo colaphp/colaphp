@@ -11,7 +11,7 @@ return [
     'default_themes' => 'default',
 
     'providers' => [
-        Swift\Database\DatabaseProvider::class,
-        Swift\Session\SessionProvider::class,
+        Cola\Database\DatabaseProvider::class,
+        Cola\Session\SessionProvider::class,
     ],
 ];

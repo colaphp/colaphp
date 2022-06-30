@@ -1,18 +1,19 @@
 {
-    "name": "phpmall/phpmall",
+    "name": "colaphp/colaphp",
     "type": "project",
-    "description": "一款开源的多商户商城系统",
+    "description": "High performance HTTP Service Framework for PHP based on Workerman.",
     "keywords": [
-        "e-commerce",
-        "phpmall",
-        "B2B2C",
+        "colaphp",
+        "php",
+        "framework",
+        "workerman",
         "high performance"
     ],
     "homepage": "https://www.phpmall.net/",
     "license": "Apache-2.0",
     "require": {
         "php": "^8.0.2",
-        "phpmall/framework": "dev-master"
+        "colaphp/framework": "^1.0"
     },
     "autoload": {
         "psr-4": {
@@ -36,11 +37,5 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "path",
-            "url": "includes/"
-        }
-    ]
+    "prefer-stable": true
 }

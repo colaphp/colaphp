@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use Swift\Http\Request;
-use Swift\Http\Response;
+use Cola\Http\Request;
+use Cola\Http\Response;
 
 /**
  * Class Index
@@ -27,7 +27,7 @@ class IndexController extends Controller
      */
     public function view(Request $request): Response
     {
-        return view('view', ['name' => 'phpmall']);
+        return view('view', ['name' => 'ColaPHP']);
     }
 
     /**

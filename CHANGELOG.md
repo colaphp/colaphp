@@ -1,3 +1,3 @@
 # Release Notes
 
-## [Unreleased](https://github.com/phpmall/phpmall)
+## [Unreleased](https://github.com/colaphp/colaphp)

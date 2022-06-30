@@ -3,7 +3,7 @@
 return [
     '' => [
         // Global middleware
-        Swift\Http\Middleware\HandleCors::class,
+        Cola\Http\Middleware\HandleCors::class,
     ],
     'Auth' => [
         App\Http\Middleware\RedirectIfAuthenticated::class,

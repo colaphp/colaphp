@@ -2,9 +2,9 @@
 
 namespace App\Http\Middleware;
 
-use Swift\Contracts\Middleware;
-use Swift\Http\Request;
-use Swift\Http\Response;
+use Cola\Contracts\Middleware;
+use Cola\Http\Request;
+use Cola\Http\Response;
 
 /**
  * Class AccessControl

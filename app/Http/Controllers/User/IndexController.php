@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
-use Swift\Http\Response;
+use Cola\Http\Response;
 
 class IndexController extends BaseController
 {
@@ -11,6 +11,6 @@ class IndexController extends BaseController
      */
     public function index(): Response
     {
-        return view('user');
+        return view('user.index');
     }
 }
