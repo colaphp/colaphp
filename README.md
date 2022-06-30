@@ -15,7 +15,7 @@ composer selfupdate
 进入 www 目录下，鼠标右击打开控制台，执行命令：
 
 ```
-composer create-project colaphp/colaphp
+composer create-project colasoft/colaphp
 ```
 
 ### 开启调试模式
