@@ -1,5 +1,5 @@
 {
-    "name": "colaphp/colaphp",
+    "name": "cola/cola",
     "type": "project",
     "description": "High performance HTTP Service Framework for PHP based on Workerman.",
     "keywords": [
