@@ -15,6 +15,7 @@
     "ext-mbstring": "*",
     "ext-openssl": "*",
     "doctrine/annotations": "^1.13",
+    "filp/whoops": "^2.14",
     "firebase/php-jwt": "^6.2",
     "gregwar/captcha": "^1.1",
     "illuminate/database": "^9.19",
