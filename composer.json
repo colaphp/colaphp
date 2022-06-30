@@ -13,7 +13,7 @@
     "license": "Apache-2.0",
     "require": {
         "php": "^8.0.2",
-        "colaphp/framework": "^1.0"
+        "colasoft/framework": "^1.0"
     },
     "autoload": {
         "psr-4": {
