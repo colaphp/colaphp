@@ -2,6 +2,6 @@
 
 @section('content')
 
-    login page.
+    admin console page.
 
 @endsection

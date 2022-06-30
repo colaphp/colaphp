@@ -10,20 +10,16 @@ class Kernel
 {
     /**
      * The application's global HTTP middleware stack.
-     *
-     * These middleware are run during every request to your application.
-     *
-     * @var array<int, class-string|string>
+     * @var array
      */
     public static array $middleware = [
-        \Swift\Http\Middleware\HandleCors::class,
-        \Swift\Routing\Middleware\ThrottleRequests::class,
+        \Cola\Http\Middleware\HandleCors::class,
+        \Cola\Routing\Middleware\ThrottleRequests::class,
     ];
 
     /**
      * The application's route middleware groups.
-     *
-     * @var array<string, array<int, class-string|string>>
+     * @var array
      */
     public static array $middlewareGroups = [
         'Auth' => [

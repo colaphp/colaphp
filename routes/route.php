@@ -1,3 +1,3 @@
 <?php
 
-use Swift\Routing\Route;
+use Cola\Routing\Route;

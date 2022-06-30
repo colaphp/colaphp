@@ -58,43 +58,4 @@ return [
         ],
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Migration Repository Table
-    |--------------------------------------------------------------------------
-    |
-    | This table keeps track of all the migrations that have already run for
-    | your application. Using this information, we can determine which of
-    | the migrations on disk haven't actually been run in the database.
-    |
-    */
-
-    'migrations' => [
-        'connection' => [
-            'driver' => 'pdo_mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'dbname' => env('DB_DATABASE', 'forge'),
-            'user' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
-        ],
-        'options' => [
-            "table_storage" => [
-                "table_name" => "migrations",
-                "version_column_name" => "version",
-                "version_column_length" => 1024,
-                "executed_at_column_name" => "executed_at",
-                "execution_time_column_name" => "execution_time"
-            ],
-            "migrations_paths" => [
-                "Database\\Migrations" => base_path('database/migrations')
-            ],
-            "all_or_nothing" => true,
-            "transactional" => true,
-            "check_database_platform" => true,
-            "organize_migrations" => "none",
-            "connection" => null,
-            "em" => null
-        ]
-    ],
-
 ];

@@ -9,12 +9,12 @@ use Phinx\Console\Command\Rollback;
 use Phinx\Console\Command\SeedCreate;
 use Phinx\Console\Command\SeedRun;
 use Phinx\Console\Command\Status;
-use Swift\Foundation\Console\ServeCommand;
+use Cola\Foundation\Console\ServeCommand;
 use Symfony\Component\Console\Application;
 
 try {
     require_once __DIR__ . '/bootstrap/app.php';
-    $cli = new Application('PHPMall Console');
+    $cli = new Application('ColaPHP Console');
     $cli->setCatchExceptions(true);
 
     $cli->add(new ServeCommand());

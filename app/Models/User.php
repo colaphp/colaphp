@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Swift\Database\Model;
+use Cola\Database\Model;
 
 /**
  * Class User

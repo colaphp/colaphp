@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\Auth\PassportService;
-use App\Services\User\UserService;
-use Exception;
-use Swift\Http\Response;
+use Cola\Http\Response;
 
 /**
  * Class Controller
@@ -59,30 +56,6 @@ abstract class Controller
             'message' => $message,
             'data' => null,
         ])->withHeaders($headers);
-    }
-
-    /**
-     * 返回用户数据的属性
-     * @param $token
-     * @return array
-     * @throws Exception
-     */
-    protected function auth($token = null): array
-    {
-        if (is_null($token)) {
-            $token = request()->header('X-Token', request()->cookie(USER_TOKEN));
-        }
-
-        $passportService = new PassportService();
-        $payload = $passportService->getPayloadByToken($token);
-
-        if (isset($payload['uid'])) {
-            $userService = new UserService();
-            $userOutput = $userService->findOne($payload['uid']);
-            return $userOutput->toArray();
-        }
-
-        return [];
     }
 
 }

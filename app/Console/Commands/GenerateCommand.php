@@ -3,8 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
-use Swift\Database\DB;
-use Swift\Support\Str;
+use Cola\Database\DB;
+use Cola\Support\Str;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -147,7 +147,7 @@ EOF;
 
 namespace $namespace;
 
-use Swift\Database\Model;
+use Cola\Database\Model;
 
 /**
  * Class $model
