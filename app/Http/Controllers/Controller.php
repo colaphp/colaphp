@@ -57,5 +57,4 @@ abstract class Controller
             'data' => null,
         ])->withHeaders($headers);
     }
-
 }

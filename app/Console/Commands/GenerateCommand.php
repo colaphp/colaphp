@@ -33,7 +33,6 @@ class GenerateCommand extends Command
      */
     protected function configure()
     {
-
     }
 
     /**
@@ -106,7 +105,6 @@ EOF;
  * @method set$method($type \$value)
 EOF;
             $annotation .= PHP_EOL;
-
         }
 
         $namespace = 'App\Models\Entity';
