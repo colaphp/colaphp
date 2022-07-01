@@ -19,7 +19,7 @@ class Rpc
         $args = $data['args'];
         if (!isset($instances[$class])) {
             // 缓存类实例，避免重复初始化
-            $instances[$class] = new $class;
+            $instances[$class] = new $class();
         }
         $connection->send(call_user_func_array([$instances[$class], $method], $args));
     }
