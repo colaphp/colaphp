@@ -1,0 +1,16 @@
+{
+  "name": "colaphp",
+  "license": "Apache-2.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "tests"
+  ],
+  "dependencies": {
+    "js-cookie": "^3.0.1",
+    "layui": "sentsin/layui#^2.7.2",
+    "vue": "^2.6.14"
+  }
+}
