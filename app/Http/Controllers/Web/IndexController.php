@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Http\Controllers\Controller;
 use Cola\Http\Request;
 use Cola\Http\Response;
 
@@ -10,7 +9,7 @@ use Cola\Http\Response;
  * Class Index
  * @package App\Http\Controllers\Web
  */
-class IndexController extends Controller
+class IndexController extends BaseController
 {
     /**
      * @param Request $request
