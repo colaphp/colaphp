@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Console\Commands;
 
-use Illuminate\Database\Capsule\Manager as Capsule;
 use Cola\Database\DB;
 use Cola\Support\Str;
+use Illuminate\Database\Capsule\Manager as Capsule;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -48,7 +50,7 @@ class GenerateCommand extends Command
         $db = env('DB_DATABASE');
         foreach ($tables as $item) {
             $key = 'Tables_in_' . $db;
-            $table = $item->$key;
+            $table = $item->{$key};
             if (Str::endsWith($table, '_relation') || in_array($table, $this->ignoreTable)) {
                 continue;
             }
@@ -71,7 +73,7 @@ class GenerateCommand extends Command
         $annotation = '';
         $content = '';
 
-        $info = DB::select("select COLUMN_NAME,DATA_TYPE,COLUMN_COMMENT from information_schema.COLUMNS where table_name = '$table' and table_schema = '$database';");
+        $info = DB::select("select COLUMN_NAME,DATA_TYPE,COLUMN_COMMENT from information_schema.COLUMNS where table_name = '{$table}' and table_schema = '{$database}';");
         foreach ($info as $column) {
             $field = $column->COLUMN_NAME;
             $method = Str::studly($field);
@@ -93,16 +95,16 @@ class GenerateCommand extends Command
             $content .= <<<EOF
 
     /**
-     * @var $type $comment
+     * @var {$type} {$comment}
      */
-    private $type \$$field;
+    private {$type} \${$field};
 EOF;
             $content .= PHP_EOL;
             // 方法注解
             $comment = str_replace(['(', '（', ')', '）'], [' '], $comment);
             $annotation .= <<<EOF
- * @method get$method() $comment
- * @method set$method($type \$value)
+ * @method get{$method}() {$comment}
+ * @method set{$method}({$type} \$value)
 EOF;
             $annotation .= PHP_EOL;
         }
@@ -111,22 +113,22 @@ EOF;
         $persistentContent = <<<EOF
 <?php
 
-namespace $namespace;
+namespace {$namespace};
 
-use App\Support\SimpleAccess;
+use App\\Support\\SimpleAccess;
 
 /**
- * Class $entity
-$annotation * @package $namespace
+ * Class {$entity}
+{$annotation} * @package {$namespace}
  */
-class $entity
+class {$entity}
 {
     use SimpleAccess;
-    $content
+    {$content}
 }
 EOF;
         $folder = app_path('Models/Entity');
-        if (!is_dir($folder)) {
+        if (! is_dir($folder)) {
             mkdir($folder, 0777, true);
         }
         file_put_contents($folder . '/' . $entity . '.php', $persistentContent);
@@ -143,22 +145,22 @@ EOF;
         $content = <<<EOF
 <?php
 
-namespace $namespace;
+namespace {$namespace};
 
-use Cola\Database\Model;
+use Cola\\Database\\Model;
 
 /**
- * Class $model
- * @package $namespace
+ * Class {$model}
+ * @package {$namespace}
  */
-class $model extends Model
+class {$model} extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected \$table = '$table';
+    protected \$table = '{$table}';
 
     /**
      * The primary key associated with the table.
@@ -177,7 +179,7 @@ class $model extends Model
 EOF;
 
         $folder = app_path('Models');
-        if (!is_dir($folder)) {
+        if (! is_dir($folder)) {
             mkdir($folder, 0777, true);
         }
         file_put_contents($folder . '/' . $model . '.php', $content);

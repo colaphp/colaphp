@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     // HTTP 请求的超时时间（秒）
     'timeout' => 5.0,
@@ -19,9 +21,9 @@ return [
             'file' => runtime_path('logs/sms.log'),
         ],
         'aliyun' => [
-            'access_key_id' => env('ALI_SMS_KEY',  ''),
-            'access_key_secret' => env('ALI_SMS_SECRET',  ''),
-            'sign_name' => env('ALI_SMS_SIGN',  ''),
+            'access_key_id' => env('ALI_SMS_KEY', ''),
+            'access_key_secret' => env('ALI_SMS_SECRET', ''),
+            'sign_name' => env('ALI_SMS_SIGN', ''),
         ],
     ],
 ];

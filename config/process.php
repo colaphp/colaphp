@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     // File update detection and automatic reload
     'monitor' => [
         'handler' => \App\Process\Monitor::class,
-        'reloadable'  => false,
+        'reloadable' => false,
         'constructor' => [
             // Monitor these directories
             'monitor_dir' => [
@@ -16,9 +18,9 @@ return [
             ],
             // Files with these suffixes will be monitored
             'monitor_extensions' => [
-                'php', 'html', 'htm', 'env'
-            ]
-        ]
+                'php', 'html', 'htm', 'env',
+            ],
+        ],
     ],
     /*'task'  => [
         'handler'  => \App\Process\Task::class

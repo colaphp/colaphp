@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Process;
 
 use FilesystemIterator;
-use Workerman\Timer;
-use Workerman\Worker;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use SplFileInfo;
+use Workerman\Timer;
+use Workerman\Worker;
 
 /**
  * Class Monitor

@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'paths' => [
         'migrations' => '%%PHINX_CONFIG_DIR%%/database/migrations',
-        'seeds' => '%%PHINX_CONFIG_DIR%%/database/seeds'
+        'seeds' => '%%PHINX_CONFIG_DIR%%/database/seeds',
     ],
     'environments' => [
         'default_migration_table' => 'migrations',
@@ -16,7 +18,7 @@ return [
             'pass' => env('DB_PASSWORD', ''),
             'port' => env('DB_PORT', '3306'),
             'charset' => env('DB_CHARSET', 'utf8mb4'),
-        ]
+        ],
     ],
-    'version_order' => 'creation'
+    'version_order' => 'creation',
 ];
