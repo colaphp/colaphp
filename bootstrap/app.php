@@ -1,7 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 if (version_compare(PHP_VERSION, '8.0.2', '<')) {
-    die('Require a PHP version ">= 8.0.2". You are running ' . PHP_VERSION . '.');
+    exit('Require a PHP version ">= 8.0.2". You are running ' . PHP_VERSION . '.');
 }
 
 const APP_NAME = 'ColaPHP';

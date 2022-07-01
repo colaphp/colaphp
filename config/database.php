@@ -1,7 +1,8 @@
 <?php
 
-return [
+declare(strict_types=1);
 
+return [
     /*
     |--------------------------------------------------------------------------
     | Default Database Connection Name
@@ -57,5 +58,4 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
     ],
-
 ];

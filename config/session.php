@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'type' => 'file', // or redis or redis_cluster
 
@@ -16,7 +18,7 @@ return [
             'timeout' => 2,
             'database' => env('REDIS_DB', '0'),
             'prefix' => 'redis_session_',
-        ]
+        ],
     ],
 
     'session_name' => 'PHPSESSID',

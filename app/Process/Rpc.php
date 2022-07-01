@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Process;
 
 use Workerman\Connection\TcpConnection;
@@ -17,7 +19,7 @@ class Rpc
         $class = 'App\\Services\\' . $data['class'];
         $method = $data['method'];
         $args = $data['args'];
-        if (!isset($instances[$class])) {
+        if (! isset($instances[$class])) {
             // 缓存类实例，避免重复初始化
             $instances[$class] = new $class();
         }

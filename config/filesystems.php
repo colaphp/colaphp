@@ -1,33 +1,34 @@
 <?php
 
-return [
+declare(strict_types=1);
 
-    /**
+return [
+    /*
      * local：本地 oss：阿里云 cos：腾讯云 qos：七牛云
      */
     'default' => env('FILESYSTEM_DISK', 'local'),
 
-    /**
+    /*
      * 单个文件的大小限制，默认200M 1024 * 1024 * 200
      */
     'single_limit' => 1024 * 1024 * 200,
 
-    /**
+    /*
      * 所有文件的大小限制，默认200M 1024 * 1024 * 200
      */
     'total_limit' => 1024 * 1024 * 200,
 
-    /**
+    /*
      * 文件数量限制，默认10
      */
     'nums' => 10,
 
-    /**
+    /*
      * 被允许的文件类型列表
      */
     'include' => [],
 
-    /**
+    /*
      * 不被允许的文件类型列表
      */
     'exclude' => [],
@@ -45,18 +46,17 @@ return [
     |
     */
     'disks' => [
-
-        /**
+        /*
          * 本地对象存储
          */
         'local' => [
             'adapter' => Cola\Filesystem\Adapter\LocalAdapter::class,
             'root' => runtime_path('storage'),
             'dirname' => '/storage',
-            'domain' => 'http://127.0.0.1:8000'
+            'domain' => 'http://127.0.0.1:8000',
         ],
 
-        /**
+        /*
          * 阿里云对象存储
          */
         'oss' => [
@@ -69,7 +69,7 @@ return [
             'endpoint' => 'oss-cn-hangzhou.aliyuncs.com',
         ],
 
-        /**
+        /*
          * 腾讯云对象存储
          */
         'cos' => [
@@ -82,7 +82,7 @@ return [
             'region' => 'ap-shanghai',
         ],
 
-        /**
+        /*
          * 七牛云对象存储
          */
         'qiniu' => [

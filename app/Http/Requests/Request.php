@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests;
 
 use Cola\Http\Request as BaseRequest;
-use Exception;
 
 /**
  * Class Request

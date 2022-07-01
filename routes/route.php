@@ -1,3 +1,3 @@
 <?php
 
-use Cola\Routing\Route;
+declare(strict_types=1);
