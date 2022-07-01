@@ -36,8 +36,8 @@ composer create-project colasoft/colaphp
 
 在浏览器中输入地址：
 
-http://localhost:8000/
+http://localhost:8080/
 
 ### License
 
-MIT
+Apache-2.0

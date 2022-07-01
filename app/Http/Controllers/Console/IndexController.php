@@ -8,6 +8,6 @@ class IndexController extends BaseController
 {
     public function index(): Response
     {
-        return view('console.index');
+        return view('index');
     }
 }
