@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 return [
-    'enable' => env('APP_DEBUG', false),
+    'enable' => true,
     'middleware' => [
         App\Http\Middleware\StaticFile::class,
     ],
