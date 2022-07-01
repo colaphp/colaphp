@@ -79,7 +79,7 @@ class Monitor
         }
         foreach ($iterator as $file) {
             /** var SplFileInfo $file */
-            if (is_dir($file)) {
+            if ($file->isDir()) {
                 continue;
             }
             // check mtime
