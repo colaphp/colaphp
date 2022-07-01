@@ -3,13 +3,13 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
+use Cola\Foundation\Console\ServeCommand;
 use Phinx\Console\Command\Create;
 use Phinx\Console\Command\Migrate;
 use Phinx\Console\Command\Rollback;
 use Phinx\Console\Command\SeedCreate;
 use Phinx\Console\Command\SeedRun;
 use Phinx\Console\Command\Status;
-use Cola\Foundation\Console\ServeCommand;
 use Symfony\Component\Console\Application;
 
 try {
