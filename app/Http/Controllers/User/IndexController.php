@@ -6,6 +6,10 @@ namespace App\Http\Controllers\User;
 
 use Cola\Http\Response;
 
+/**
+ * Class IndexController
+ * @package App\Http\Controllers\User
+ */
 class IndexController extends BaseController
 {
     /**

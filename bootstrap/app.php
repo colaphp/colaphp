@@ -10,12 +10,7 @@ const VERSION = 'v1.0.0';
 const RELEASE = '20220630';
 
 use Cola\Foundation\Console\ServeCommand;
-use Phinx\Console\Command\Create;
-use Phinx\Console\Command\Migrate;
-use Phinx\Console\Command\Rollback;
-use Phinx\Console\Command\SeedCreate;
-use Phinx\Console\Command\SeedRun;
-use Phinx\Console\Command\Status;
+use Phinx\Console\Command;
 use Symfony\Component\Console\Application;
 
 try {
@@ -34,12 +29,12 @@ try {
     }
 
     $cli->addCommands([
-        new Create(),
-        new Migrate(),
-        new Rollback(),
-        new Status(),
-        new SeedCreate(),
-        new SeedRun(),
+        new Command\Create(),
+        new Command\Migrate(),
+        new Command\Rollback(),
+        new Command\Status(),
+        new Command\SeedCreate(),
+        new Command\SeedRun(),
     ]);
 
     $cli->run();

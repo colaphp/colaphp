@@ -6,6 +6,10 @@ namespace App\Services\Auth;
 
 use App\Models\User;
 
+/**
+ * Class LoginService
+ * @package App\Services\Auth
+ */
 class LoginService
 {
     /**

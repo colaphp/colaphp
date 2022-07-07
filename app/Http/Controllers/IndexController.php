@@ -7,7 +7,11 @@ namespace App\Http\Controllers;
 use Cola\Http\Request;
 use Cola\Http\Response;
 
-class IndexController extends BaseController
+/**
+ * Class IndexController
+ * @package App\Http\Controllers
+ */
+class IndexController extends Controller
 {
     /**
      * @param Request $request
