@@ -9,8 +9,8 @@
     "tests"
   ],
   "dependencies": {
-    "js-cookie": "^3.0.1",
-    "layui": "layui/layui#^2.7.2",
+    "js-cookie": "^3.0",
+    "layui": "layui/layui#^2.7",
     "vue": "2.6.8"
   }
 }

@@ -8,10 +8,6 @@ use App\Http\Controllers\Controller;
 use Cola\Http\Request;
 use Cola\Http\Response;
 
-/**
- * Class LoginController
- * @package App\Http\Controllers\Auth
- */
 class LoginController extends Controller
 {
     /**

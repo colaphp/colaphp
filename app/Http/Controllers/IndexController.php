@@ -2,15 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Web;
+namespace App\Http\Controllers;
 
 use Cola\Http\Request;
 use Cola\Http\Response;
 
-/**
- * Class Index
- * @package App\Http\Controllers\Web
- */
 class IndexController extends BaseController
 {
     /**
@@ -19,16 +15,7 @@ class IndexController extends BaseController
      */
     public function index(Request $request): Response
     {
-        return view('index');
-    }
-
-    /**
-     * @param Request $request
-     * @return Response
-     */
-    public function view(Request $request): Response
-    {
-        return view('view', ['name' => 'ColaPHP']);
+        return view('index', ['name' => 'ColaPHP', 'request' => $request->all()]);
     }
 
     /**
@@ -37,7 +24,7 @@ class IndexController extends BaseController
      */
     public function json(Request $request): Response
     {
-        return $this->success(['msg' => 'ok']);
+        return $this->success(['msg' => 'ok', 'request' => $request->all()]);
     }
 
     /**
@@ -48,7 +35,7 @@ class IndexController extends BaseController
     {
         $file = $request->file('upload');
         if ($file && $file->isValid()) {
-            $file->move(public_path() . '/files/myfile.' . $file->getUploadExtension());
+            $file->move(public_path('storage/myfile.' . $file->getUploadExtension()));
             return $this->success(['msg' => 'upload success']);
         }
         return $this->success(['msg' => 'file not found']);
