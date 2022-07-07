@@ -6,10 +6,6 @@ namespace App\Http\Controllers;
 
 use Cola\Http\Response;
 
-/**
- * Class Controller
- * @package App\Http\Controllers
- */
 abstract class Controller
 {
     /**
