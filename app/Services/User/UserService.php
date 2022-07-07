@@ -6,6 +6,10 @@ namespace App\Services\User;
 
 use App\Models\User;
 
+/**
+ * Class UserService
+ * @package App\Services\User
+ */
 class UserService
 {
     /**

@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace App\Support;
 
+/**
+ * Class ComposerScripts
+ * @package App\Support
+ */
 class ComposerScripts
 {
     public static function postAutoloadDump(): void
