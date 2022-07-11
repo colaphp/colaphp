@@ -9,23 +9,17 @@ use Cola\Http\Request;
 use Cola\Http\Response;
 
 /**
- * Class LoginController
+ * Class RegisterController
  * @package App\Http\Controllers\Auth
  */
-class LoginController extends Controller
+class RegisterController extends Controller
 {
     /**
-     * 用户名、邮箱、手机号码与密码登录
      * @param Request $request
      * @return Response
      */
     public function index(Request $request): Response
     {
-        return view('login');
-    }
-
-    public function logout(Request $request): Response
-    {
-        return response('logout');
+        return view('register');
     }
 }
