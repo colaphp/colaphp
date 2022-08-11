@@ -9,16 +9,16 @@ use Symfony\Component\Console\Application as SymfonyApplication;
 
 class Application extends SymfonyApplication
 {
-    const VERSION = 'v1.0.0';
+    const VERSION = 'v1.0.3';
 
-    const RELEASE = '20220630';
+    const RELEASE = '20220811';
 
     /**
      * Initialize the console application.
      */
     public function __construct()
     {
-        parent::__construct('PHPMall Console.');
+        parent::__construct('ColaPHP Console.');
 
         $this->addCommands([
             new Command\Create(),
