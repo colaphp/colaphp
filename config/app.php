@@ -8,8 +8,10 @@ return [
     'app_name' => env('APP_NAME', 'ColaPHP'),
     'debug' => env('APP_DEBUG', false),
     'default_timezone' => 'Asia/Shanghai',
-    'request_class' => Request::class,
+    'default_module' => 'Web',
+    'controller_suffix' => 'Controller',
     'default_themes' => 'default',
+    'request_class' => Request::class,
 
     'providers' => [
         // Cola\Database\DatabaseProvider::class,
