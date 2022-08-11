@@ -2,19 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
 use Cola\Http\Request;
 use Cola\Http\Response;
 
-/**
- * Class IndexController
- * @package App\Http\Controllers
- */
-class IndexController extends Controller
+class IndexController extends BaseController
 {
     /**
-     * @param Request $request
      * @return Response
      */
     public function index(Request $request): Response
