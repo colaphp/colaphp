@@ -4,30 +4,28 @@ declare(strict_types=1);
 
 namespace App\Services\User;
 
-use App\Models\User;
+use App\Model\User;
+use App\Services\User\Object\Output\UserOutput;
 
 /**
  * Class UserService
- * @package App\Services\User
  */
 class UserService
 {
     /**
-     * @var User
+     * @param int $userId
+     * @return UserOutput|null
      */
-    private User $user;
-
-    /**
-     * UserService constructor.
-     * @param User $user
-     */
-    public function __construct(User $user)
+    public function findOne(int $userId): ?UserOutput
     {
-        $this->user = $user;
-    }
+        $user = User::query()->first($userId);
 
-    public function findOne(int $userId)
-    {
+        $userOutput = new UserOutput();
+        if ($user) {
+            $userOutput->setId($user->id);
+            return $userOutput;
+        }
+
         return null;
     }
 }

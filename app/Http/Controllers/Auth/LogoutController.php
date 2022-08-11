@@ -9,9 +9,9 @@ use Cola\Http\Request;
 use Cola\Http\Response;
 
 /**
- * Class ResetController
+ * Class LogoutController
  */
-class ResetController extends Controller
+class LogoutController extends Controller
 {
     /**
      * @param Request $request
@@ -19,15 +19,11 @@ class ResetController extends Controller
      */
     public function index(Request $request): Response
     {
-        return view('reset');
-    }
+        if ($request->isAjax()) {
+            session(['uid' => 0]);
+            return $this->success('注销成功');
+        }
 
-    /**
-     * @param Request $request
-     * @return Response
-     */
-    public function reset(Request $request): Response
-    {
-        // reset
+        return redirect('/');
     }
 }
