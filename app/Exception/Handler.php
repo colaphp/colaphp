@@ -11,7 +11,6 @@ use Throwable;
 
 /**
  * Class Handler
- * @package App\Exception
  */
 class Handler extends ExceptionHandler
 {
@@ -23,7 +22,7 @@ class Handler extends ExceptionHandler
     ];
 
     /**
-     * @param Throwable $exception
+     * @param  Throwable  $exception
      */
     public function report(Throwable $exception)
     {
@@ -31,8 +30,8 @@ class Handler extends ExceptionHandler
     }
 
     /**
-     * @param Request $request
-     * @param Throwable $exception
+     * @param  Request  $request
+     * @param  Throwable  $exception
      * @return Response
      */
     public function render(Request $request, Throwable $exception): Response

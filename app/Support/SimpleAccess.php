@@ -8,7 +8,6 @@ use Cola\Support\Str;
 
 /**
  * Trait SimpleAccess
- * @package App\Support
  */
 trait SimpleAccess
 {
@@ -21,6 +20,7 @@ trait SimpleAccess
         foreach ($this as $key => $value) {
             $attributes[$key] = $value;
         }
+
         return $attributes;
     }
 
@@ -35,7 +35,7 @@ trait SimpleAccess
     }
 
     /**
-     * @param int $options
+     * @param  int  $options
      * @return string
      */
     public function toJson(int $options = JSON_UNESCAPED_UNICODE): string
@@ -62,12 +62,14 @@ trait SimpleAccess
         if ($action === 'set') {
             if (property_exists($this, $property)) {
                 $this->{$property} = $arguments[0];
+
                 return true;
             }
         }
 
         $trace = debug_backtrace();
-        trigger_error('Undefined property  ' . $name . ' in ' . $trace[0]['file'] . ' on line ' . $trace[0]['line'], E_USER_NOTICE);
+        trigger_error('Undefined property  '.$name.' in '.$trace[0]['file'].' on line '.$trace[0]['line'], E_USER_NOTICE);
+
         return false;
     }
 

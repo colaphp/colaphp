@@ -8,7 +8,6 @@ use Workerman\Connection\TcpConnection;
 
 /**
  * Class Rpc
- * @package App\Process
  */
 class Rpc
 {
@@ -16,7 +15,7 @@ class Rpc
     {
         static $instances = [];
         $data = json_decode($data, true);
-        $class = 'App\\Services\\' . $data['class'];
+        $class = 'App\\Services\\'.$data['class'];
         $method = $data['method'];
         $args = $data['args'];
         if (! isset($instances[$class])) {

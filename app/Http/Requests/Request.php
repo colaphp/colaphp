@@ -8,7 +8,6 @@ use Cola\Http\Request as BaseRequest;
 
 /**
  * Class Request
- * @package App\Http\Requests
  */
 class Request extends BaseRequest
 {

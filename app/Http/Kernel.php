@@ -6,12 +6,12 @@ namespace App\Http;
 
 /**
  * Class Kernel
- * @package App\Http
  */
 class Kernel
 {
     /**
      * The application's global HTTP middleware stack.
+     *
      * @var array
      */
     public static array $middleware = [
@@ -21,6 +21,7 @@ class Kernel
 
     /**
      * The application's route middleware groups.
+     *
      * @var array
      */
     public static array $middlewareGroups = [
@@ -33,6 +34,9 @@ class Kernel
         ],
         'User' => [
             \App\Http\Middleware\Authenticate::class,
+        ],
+        'Web' => [
+            \App\Http\Middleware\VerifyCsrfToken::class,
         ],
     ];
 }

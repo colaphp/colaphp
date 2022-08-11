@@ -8,7 +8,6 @@ use Workerman\Connection\TcpConnection;
 
 /**
  * Class Websocket
- * @package App\Process
  */
 class Websocket
 {
