@@ -13,7 +13,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Class GenerateCommand
- * @package App\Console\Commands
  */
 class GenerateCommand extends Command
 {
@@ -24,6 +23,7 @@ class GenerateCommand extends Command
 
     /**
      * 忽略表
+     *
      * @var array
      */
     private array $ignoreTable = [
@@ -38,8 +38,8 @@ class GenerateCommand extends Command
     }
 
     /**
-     * @param InputInterface $input
-     * @param OutputInterface $output
+     * @param  InputInterface  $input
+     * @param  OutputInterface  $output
      * @return int
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -49,13 +49,13 @@ class GenerateCommand extends Command
         $tables = DB::select('show tables');
         $db = env('DB_DATABASE');
         foreach ($tables as $item) {
-            $key = 'Tables_in_' . $db;
+            $key = 'Tables_in_'.$db;
             $table = $item->{$key};
             if (Str::endsWith($table, '_relation') || in_array($table, $this->ignoreTable)) {
                 continue;
             }
             $model = Str::studly($table);
-            $this->entity($model . 'Entity', $table, $db);
+            $this->entity($model.'Entity', $table, $db);
             $this->model($model, $table);
         }
 
@@ -131,7 +131,7 @@ EOF;
         if (! is_dir($folder)) {
             mkdir($folder, 0777, true);
         }
-        file_put_contents($folder . '/' . $entity . '.php', $persistentContent);
+        file_put_contents($folder.'/'.$entity.'.php', $persistentContent);
     }
 
     /**
@@ -182,7 +182,7 @@ EOF;
         if (! is_dir($folder)) {
             mkdir($folder, 0777, true);
         }
-        file_put_contents($folder . '/' . $model . '.php', $content);
+        file_put_contents($folder.'/'.$model.'.php', $content);
     }
 
     /**

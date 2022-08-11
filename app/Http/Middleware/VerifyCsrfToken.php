@@ -10,7 +10,6 @@ use Cola\Http\Response;
 
 /**
  * Class VerifyCsrfToken
- * @package App\Http\Middleware
  */
 class VerifyCsrfToken implements Middleware
 {
@@ -21,6 +20,10 @@ class VerifyCsrfToken implements Middleware
      */
     public function process(Request $request, callable $next): Response
     {
+        if (!$request->check_token()) {
+            return not_found();
+        }
+
         return $next($request);
     }
 }

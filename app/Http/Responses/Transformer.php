@@ -6,7 +6,6 @@ namespace App\Http\Responses;
 
 /**
  * Class Transformer
- * @package App\Http\Responses
  */
 abstract class Transformer
 {
