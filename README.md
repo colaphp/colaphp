@@ -2,9 +2,13 @@
 
 > 👷 Under development. Releasing soon.
 
+### 开发准备
+
+- 运行环境要求 PHP8.0。
+
 ### 升级 composer
 
-打开控制台，执行命令：
+打开终端，执行命令：
 
 ```
 composer selfupdate
@@ -12,7 +16,7 @@ composer selfupdate
 
 ### 克隆代码
 
-进入 www 目录下，鼠标右击打开控制台，执行命令：
+进入 www 目录下，执行命令：
 
 ```
 composer create-project colasoft/colaphp
@@ -29,8 +33,16 @@ composer create-project colasoft/colaphp
 现在只需要做最后一步来验证是否正常运行。
 
 进入命令行下面，执行下面指令
- 
-`php artisan serve`
+
+```
+php artisan serve
+```
+
+### 正式运行
+
+daemon方式运行(用于正式环境)
+
+`php artisan serve -d`
 
 ### 预览
 
