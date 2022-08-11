@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 
 /**
  * Class BaseController
- * @package App\Http\Controllers\User
  */
 abstract class BaseController extends Controller
 {
