@@ -17,6 +17,7 @@ class Kernel
     public static array $middleware = [
         \Cola\Http\Middleware\HandleCors::class,
         \Cola\Routing\Middleware\ThrottleRequests::class,
+        \App\Http\Middleware\VerifyCsrfToken::class,
     ];
 
     /**
@@ -36,7 +37,7 @@ class Kernel
             \App\Http\Middleware\Authenticate::class,
         ],
         'Web' => [
-            \App\Http\Middleware\VerifyCsrfToken::class,
+            // 
         ],
     ];
 }
