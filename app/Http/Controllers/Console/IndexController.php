@@ -8,7 +8,6 @@ use Cola\Http\Response;
 
 /**
  * Class IndexController
- * @package App\Http\Controllers\Console
  */
 class IndexController extends BaseController
 {
