@@ -5,15 +5,12 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Services\OAuth\SocializeService;
+use App\Service\OAuth\SocializeService;
 use Cola\Http\Request;
 use Cola\Http\Response;
 use Cola\Log\Log;
 use Exception;
 
-/**
- * Class SocializeController
- */
 class SocializeController extends Controller
 {
     /**

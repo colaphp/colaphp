@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\Auth\Register;
 
-use App\Services\Captcha\CaptchaService;
+use App\Service\Captcha\CaptchaService;
 use Cola\Validation\Validator;
 
 /**

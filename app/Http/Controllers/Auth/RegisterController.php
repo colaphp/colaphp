@@ -8,9 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\Register\EmailValidator;
 use App\Http\Requests\Auth\Register\MobileValidator;
 use App\Http\Requests\Auth\Register\UsernameValidator;
-use App\Services\Auth\AuthService;
-use App\Services\Auth\Object\Input\RegisterInput;
-use App\Services\Auth\RegisterService;
+use App\Service\Auth\AuthService;
+use App\Service\Auth\Input\RegisterInput;
+use App\Service\Auth\RegisterService;
 use Cola\Http\Request;
 use Cola\Http\Response;
 use Cola\Log\Log;
@@ -18,9 +18,6 @@ use Cola\Support\Carbon;
 use Cola\Support\Str;
 use Exception;
 
-/**
- * Class RegisterController
- */
 class RegisterController extends Controller
 {
     /**

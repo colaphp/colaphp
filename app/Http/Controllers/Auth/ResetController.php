@@ -8,9 +8,6 @@ use App\Http\Controllers\Controller;
 use Cola\Http\Request;
 use Cola\Http\Response;
 
-/**
- * Class ResetController
- */
 class ResetController extends Controller
 {
     /**
@@ -28,6 +25,6 @@ class ResetController extends Controller
      */
     public function reset(Request $request): Response
     {
-        // reset
+        return $this->success('ok');
     }
 }

@@ -10,9 +10,6 @@ use App\Http\Requests\Auth\Forgot\MobileValidator;
 use Cola\Http\Request;
 use Cola\Http\Response;
 
-/**
- * Class ForgotController
- */
 class ForgotController extends Controller
 {
     /**
@@ -37,7 +34,7 @@ class ForgotController extends Controller
 
         $email = $request->post('email');
 
-        
+        return $this->success($email);
     }
 
     /**
@@ -53,5 +50,6 @@ class ForgotController extends Controller
 
         $mobile = $request->post('mobile');
 
+        return $this->success($mobile);
     }
 }
