@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Sms;
+namespace App\Service\Sms;
 
 use Cola\Log\Log;
 use Overtrue\EasySms\EasySms;

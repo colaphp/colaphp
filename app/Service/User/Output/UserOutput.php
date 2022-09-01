@@ -2,13 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\Services\User\Object\Output;
+namespace App\Service\User\Output;
+
+use App\Http\Traits\SimpleAccess;
 
 /**
  * Class UserOutput
  */
 class UserOutput
 {
+    use SimpleAccess;
+
     /**
      * @var int
      */

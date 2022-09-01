@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Auth;
+namespace App\Service\Auth;
 
-use App\Services\Auth\Object\Input\LoginInput;
-use App\Services\Auth\Object\Input\MobileLoginInput;
+use App\Service\Auth\Input\LoginInput;
+use App\Service\Auth\Input\LoginByMobileInput;
 use Cola\Database\DB;
 use Exception;
 
@@ -47,12 +47,12 @@ class LoginService
     /**
      * 手机号码登录服务
      *
-     * @param  MobileLoginInput  $mobileLoginInput
+     * @param  LoginByMobileInput  $mobileLoginInput
      * @return int
      *
      * @throws Exception
      */
-    public function loginByMobile(MobileLoginInput $mobileLoginInput): int
+    public function loginByMobile(LoginByMobileInput $mobileLoginInput): int
     {
         $mobile = $mobileLoginInput->getMobile();
 

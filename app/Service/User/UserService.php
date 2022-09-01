@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Services\User;
+namespace App\Service\User;
 
 use App\Model\User;
-use App\Services\User\Object\Output\UserOutput;
+use App\Service\User\Output\UserOutput;
 
 /**
  * Class UserService

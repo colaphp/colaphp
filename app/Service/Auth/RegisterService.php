@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Auth;
+namespace App\Service\Auth;
 
-use App\Services\Auth\Object\Input\RegisterInput;
+use App\Service\Auth\Input\RegisterInput;
 use Cola\Database\DB;
 use Exception;
 
