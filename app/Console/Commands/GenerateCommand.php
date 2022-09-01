@@ -65,7 +65,7 @@ class GenerateCommand extends Command
      * @param $database
      * @return void
      */
-    private function entity($entity, $table, $database)
+    private function entity($entity, $table, $database): void
     {
         $annotation = '';
         $content = '';
@@ -110,6 +110,8 @@ EOF;
         $persistentContent = <<<EOF
 <?php
 
+declare(strict_types=1);
+
 namespace {$namespace};
 
 use App\\Http\\Traits\\SimpleAccess;
@@ -136,11 +138,13 @@ EOF;
      * @param $table
      * @return void
      */
-    private function model($model, $table)
+    private function model($model, $table): void
     {
         $namespace = 'App\Model';
         $content = <<<EOF
 <?php
+
+declare(strict_types=1);
 
 namespace {$namespace};
 
@@ -185,7 +189,7 @@ EOF;
     /**
      * @return void
      */
-    private function connection()
+    private function connection(): void
     {
         $database = require config_path('database.php');
 
