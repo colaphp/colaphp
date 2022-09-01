@@ -27,8 +27,8 @@ final class CreateUserTable extends AbstractMigration
             ->addColumn(Column::string('join_ip')->setComment('注册IP'))
             ->addColumn(Column::dateTime('last_time')->setComment('上次登录时间'))
             ->addColumn(Column::string('last_ip')->setComment('上次登录IP'))
-            ->addColumn(Column::dateTime('created_at')->setComment('上次登录IP'))
-            ->addColumn(Column::dateTime('updated_at')->setNullable()->setComment('上次登录IP'))
+            ->addColumn(Column::dateTime('created_at')->setComment('创建时间'))
+            ->addColumn(Column::dateTime('updated_at')->setNullable()->setComment('更新时间'))
             ->addColumn(Column::dateTime('deleted_at')->setNullable())
             ->create();
 

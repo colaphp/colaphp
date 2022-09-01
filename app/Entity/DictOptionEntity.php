@@ -9,7 +9,7 @@ use App\Http\Traits\SimpleAccess;
 /**
  * Class DictOptionEntity
  *
- * @method getId()
+ * @method getId() 
  * @method setId(int $value)
  * @method getName() 键
  * @method setName(string $value)
@@ -19,13 +19,14 @@ use App\Http\Traits\SimpleAccess;
  * @method setCreatedAt(\DateTime $value)
  * @method getUpdatedAt() 上次登录IP
  * @method setUpdatedAt(\DateTime $value)
+ * @package App\Entity
  */
 class DictOptionEntity
 {
     use SimpleAccess;
-
+    
     /**
-     * @var int
+     * @var int 
      */
     private int $id;
 
@@ -48,4 +49,5 @@ class DictOptionEntity
      * @var \DateTime 上次登录IP
      */
     private \DateTime $updated_at;
+
 }

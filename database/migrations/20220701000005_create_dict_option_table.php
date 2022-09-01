@@ -17,8 +17,8 @@ final class CreateDictOptionTable extends AbstractMigration
 
         $table->addColumn(Column::string('name')->setComment('键'))
             ->addColumn(Column::longText('value')->setComment('值'))
-            ->addColumn(Column::dateTime('created_at')->setComment('上次登录IP'))
-            ->addColumn(Column::dateTime('updated_at')->setNullable()->setComment('上次登录IP'))
+            ->addColumn(Column::dateTime('created_at')->setComment('创建时间'))
+            ->addColumn(Column::dateTime('updated_at')->setNullable()->setComment('更新时间'))
             ->create();
 
         $this->table('dict_option')->insert([
