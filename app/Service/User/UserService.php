@@ -13,7 +13,7 @@ use App\Service\User\Output\UserOutput;
 class UserService
 {
     /**
-     * @param int $userId
+     * @param  int  $userId
      * @return UserOutput|null
      */
     public function findOne(int $userId): ?UserOutput
@@ -23,6 +23,7 @@ class UserService
         $userOutput = new UserOutput();
         if ($user) {
             $userOutput->setId($user->id);
+
             return $userOutput;
         }
 

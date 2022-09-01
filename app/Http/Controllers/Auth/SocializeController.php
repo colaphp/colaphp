@@ -16,7 +16,7 @@ class SocializeController extends Controller
     /**
      * 社会化授权登录
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return Response
      */
     public function redirect(Request $request): Response
@@ -26,6 +26,7 @@ class SocializeController extends Controller
         try {
             $socializeService = new SocializeService();
             $url = $socializeService->redirect($type);
+
             return redirect($url);
         } catch (Exception $e) {
             Log::error($e->getMessage());
@@ -37,7 +38,7 @@ class SocializeController extends Controller
     /**
      * 社会化授权登录回调
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return Response
      */
     public function callback(Request $request): Response

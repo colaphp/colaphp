@@ -13,7 +13,7 @@ use Cola\Http\Response;
 class ForgotController extends Controller
 {
     /**
-     * @param Request $request
+     * @param  Request  $request
      * @return Response
      */
     public function index(Request $request): Response
@@ -22,13 +22,13 @@ class ForgotController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      * @return Response
      */
     public function email(Request $request): Response
     {
         $v = new EmailValidator();
-        if (!$v->check($request->post())) {
+        if (! $v->check($request->post())) {
             return $this->error($v->getError());
         }
 
@@ -38,13 +38,13 @@ class ForgotController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      * @return Response
      */
     public function mobile(Request $request): Response
     {
         $v = new MobileValidator();
-        if (!$v->check($request->post())) {
+        if (! $v->check($request->post())) {
             return $this->error($v->getError());
         }
 

@@ -8,7 +8,6 @@ use Cola\Database\Model;
 
 /**
  * Class AuthRule
- * @package App\Model
  */
 class AuthRule extends Model
 {

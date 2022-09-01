@@ -6,7 +6,6 @@ namespace App\Support;
 
 /**
  * Class ComposerScripts
- * @package App\Support
  */
 class ComposerScripts
 {
@@ -23,7 +22,7 @@ class ComposerScripts
 
     public static function addMigrationPrefix($basePath): void
     {
-        $commands = glob($basePath . '/vendor/robmorgan/phinx/src/Phinx/Console/Command/*.php');
+        $commands = glob($basePath.'/vendor/robmorgan/phinx/src/Phinx/Console/Command/*.php');
         foreach ($commands as $command) {
             $content = file_get_contents($command);
             $result = preg_match('/protected static \$defaultName = \'(\w+)\';/', $content, $matches);

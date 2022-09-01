@@ -8,7 +8,8 @@ use App\Http\Traits\SimpleAccess;
 
 /**
  * Class AuthRuleEntity
- * @method getId() 
+ *
+ * @method getId()
  * @method setId(int $value)
  * @method getModule() 模块
  * @method setModule(string $value)
@@ -34,14 +35,13 @@ use App\Http\Traits\SimpleAccess;
  * @method setCreatedAt(\DateTime $value)
  * @method getUpdatedAt() 上次登录IP
  * @method setUpdatedAt(\DateTime $value)
- * @package App\Entity
  */
 class AuthRuleEntity
 {
     use SimpleAccess;
-    
+
     /**
-     * @var int 
+     * @var int
      */
     private int $id;
 
@@ -104,5 +104,4 @@ class AuthRuleEntity
      * @var \DateTime 上次登录IP
      */
     private \DateTime $updated_at;
-
 }

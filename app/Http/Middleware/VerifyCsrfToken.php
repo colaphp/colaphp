@@ -14,13 +14,13 @@ use Cola\Http\Response;
 class VerifyCsrfToken implements Middleware
 {
     /**
-     * @param Request $request
-     * @param callable $next
+     * @param  Request  $request
+     * @param  callable  $next
      * @return Response
      */
     public function process(Request $request, callable $next): Response
     {
-        if (!$request->check_token()) {
+        if (! $request->check_token()) {
             return not_found();
         }
 

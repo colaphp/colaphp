@@ -37,7 +37,7 @@ class Kernel
             \App\Http\Middleware\Authenticate::class,
         ],
         'Web' => [
-            // 
+            //
         ],
     ];
 }

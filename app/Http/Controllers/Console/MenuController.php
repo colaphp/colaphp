@@ -29,7 +29,7 @@ class MenuController extends BaseController
      *
      * @return \support\Response
      */
-    function get()
+    public function get()
     {
         [$rules, $items] = $this->getRulesAndItems();
         $items_map = [];
@@ -41,7 +41,7 @@ class MenuController extends BaseController
             foreach (['title', 'icon', 'hide_menu', 'frame_src'] as $name) {
                 $value = $item[$name];
                 unset($items_map[$index][$name]);
-                if (!$value) {
+                if (! $value) {
                     continue;
                 }
                 $items_map[$index]['meta'][Util::smCamel($name)] = $value;
@@ -51,13 +51,13 @@ class MenuController extends BaseController
             }
         }
         foreach ($items_map as $item) {
-            if (!$item['pid']) {
+            if (! $item['pid']) {
                 $formatted_items[] = $item;
             }
         }
 
         // 超级管理员权限为 *
-        if (!in_array('*', $rules)) {
+        if (! in_array('*', $rules)) {
             $this->removeUncontain($formatted_items, 'id', $rules);
         }
         $this->removeUncontain($formatted_items, 'is_menu', [1]);
@@ -65,6 +65,7 @@ class MenuController extends BaseController
         foreach ($formatted_items as &$item) {
             $this->arrayValues($item);
         }
+
         return $this->json(0, 'ok', $formatted_items);
     }
 
@@ -73,7 +74,7 @@ class MenuController extends BaseController
      *
      * @return \support\Response
      */
-    function tree()
+    public function tree()
     {
         [$rules, $items] = $this->getRulesAndItems();
 
@@ -84,8 +85,8 @@ class MenuController extends BaseController
             }
             $items_map[$item['id']] = [
                 'title' => $item['title'],
-                'value' => (string)$item['id'],
-                'key' => (string)$item['id'],
+                'value' => (string) $item['id'],
+                'key' => (string) $item['id'],
                 'id' => $item['id'],
                 'is_menu' => $item['is_menu'],
                 'pid' => $item['pid'],
@@ -98,13 +99,13 @@ class MenuController extends BaseController
             }
         }
         foreach ($items_map as $item) {
-            if (!$item['pid']) {
+            if (! $item['pid']) {
                 $formatted_items[] = $item;
             }
         }
 
         // 超级管理员权限为 *
-        if (!in_array('*', $rules)) {
+        if (! in_array('*', $rules)) {
             $this->removeUncontain($formatted_items, 'id', $rules);
         }
         $this->removeUncontain($formatted_items, 'is_menu', [1]);
@@ -128,13 +129,13 @@ class MenuController extends BaseController
     protected function removeUncontain(&$array, $key, $values)
     {
         foreach ($array as $k => &$item) {
-            if (!is_array($item)) {
+            if (! is_array($item)) {
                 continue;
             }
-            if (!$this->arrayContain($item, $key, $values)) {
+            if (! $this->arrayContain($item, $key, $values)) {
                 unset($array[$k]);
             } else {
-                if (!isset($item['children'])) {
+                if (! isset($item['children'])) {
                     continue;
                 }
                 $this->removeUncontain($item['children'], $key, $values);
@@ -152,13 +153,13 @@ class MenuController extends BaseController
      */
     protected function arrayContain(&$array, $key, $values)
     {
-        if (!is_array($array)) {
+        if (! is_array($array)) {
             return false;
         }
         if (isset($array[$key]) && in_array($array[$key], $values)) {
             return true;
         }
-        if (!isset($array['children'])) {
+        if (! isset($array['children'])) {
             return false;
         }
         foreach ($array['children'] as $item) {
@@ -166,6 +167,7 @@ class MenuController extends BaseController
                 return true;
             }
         }
+
         return false;
     }
 
@@ -178,7 +180,7 @@ class MenuController extends BaseController
      */
     protected function recursiveRemove(&$array, $keys)
     {
-        if (!is_array($array)) {
+        if (! is_array($array)) {
             return;
         }
         foreach ($keys as $key) {
@@ -191,6 +193,7 @@ class MenuController extends BaseController
 
     /**
      * 获取权限规则
+     *
      * @return array
      */
     protected function getRulesAndItems()
@@ -199,13 +202,14 @@ class MenuController extends BaseController
         $rules_strings = $roles ? AdminRole::whereIn('id', $roles)->pluck('rules') : [];
         $rules = [];
         foreach ($rules_strings as $rule_string) {
-            if (!$rule_string) {
+            if (! $rule_string) {
                 continue;
             }
             $rules = array_merge($rules, explode(',', $rule_string));
         }
 
         $items = AdminRule::get()->toArray();
+
         return [$rules, $items];
     }
 
@@ -216,7 +220,7 @@ class MenuController extends BaseController
      */
     protected function arrayValues(&$array)
     {
-        if (!is_array($array) || !isset($array['children'])) {
+        if (! is_array($array) || ! isset($array['children'])) {
             return;
         }
         $array['children'] = array_values($array['children']);

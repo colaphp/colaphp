@@ -11,7 +11,7 @@ use Cola\Http\Response;
 class ResetController extends Controller
 {
     /**
-     * @param Request $request
+     * @param  Request  $request
      * @return Response
      */
     public function index(Request $request): Response
@@ -20,7 +20,7 @@ class ResetController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      * @return Response
      */
     public function reset(Request $request): Response

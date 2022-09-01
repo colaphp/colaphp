@@ -8,7 +8,6 @@ use Cola\Database\Model;
 
 /**
  * Class DictOption
- * @package App\Model
  */
 class DictOption extends Model
 {

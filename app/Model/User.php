@@ -8,7 +8,6 @@ use Cola\Database\Model;
 
 /**
  * Class User
- * @package App\Model
  */
 class User extends Model
 {
