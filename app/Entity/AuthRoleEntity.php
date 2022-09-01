@@ -19,9 +19,9 @@ use App\Http\Traits\SimpleAccess;
  * @method setRules(string $value)
  * @method getStatus() 状态：1正常，0禁用
  * @method setStatus(int $value)
- * @method getCreatedAt() 上次登录IP
+ * @method getCreatedAt() 创建时间
  * @method setCreatedAt(\DateTime $value)
- * @method getUpdatedAt() 上次登录IP
+ * @method getUpdatedAt() 更新时间
  * @method setUpdatedAt(\DateTime $value)
  * @package App\Entity
  */
@@ -55,12 +55,12 @@ class AuthRoleEntity
     private int $status;
 
     /**
-     * @var \DateTime 上次登录IP
+     * @var \DateTime 创建时间
      */
     private \DateTime $created_at;
 
     /**
-     * @var \DateTime 上次登录IP
+     * @var \DateTime 更新时间
      */
     private \DateTime $updated_at;
 
