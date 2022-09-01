@@ -11,13 +11,17 @@ final class CreateUserRoleRelationTable extends AbstractMigration
     {
         $table = $this->table('user_role_relation', [
             'signed' => false,
-            'collation' => 'utf8mb4_general_ci',
+            'collation' => 'utf8mb4_unicode_ci',
             'comment' => '用户角色关联表',
         ]);
 
         $table->addColumn(Column::unsignedInteger('user_id')->setComment('用户id'))
             ->addColumn(Column::unsignedInteger('auth_role_id')->setComment('角色id'))
-            ->addTimestamps()
             ->create();
+
+        $this->table('user_role_relation')->insert([
+            'user_id' => 99,
+            'auth_role_id' => 1,
+        ])->saveData();
     }
 }
