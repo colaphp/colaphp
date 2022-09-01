@@ -11,9 +11,6 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-/**
- * Class GenerateCommand
- */
 class GenerateCommand extends Command
 {
     /**
@@ -81,7 +78,7 @@ class GenerateCommand extends Command
             if (in_array($type, ['bigint', 'tinyint'])) {
                 $type = 'int';
             }
-            if (in_array($type, ['varchar', 'char', 'text', 'mediumtext'])) {
+            if (in_array($type, ['varchar', 'char', 'text', 'mediumtext', 'longtext'])) {
                 $type = 'string';
             }
             if (in_array($type, ['decimal', 'float'])) {
@@ -109,13 +106,13 @@ EOF;
             $annotation .= PHP_EOL;
         }
 
-        $namespace = 'App\Models\Entity';
+        $namespace = 'App\Entity';
         $persistentContent = <<<EOF
 <?php
 
 namespace {$namespace};
 
-use App\\Support\\SimpleAccess;
+use App\\Http\\Traits\\SimpleAccess;
 
 /**
  * Class {$entity}
@@ -127,7 +124,7 @@ class {$entity}
     {$content}
 }
 EOF;
-        $folder = app_path('Models/Entity');
+        $folder = app_path('Entity');
         if (! is_dir($folder)) {
             mkdir($folder, 0777, true);
         }
@@ -141,7 +138,7 @@ EOF;
      */
     private function model($model, $table)
     {
-        $namespace = 'App\Models';
+        $namespace = 'App\Model';
         $content = <<<EOF
 <?php
 
@@ -178,7 +175,7 @@ class {$model} extends Model
 }
 EOF;
 
-        $folder = app_path('Models');
+        $folder = app_path('Model');
         if (! is_dir($folder)) {
             mkdir($folder, 0777, true);
         }
