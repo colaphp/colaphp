@@ -11,17 +11,22 @@ final class CreateAuthRuleTable extends AbstractMigration
     {
         $table = $this->table('auth_rule', [
             'signed' => false,
-            'collation' => 'utf8mb4_general_ci',
-            'comment' => '权限表',
+            'collation' => 'utf8mb4_unicode_ci',
+            'comment' => '权限规则表',
         ]);
 
-        $table->addColumn(Column::string('group')->setComment('规则分组'))
-            ->addColumn(Column::string('rule')->setUnique()->setComment('规则标识（唯一）'))
-            ->addColumn(Column::string('description')->setComment('规则描述'))
-            ->addColumn(Column::tinyInteger('type')->setComment('验证类型'))
-            ->addColumn(Column::tinyInteger('status')->setComment('状态：1正常，0禁用'))
-            ->addColumn(Column::string('condition')->setComment('规则表达式，为空表示存在就验证，不为空表示按照条件验证'))
-            ->addTimestamps()
+        $table->addColumn(Column::string('module')->setComment('模块'))
+            ->addColumn(Column::string('title')->setComment('标题'))
+            ->addColumn(Column::string('name')->setUnique()->setComment('key'))
+            ->addColumn(Column::unsignedInteger('parent_id')->setDefault(0)->setComment('上级菜单'))
+            ->addColumn(Column::string('component')->setDefault('LAYOUT')->setComment('前端组件'))
+            ->addColumn(Column::string('path')->setComment('路径'))
+            ->addColumn(Column::string('icon')->setNullable()->setComment('图标'))
+            ->addColumn(Column::string('frame_src')->setNullable()->setComment('url'))
+            ->addColumn(Column::tinyInteger('hide_menu')->setDefault(0)->setComment('隐藏菜单'))
+            ->addColumn(Column::tinyInteger('is_menu')->setDefault(1)->setComment('是否菜单'))
+            ->addColumn(Column::dateTime('created_at')->setComment('上次登录IP'))
+            ->addColumn(Column::dateTime('updated_at')->setNullable()->setComment('上次登录IP'))
             ->create();
     }
 }
