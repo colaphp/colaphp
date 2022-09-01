@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
+use App\Console\Kernel;
 use Cola\Database\DB;
 use Cola\Support\Str;
-use Illuminate\Database\Capsule\Manager as Capsule;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class GenerateCommand extends Command
+class GenerateCommand extends Kernel
 {
     /**
      * @var string
@@ -118,6 +118,7 @@ use App\\Http\\Traits\\SimpleAccess;
 
 /**
  * Class {$entity}
+ *
 {$annotation} * @package {$namespace}
  */
 class {$entity}
@@ -184,22 +185,5 @@ EOF;
             mkdir($folder, 0777, true);
         }
         file_put_contents($folder.'/'.$model.'.php', $content);
-    }
-
-    /**
-     * @return void
-     */
-    private function connection(): void
-    {
-        $database = require config_path('database.php');
-
-        $capsule = new Capsule();
-        if (isset($database['default'])) {
-            $default_config = $database['connections'][$database['default']];
-            $capsule->addConnection($default_config);
-        }
-
-        $capsule->setAsGlobal();
-        $capsule->bootEloquent();
     }
 }

@@ -9,7 +9,7 @@ use App\Http\Traits\SimpleAccess;
 /**
  * Class UserEntity
  *
- * @method getId()
+ * @method getId() 
  * @method setId(int $value)
  * @method getUuid() UUID
  * @method setUuid(string $value)
@@ -39,15 +39,16 @@ use App\Http\Traits\SimpleAccess;
  * @method setCreatedAt(\DateTime $value)
  * @method getUpdatedAt() 上次登录IP
  * @method setUpdatedAt(\DateTime $value)
- * @method getDeletedAt()
+ * @method getDeletedAt() 
  * @method setDeletedAt(\DateTime $value)
+ * @package App\Entity
  */
 class UserEntity
 {
     use SimpleAccess;
-
+    
     /**
-     * @var int
+     * @var int 
      */
     private int $id;
 
@@ -122,7 +123,8 @@ class UserEntity
     private \DateTime $updated_at;
 
     /**
-     * @var \DateTime
+     * @var \DateTime 
      */
     private \DateTime $deleted_at;
+
 }

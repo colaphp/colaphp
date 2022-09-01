@@ -20,8 +20,8 @@ final class CreateAuthTable extends AbstractMigration
             ->addColumn(Column::string('passport', 64)->setUnique()->setComment('通行证:手机号/邮箱/用户名或第三方应用的唯一标识'))
             ->addColumn(Column::string('password')->setNullable()->setComment('密码凭证或token'))
             ->addColumn(Column::tinyInteger('verified')->setDefault(0)->setComment('是否已经验证'))
-            ->addColumn(Column::dateTime('created_at')->setComment('上次登录IP'))
-            ->addColumn(Column::dateTime('updated_at')->setNullable()->setComment('上次登录IP'))
+            ->addColumn(Column::dateTime('created_at')->setComment('创建时间'))
+            ->addColumn(Column::dateTime('updated_at')->setNullable()->setComment('更新时间'))
             ->create();
 
         $this->table('auth')->insert([

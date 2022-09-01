@@ -25,8 +25,8 @@ final class CreateAuthRuleTable extends AbstractMigration
             ->addColumn(Column::string('frame_src')->setNullable()->setComment('url'))
             ->addColumn(Column::tinyInteger('hide_menu')->setDefault(0)->setComment('隐藏菜单'))
             ->addColumn(Column::tinyInteger('is_menu')->setDefault(1)->setComment('是否菜单'))
-            ->addColumn(Column::dateTime('created_at')->setComment('上次登录IP'))
-            ->addColumn(Column::dateTime('updated_at')->setNullable()->setComment('上次登录IP'))
+            ->addColumn(Column::dateTime('created_at')->setComment('创建时间'))
+            ->addColumn(Column::dateTime('updated_at')->setNullable()->setComment('更新时间'))
             ->create();
     }
 }

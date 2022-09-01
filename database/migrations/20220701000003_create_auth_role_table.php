@@ -19,8 +19,8 @@ final class CreateAuthRoleTable extends AbstractMigration
             ->addColumn(Column::string('description')->setComment('角色描述'))
             ->addColumn(Column::text('rules')->setComment('用户组拥有的规则id，多个规则","隔开'))
             ->addColumn(Column::tinyInteger('status')->setComment('状态：1正常，0禁用'))
-            ->addColumn(Column::dateTime('created_at')->setComment('上次登录IP'))
-            ->addColumn(Column::dateTime('updated_at')->setNullable()->setComment('上次登录IP'))
+            ->addColumn(Column::dateTime('created_at')->setComment('创建时间'))
+            ->addColumn(Column::dateTime('updated_at')->setNullable()->setComment('更新时间'))
             ->create();
 
         $this->table('auth_role')->insert([
