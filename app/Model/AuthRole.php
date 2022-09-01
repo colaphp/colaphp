@@ -1,22 +1,21 @@
 <?php
 
-declare(strict_types=1);
-
-namespace App\Models;
+namespace App\Model;
 
 use Cola\Database\Model;
 
 /**
- * Class AuthOperation
+ * Class AuthRole
+ * @package App\Model
  */
-class AuthOperation extends Model
+class AuthRole extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'auth_operation';
+    protected $table = 'auth_role';
 
     /**
      * The primary key associated with the table.

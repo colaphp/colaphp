@@ -1,23 +1,21 @@
 <?php
 
-declare(strict_types=1);
-
-namespace App\Models;
+namespace App\Model;
 
 use Cola\Database\Model;
 
 /**
- * Class User
- * @package App\Models
+ * Class DictOption
+ * @package App\Model
  */
-class User extends Model
+class DictOption extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'user';
+    protected $table = 'dict_option';
 
     /**
      * The primary key associated with the table.
