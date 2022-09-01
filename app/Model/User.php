@@ -1,22 +1,21 @@
 <?php
 
-declare(strict_types=1);
-
-namespace App\Models;
+namespace App\Model;
 
 use Cola\Database\Model;
 
 /**
- * Class AuthPassport
+ * Class User
+ * @package App\Model
  */
-class AuthPassport extends Model
+class User extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'auth_passport';
+    protected $table = 'user';
 
     /**
      * The primary key associated with the table.
