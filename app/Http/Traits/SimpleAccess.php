@@ -2,13 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Support;
+namespace App\Http\Traits;
 
 use Cola\Support\Str;
 
-/**
- * Trait SimpleAccess
- */
 trait SimpleAccess
 {
     /**
