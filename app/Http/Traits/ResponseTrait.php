@@ -28,8 +28,9 @@ trait ResponseTrait
 
     /**
      * 获取内容
+     *
      * @param $template
-     * @param array $vars
+     * @param  array  $vars
      * @param $app
      * @return string
      */
@@ -40,8 +41,9 @@ trait ResponseTrait
 
     /**
      * 视图渲染
+     *
      * @param $template
-     * @param array $vars
+     * @param  array  $vars
      * @param $app
      * @return Response
      */
@@ -55,8 +57,8 @@ trait ResponseTrait
     /**
      * 返回封装后的API数据到客户端
      *
-     * @param mixed $data 要返回的数据
-     * @param array $header 发送的Header信息
+     * @param  mixed  $data 要返回的数据
+     * @param  array  $header 发送的Header信息
      * @return Response
      */
     protected function success(mixed $data, array $header = []): Response
@@ -71,9 +73,9 @@ trait ResponseTrait
     /**
      * 返回异常数据到客户端
      *
-     * @param mixed $message 错误信息
-     * @param int $code 错误码
-     * @param array $headers 发送的Header信息
+     * @param  mixed  $message 错误信息
+     * @param  int  $code 错误码
+     * @param  array  $headers 发送的Header信息
      * @return Response
      */
     protected function error(mixed $message, int $code = 400, array $headers = []): Response

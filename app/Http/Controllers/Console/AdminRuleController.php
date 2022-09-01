@@ -25,13 +25,14 @@ class AdminRuleController extends BaseController
     /**
      * 获取权限树
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return \support\Response
      */
     public function tree(Request $request)
     {
         $this->syncRules();
         $items = $this->model->get();
+
         return $this->formatTree($items);
     }
 
@@ -49,6 +50,7 @@ class AdminRuleController extends BaseController
             $class = $item->name;
             if (strpos($class, '@')) {
                 $methods_in_db[$class] = $class;
+
                 continue;
             }
             if (class_exists($class)) {
@@ -71,6 +73,7 @@ class AdminRuleController extends BaseController
                         if ($menu->title != $title) {
                             AdminRule::where('name', $name)->update(['title' => $title]);
                         }
+
                         continue;
                     }
                     $menu = new AdminRule;
@@ -94,7 +97,7 @@ class AdminRuleController extends BaseController
     /**
      * 查询
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return \support\Response
      */
     public function select(Request $request)
@@ -123,19 +126,22 @@ class AdminRuleController extends BaseController
             } elseif ($format == 'tree') {
                 return $this->formatTree($items);
             }
+
             return $this->formatTableTree($items);
         }
 
         $paginator = $model->paginate($page_size);
+
         return $this->json(0, 'ok', [
             'items' => $paginator->items(),
-            'total' => $paginator->total()
+            'total' => $paginator->total(),
         ]);
     }
 
     /**
      * 添加
-     * @param Request $request
+     *
+     * @param  Request  $request
      * @return \support\Response
      */
     public function insert(Request $request)
@@ -143,7 +149,7 @@ class AdminRuleController extends BaseController
         $data = $request->post('data');
         $table = $this->model->getTable();
         $allow_column = Db::select("desc $table");
-        if (!$allow_column) {
+        if (! $allow_column) {
             return $this->json(2, '表不存在');
         }
         $name = $data['name'];
@@ -157,20 +163,23 @@ class AdminRuleController extends BaseController
             }
         }
         $datetime = date('Y-m-d H:i:s');
-        if (isset($columns['created_at']) && !isset($data['created_at'])) {
+        if (isset($columns['created_at']) && ! isset($data['created_at'])) {
             $data['created_at'] = $datetime;
         }
-        if (isset($columns['updated_at']) && !isset($data['updated_at'])) {
+        if (isset($columns['updated_at']) && ! isset($data['updated_at'])) {
             $data['updated_at'] = $datetime;
         }
         $id = $this->model->insertGetId($data);
+
         return $this->json(0, $id);
     }
 
     /**
      * 删除
-     * @param Request $request
+     *
+     * @param  Request  $request
      * @return \support\Response
+     *
      * @throws \Support\Exception\BusinessException
      */
     public function delete(Request $request)
@@ -178,24 +187,26 @@ class AdminRuleController extends BaseController
         $column = $request->post('column');
         $value = $request->post('value');
         $item = $this->model->where($column, $value)->first();
-        if (!$item) {
+        if (! $item) {
             return $this->json(1, '记录不存在');
         }
         // 子规则一起删除
         $delete_ids = $children_ids = [$item['id']];
-        while($children_ids) {
+        while ($children_ids) {
             $children_ids = $this->model->whereIn('pid', $children_ids)->pluck('id')->toArray();
             $delete_ids = array_merge($delete_ids, $children_ids);
         }
         $this->model->whereIn('id', $delete_ids)->delete();
+
         return $this->json(0);
     }
 
     /**
      * 一键生成菜单
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return \support\Response
+     *
      * @throws \Support\Exception\BusinessException
      */
     public function create(Request $request)
@@ -208,10 +219,10 @@ class AdminRuleController extends BaseController
         $path = '';
         $overwrite = $request->post('overwrite');
 
-        $pid = (int)$pid;
+        $pid = (int) $pid;
         if ($pid) {
             $parent_menu = AdminRule::find($pid);
-            if (!$parent_menu) {
+            if (! $parent_menu) {
                 return $this->json(1, '父菜单不存在');
             }
             $path = $parent_menu['path'];
@@ -224,28 +235,28 @@ class AdminRuleController extends BaseController
             $model_class = rtrim($model_class, 's');
         }
 
-        $controller_class = $model_class . config('plugin.admin.app.controller_suffix');
+        $controller_class = $model_class.config('plugin.admin.app.controller_suffix');
         $path = trim($path, '/');
         $path_backslash = str_replace('/', '\\', $path);
         if ($path_backslash) {
             $controller_namespace = "plugin\\admin\\app\\controller\\$path_backslash";
         } else {
-            $controller_namespace = "plugin\\admin\\app\\controller";
+            $controller_namespace = 'plugin\\admin\\app\\controller';
         }
-        $controller_file = base_path() . '/' . str_replace('\\', '/', $controller_namespace) . "/$controller_class.php";
+        $controller_file = base_path().'/'.str_replace('\\', '/', $controller_namespace)."/$controller_class.php";
 
-        $model_file = base_path() . "/plugin/admin/app/model/$model_class.php";
-        if (!$overwrite) {
+        $model_file = base_path()."/plugin/admin/app/model/$model_class.php";
+        if (! $overwrite) {
             if (is_file($controller_file)) {
-                return $this->json(1, substr($controller_file, strlen(base_path())) . '已经存在');
+                return $this->json(1, substr($controller_file, strlen(base_path())).'已经存在');
             }
             if (is_file($model_file)) {
-                return $this->json(1, substr($model_file, strlen(base_path())) . '已经存在');
+                return $this->json(1, substr($model_file, strlen(base_path())).'已经存在');
             }
         }
 
         // 创建model
-        $this->createModel($model_class, "plugin\\admin\\app\\model", $model_file, $table_name);
+        $this->createModel($model_class, 'plugin\\admin\\app\\model', $model_file, $table_name);
 
         // 创建controller
         $this->createController($controller_class, $controller_namespace, $controller_file, $model_class, $name);
@@ -261,7 +272,7 @@ class AdminRuleController extends BaseController
         $controller_class_with_nsp = $reflection->getName();
 
         $menu = AdminRule::where('name', $controller_class_with_nsp)->first();
-        if (!$menu) {
+        if (! $menu) {
             $menu = new AdminRule;
         }
         $menu->pid = $pid;
@@ -276,14 +287,14 @@ class AdminRuleController extends BaseController
         $rules = AdminRole::whereIn('id', $roles)->pluck('rules');
         $rule_ids = [];
         foreach ($rules as $rule_string) {
-            if (!$rule_string) {
+            if (! $rule_string) {
                 continue;
             }
             $rule_ids = array_merge($rule_ids, explode(',', $rule_string));
         }
 
         // 不是超级管理员，则需要给当前管理员这个菜单的权限
-        if (!in_array('*', $rule_ids) && $roles){
+        if (! in_array('*', $rule_ids) && $roles) {
             $role = AdminRole::find(current($roles));
             if ($role) {
                 $role->rules .= ",{$menu->id}";
@@ -317,23 +328,23 @@ class AdminRuleController extends BaseController
             foreach (Db::connection('plugin.admin.mysql')->select("select COLUMN_NAME,DATA_TYPE,COLUMN_KEY,COLUMN_COMMENT from INFORMATION_SCHEMA.COLUMNS where table_name = '$table' and table_schema = '$database'") as $item) {
                 if ($item->COLUMN_KEY === 'PRI') {
                     $pk = $item->COLUMN_NAME;
-                    $item->COLUMN_COMMENT .= "(主键)";
+                    $item->COLUMN_COMMENT .= '(主键)';
                 }
                 $type = $this->getType($item->DATA_TYPE);
                 $properties .= " * @property $type \${$item->COLUMN_NAME} {$item->COLUMN_COMMENT}\n";
                 $columns[$item->COLUMN_NAME] = $item->COLUMN_NAME;
             }
-        } catch (\Throwable $e) {}
-        if (!isset($columns['created_at']) || !isset($columns['updated_at'])) {
-            $timestamps = <<<EOF
+        } catch (\Throwable $e) {
+        }
+        if (! isset($columns['created_at']) || ! isset($columns['updated_at'])) {
+            $timestamps = <<<'EOF'
 /**
      * Indicates if the model should be timestamped.
      *
      * @var bool
      */
-    public \$timestamps = false;
+    public $timestamps = false;
 EOF;
-
         }
         $properties = rtrim($properties) ?: ' *';
         $model_content = <<<EOF
@@ -417,7 +428,7 @@ EOF;
     protected function mkdir($file)
     {
         $path = pathinfo($file, PATHINFO_DIRNAME);
-        if (!is_dir($path)) {
+        if (! is_dir($path)) {
             mkdir($path, 0777, true);
         }
     }
@@ -425,7 +436,7 @@ EOF;
     /**
      * 字段类型到php类型映射
      *
-     * @param string $type
+     * @param  string  $type
      * @return string
      */
     protected function getType(string $type)

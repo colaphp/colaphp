@@ -8,7 +8,8 @@ use App\Http\Traits\SimpleAccess;
 
 /**
  * Class AuthEntity
- * @method getId() 
+ *
+ * @method getId()
  * @method setId(int $value)
  * @method getUserId() 用户ID
  * @method setUserId(int $value)
@@ -24,14 +25,13 @@ use App\Http\Traits\SimpleAccess;
  * @method setCreatedAt(\DateTime $value)
  * @method getUpdatedAt() 上次登录IP
  * @method setUpdatedAt(\DateTime $value)
- * @package App\Entity
  */
 class AuthEntity
 {
     use SimpleAccess;
-    
+
     /**
-     * @var int 
+     * @var int
      */
     private int $id;
 
@@ -69,5 +69,4 @@ class AuthEntity
      * @var \DateTime 上次登录IP
      */
     private \DateTime $updated_at;
-
 }

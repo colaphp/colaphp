@@ -18,7 +18,7 @@ class IndexController extends BaseController
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      * @return Response
      */
     public function json(Request $request): Response
@@ -27,16 +27,18 @@ class IndexController extends BaseController
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      * @return Response
      */
     public function file(Request $request): Response
     {
         $file = $request->file('upload');
         if ($file && $file->isValid()) {
-            $file->move(public_path('storage/myfile.' . $file->getUploadExtension()));
+            $file->move(public_path('storage/myfile.'.$file->getUploadExtension()));
+
             return $this->success(['msg' => 'upload success']);
         }
+
         return $this->success(['msg' => 'file not found']);
     }
 }

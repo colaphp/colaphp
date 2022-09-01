@@ -9,7 +9,6 @@ use Cola\Database\Model;
 /**
  * 用户管理
  * Class UserController
- * @package App\Http\Controllers\Console
  */
 class UserController extends BaseController
 {

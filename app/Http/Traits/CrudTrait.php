@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace App\Http\Traits;
 
+use App\Model\DictOption;
 use Cola\Database\DB;
 use Cola\Database\Model;
 use Cola\Http\Request;
 use Cola\Http\Response;
+use Exception;
 
 trait CrudTrait
 {
@@ -20,7 +22,8 @@ trait CrudTrait
 
     /**
      * 查询
-     * @param Request $request
+     *
+     * @param  Request  $request
      * @return Response
      */
     public function select(Request $request): Response
@@ -50,19 +53,22 @@ trait CrudTrait
             } elseif ($format == 'tree') {
                 return $this->formatTree($items);
             }
+
             return $this->formatTableTree($items);
         }
 
         $paginator = $model->paginate($page_size);
+
         return $this->success([
             'items' => $paginator->items(),
-            'total' => $paginator->total()
+            'total' => $paginator->total(),
         ]);
     }
 
     /**
      * 添加
-     * @param Request $request
+     *
+     * @param  Request  $request
      * @return Response
      */
     public function insert(Request $request): Response
@@ -70,8 +76,8 @@ trait CrudTrait
         $data = $request->post('data');
         $table = $this->model->getTable();
 
-        $allow_column = Db::select("desc `$table`");
-        if (!$allow_column) {
+        $allow_column = DB::select("desc `$table`");
+        if (! $allow_column) {
             return $this->error('表不存在');
         }
 
@@ -79,19 +85,20 @@ trait CrudTrait
         foreach ($data as $col => $item) {
             if (is_array($item)) {
                 $data[$col] = implode(',', $item);
+
                 continue;
             }
             if ($col === 'password') {
-                $data[$col] = Util::passwordHash($item);
+                $data[$col] = password_hash($item, PASSWORD_DEFAULT);
             }
         }
 
         $datetime = date('Y-m-d H:i:s');
-        if (isset($columns['created_at']) && !isset($data['created_at'])) {
+        if (isset($columns['created_at']) && ! isset($data['created_at'])) {
             $data['created_at'] = $datetime;
         }
 
-        if (isset($columns['updated_at']) && !isset($data['updated_at'])) {
+        if (isset($columns['updated_at']) && ! isset($data['updated_at'])) {
             $data['updated_at'] = $datetime;
         }
 
@@ -102,7 +109,8 @@ trait CrudTrait
 
     /**
      * 更新
-     * @param Request $request
+     *
+     * @param  Request  $request
      * @return Response
      */
     public function update(Request $request): Response
@@ -112,8 +120,8 @@ trait CrudTrait
         $data = $request->post('data');
 
         $table = $this->model->getTable();
-        $allow_column = Db::select("desc `$table`");
-        if (!$allow_column) {
+        $allow_column = DB::select("desc `$table`");
+        if (! $allow_column) {
             return $this->error('表不存在');
         }
 
@@ -125,9 +133,10 @@ trait CrudTrait
                 // 密码为空，则不更新密码
                 if ($item == '') {
                     unset($data[$col]);
+
                     continue;
                 }
-                $data[$col] = Util::passwordHash($item);
+                $data[$col] = password_hash($item, PASSWORD_DEFAULT);
             }
         }
 
@@ -138,7 +147,8 @@ trait CrudTrait
 
     /**
      * 删除
-     * @param Request $request
+     *
+     * @param  Request  $request
      * @return Response
      */
     public function delete(Request $request): Response
@@ -153,14 +163,21 @@ trait CrudTrait
 
     /**
      * 摘要
-     * @param Request $request
+     *
+     * @param  Request  $request
      * @return Response
+     *
+     * @throws Exception
      */
     public function schema(Request $request): Response
     {
         $table = $this->model->getTable();
-        Util::checkTableName($table);
-        $schema = Option::where('name', "table_form_schema_$table")->value('value');
+
+        if (! preg_match('/^[a-zA-Z_0-9]+$/', $table)) {
+            throw new Exception('表名不合法');
+        }
+
+        $schema = DictOption::where('name', "table_form_schema_$table")->value('value');
         $form_schema_map = $schema ? json_decode($schema, true) : [];
 
         $data = $this->getSchema($table);
@@ -195,19 +212,19 @@ trait CrudTrait
             $field = $item->COLUMN_NAME;
             $columns[$field] = [
                 'field' => $field,
-                'type' => Util::typeToMethod($item->DATA_TYPE, (bool)strpos($item->COLUMN_TYPE, 'unsigned')),
+                'type' => $this->typeToMethod($item->DATA_TYPE, (bool) strpos($item->COLUMN_TYPE, 'unsigned')),
                 'comment' => $item->COLUMN_COMMENT,
                 'default' => $item->COLUMN_DEFAULT,
                 'length' => $this->getLengthValue($item),
                 'nullable' => $item->IS_NULLABLE !== 'NO',
                 'primary_key' => $item->COLUMN_KEY === 'PRI',
-                'auto_increment' => str_contains($item->EXTRA, 'auto_increment')
+                'auto_increment' => str_contains($item->EXTRA, 'auto_increment'),
             ];
 
             $forms[$field] = [
                 'field' => $field,
                 'comment' => $item->COLUMN_COMMENT,
-                'control' => Util::typeToControl($item->DATA_TYPE),
+                'control' => $this->typeToControl($item->DATA_TYPE),
                 'form_show' => $item->COLUMN_KEY !== 'PRI',
                 'list_show' => true,
                 'enable_sort' => false,
@@ -217,19 +234,19 @@ trait CrudTrait
                 'control_args' => '',
             ];
         }
-        $table_schema = $section == 'table' || !$section ? Db::select("SELECT TABLE_COMMENT FROM  information_schema.`TABLES` WHERE  TABLE_SCHEMA='$database' and TABLE_NAME='$table'") : [];
-        $indexes = $section == 'keys' || !$section ? Db::select("SHOW INDEX FROM `$table`") : [];
+        $table_schema = $section == 'table' || ! $section ? DB::select("SELECT TABLE_COMMENT FROM  information_schema.`TABLES` WHERE  TABLE_SCHEMA='$database' and TABLE_NAME='$table'") : [];
+        $indexes = $section == 'keys' || ! $section ? DB::select("SHOW INDEX FROM `$table`") : [];
         $keys = [];
         foreach ($indexes as $index) {
             $key_name = $index->Key_name;
             if ($key_name == 'PRIMARY') {
                 continue;
             }
-            if (!isset($keys[$key_name])) {
+            if (! isset($keys[$key_name])) {
                 $keys[$key_name] = [
                     'name' => $key_name,
                     'columns' => [],
-                    'type' => $index->Non_unique == 0 ? 'unique' : 'normal'
+                    'type' => $index->Non_unique == 0 ? 'unique' : 'normal',
                 ];
             }
             $keys[$key_name]['columns'][] = $index->Column_name;
@@ -239,8 +256,9 @@ trait CrudTrait
             'table' => ['name' => $table, 'comment' => $table_schema[0]->TABLE_COMMENT ?? ''],
             'columns' => $columns,
             'forms' => $forms,
-            'keys' => array_reverse($keys, true)
+            'keys' => array_reverse($keys, true),
         ];
+
         return $section ? $data[$section] : $data;
     }
 
@@ -265,11 +283,12 @@ trait CrudTrait
         if (in_array($type, ['time', 'datetime', 'timestamp'])) {
             return $schema->CHARACTER_MAXIMUM_LENGTH;
         }
+
         return '';
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      * @return Response|array
      */
     protected function selectInput(Request $request): Response|array
@@ -283,17 +302,17 @@ trait CrudTrait
         $table = $this->model->getTable();
 
         $allow_column = DB::select("desc `$table`");
-        if (!$allow_column) {
+        if (! $allow_column) {
             return $this->error('表不存在');
         }
 
         $allow_column = array_column($allow_column, 'Field', 'Field');
-        if (!in_array($field, $allow_column)) {
+        if (! in_array($field, $allow_column)) {
             $field = current($allow_column);
         }
 
         foreach ($where as $column => $value) {
-            if (!$value || !isset($allow_column[$column]) ||
+            if (! $value || ! isset($allow_column[$column]) ||
                 (is_array($value) && ($value[0] == 'undefined' || $value[1] == 'undefined'))) {
                 unset($where[$column]);
             }
@@ -304,6 +323,7 @@ trait CrudTrait
 
     /**
      * 树
+     *
      * @param $items
      * @return Response
      */
@@ -313,8 +333,8 @@ trait CrudTrait
         foreach ($items as $item) {
             $itemsMap[$item->id] = [
                 'title' => $item->title ?? $item->name ?? $item->id,
-                'value' => (string)$item->id,
-                'key' => (string)$item->id,
+                'value' => (string) $item->id,
+                'key' => (string) $item->id,
                 'pid' => $item->pid,
             ];
         }
@@ -327,7 +347,7 @@ trait CrudTrait
         }
 
         foreach ($itemsMap as $item) {
-            if (!$item['pid']) {
+            if (! $item['pid']) {
                 $formattedItems[] = $item;
             }
         }
@@ -337,6 +357,7 @@ trait CrudTrait
 
     /**
      * 表格树
+     *
      * @param $items
      * @return Response
      */
@@ -355,7 +376,7 @@ trait CrudTrait
         }
 
         foreach ($items_map as $item) {
-            if (!$item['pid']) {
+            if (! $item['pid']) {
                 $formattedItems[] = $item;
             }
         }
@@ -380,5 +401,93 @@ trait CrudTrait
         }
 
         return $this->success($formattedItems);
+    }
+
+    /**
+     * @return array
+     */
+    private function methodControlMap(): array
+    {
+        return [
+            //method=>[控件]
+            'integer' => ['InputNumber'],
+            'string' => ['Input'],
+            'text' => ['InputTextArea'],
+            'date' => ['DatePicker'],
+            'enum' => ['Select'],
+            'float' => ['Input'],
+
+            'tinyInteger' => ['InputNumber'],
+            'smallInteger' => ['InputNumber'],
+            'mediumInteger' => ['InputNumber'],
+            'bigInteger' => ['InputNumber'],
+
+            'unsignedInteger' => ['InputNumber'],
+            'unsignedTinyInteger' => ['InputNumber'],
+            'unsignedSmallInteger' => ['InputNumber'],
+            'unsignedMediumInteger' => ['InputNumber'],
+            'unsignedBigInteger' => ['InputNumber'],
+
+            'decimal' => ['Input'],
+            'double' => ['Input'],
+
+            'mediumText' => ['InputTextArea'],
+            'longText' => ['InputTextArea'],
+
+            'dateTime' => ['DatePicker'],
+
+            'time' => ['DatePicker'],
+            'timestamp' => ['DatePicker'],
+
+            'char' => ['Input'],
+
+            'binary' => ['Input'],
+        ];
+    }
+
+    /**
+     * @param $type
+     * @return string
+     */
+    private function typeToControl($type): string
+    {
+        if (stripos($type, 'int') !== false) {
+            return 'InputNumber';
+        }
+        if (stripos($type, 'time') !== false || stripos($type, 'date') !== false) {
+            return 'DatePicker';
+        }
+        if (stripos($type, 'text') !== false) {
+            return 'InputTextArea';
+        }
+        if ($type === 'enum') {
+            return 'Select';
+        }
+
+        return 'Input';
+    }
+
+    /**
+     * @param $type
+     * @param  bool  $unsigned
+     * @return string
+     */
+    private function typeToMethod($type, bool $unsigned = false): string
+    {
+        if (stripos($type, 'int') !== false) {
+            $type = str_replace('int', 'Integer', $type);
+
+            return $unsigned ? 'unsigned'.ucfirst($type) : lcfirst($type);
+        }
+
+        $map = [
+            'int' => 'integer',
+            'varchar' => 'string',
+            'mediumtext' => 'mediumText',
+            'longtext' => 'longText',
+            'datetime' => 'dateTime',
+        ];
+
+        return $map[$type] ?? $type;
     }
 }

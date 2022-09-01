@@ -27,7 +27,7 @@ class UserOutput
     }
 
     /**
-     * @param int $id
+     * @param  int  $id
      */
     public function setId(int $id): void
     {

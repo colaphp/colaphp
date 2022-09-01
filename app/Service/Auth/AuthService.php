@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Service\Auth;
 
 use App\Service\User\UserService;
+use Cola\Support\Carbon;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
-use Cola\Support\Carbon;
 
 class AuthService
 {

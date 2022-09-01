@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Service\Auth;
 
-use App\Service\Auth\Input\LoginInput;
+use App\Model\Auth;
 use App\Service\Auth\Input\LoginByMobileInput;
-use Cola\Database\DB;
+use App\Service\Auth\Input\LoginInput;
 use Exception;
 
 /**
@@ -30,15 +30,18 @@ class LoginService
     public function login(LoginInput $loginInput): int
     {
         $passport = $loginInput->getUsername();
-        $condition = $this->username($passport);
+        $condition = [
+            'type' => $this->getAuthType($passport),
+            'passport' => $passport,
+        ];
 
-        $user = DB::table('ums_user')->where($condition, $passport)->where('status', 1)->first();
-        if (is_null($user)) {
+        $userAuth = Auth::query()->where($condition)->first();
+        if (is_null($userAuth)) {
             throw new Exception('登录用户不存在');
         }
 
-        if (password_verify($loginInput->getPassword(), $user->password)) {
-            return $user->id;
+        if (password_verify($loginInput->getPassword(), $userAuth->password)) {
+            return $userAuth->user_id;
         }
 
         throw new Exception('登录用户密码不正确');
@@ -55,14 +58,18 @@ class LoginService
     public function loginByMobile(LoginByMobileInput $mobileLoginInput): int
     {
         $mobile = $mobileLoginInput->getMobile();
+        $condition = [
+            'type' => 'mobile',
+            'passport' => $mobile,
+        ];
 
-        $user = DB::table('ums_user')->where('mobile', $mobile)->where('status', 1)->first();
-        if (is_null($user)) {
+        $userAuth = Auth::query()->where($condition)->first();
+        if (is_null($userAuth)) {
             throw new Exception('登录用户不存在');
         }
 
-        if (password_verify($mobileLoginInput->getSmsCode(), $user->remember_token)) {
-            return $user->id;
+        if (password_verify($mobileLoginInput->getSmsCode(), $userAuth->password)) {
+            return $userAuth->user_id;
         }
 
         throw new Exception('手机验证码不正确');
@@ -74,7 +81,7 @@ class LoginService
      * @param  string  $username
      * @return string
      */
-    private function username(string $username): string
+    private function getAuthType(string $username): string
     {
         if (filter_var($username, FILTER_VALIDATE_EMAIL) !== false) {
             return 'email';

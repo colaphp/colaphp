@@ -88,6 +88,7 @@ class Monitor
                 exec(PHP_BINARY.' -l '.$file, $out, $var);
                 if ($var) {
                     $last_mtime = $file->getMTime();
+
                     continue;
                 }
                 $last_mtime = $file->getMTime();

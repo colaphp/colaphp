@@ -28,7 +28,7 @@ final class CreateAuthRoleTable extends AbstractMigration
             'name' => '超级管理员',
             'description' => '',
             'rules' => '*',
-            'status' => 1
+            'status' => 1,
         ])->saveData();
     }
 }

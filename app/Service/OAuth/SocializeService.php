@@ -14,7 +14,7 @@ class SocializeService
      * @var array
      */
     private array $supportOAuthType = [
-        'qq', 'wechat', 'weibo'
+        'qq', 'wechat', 'weibo',
     ];
 
     /**
@@ -31,16 +31,17 @@ class SocializeService
             throw new Exception('Unsupported OAuth type '.$type);
         }
 
-        $config = config('services.' . $type);
+        $config = config('services.'.$type);
         $socialite = new SocialiteManager($config);
+
         return $socialite->create($type)->redirect();
     }
 
     /**
      * 社会化授权登录回调
      *
-     * @param string $type 授权类型
-     * @param string $code 授权code
+     * @param  string  $type 授权类型
+     * @param  string  $code 授权code
      * @return UserInterface
      *
      * @throws Exception
@@ -51,8 +52,9 @@ class SocializeService
             throw new Exception('Unsupported OAuth type '.$type);
         }
 
-        $config = config('services.' . $type);
+        $config = config('services.'.$type);
         $socialite = new SocialiteManager($config);
+
         return $socialite->create($type)->userFromCode($code);
     }
 }

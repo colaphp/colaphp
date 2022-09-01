@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Console;
 
 use App\Http\Traits\CrudTrait;
-use App\Model\Admin;
 use App\Model\User;
 use Cola\Database\Model;
 use Cola\Http\Request;
@@ -14,7 +13,6 @@ use Cola\Http\Response;
 /**
  * 管理员设置
  * Class AdminController
- * @package App\Http\Controllers\Console
  */
 class AdminController extends BaseController
 {
@@ -35,7 +33,8 @@ class AdminController extends BaseController
 
     /**
      * 删除
-     * @param Request $request
+     *
+     * @param  Request  $request
      * @return Response
      */
     public function delete(Request $request): Response

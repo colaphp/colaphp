@@ -30,7 +30,7 @@ final class CreateAuthTable extends AbstractMigration
             'passport' => 'root',
             'password' => password_hash('123456aA', PASSWORD_DEFAULT),
             'verified' => 1,
-            'created_at' => date('Y-m-d H:i:s')
+            'created_at' => date('Y-m-d H:i:s'),
         ])->saveData();
     }
 }
