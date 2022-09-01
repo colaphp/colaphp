@@ -7,18 +7,15 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\Login\MobileValidator;
 use App\Http\Requests\Auth\Login\UsernameValidator;
-use App\Services\Auth\AuthService;
-use App\Services\Auth\LoginService;
-use App\Services\Auth\Object\Input\LoginInput;
-use App\Services\Auth\Object\Input\MobileLoginInput;
+use App\Service\Auth\AuthService;
+use App\Service\Auth\Input\LoginInput;
+use App\Service\Auth\Input\LoginByMobileInput;
+use App\Service\Auth\LoginService;
 use Cola\Http\Request;
 use Cola\Http\Response;
 use Cola\Log\Log;
 use Exception;
 
-/**
- * Class LoginController
- */
 class LoginController extends Controller
 {
     /**
@@ -35,7 +32,7 @@ class LoginController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function username(Request $request): Response
+    public function passport(Request $request): Response
     {
         $v = new UsernameValidator();
         if (! $v->check($request->post())) {
@@ -66,14 +63,14 @@ class LoginController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function mobile(Request $request): Response
+    public function sms(Request $request): Response
     {
         $v = new MobileValidator();
         if (! $v->check($request->post())) {
             return $this->error($v->getError());
         }
 
-        $mobileLoginInput = new MobileLoginInput();
+        $mobileLoginInput = new LoginByMobileInput();
         $mobileLoginInput->setMobile($request->post('mobile'));
         $mobileLoginInput->setSmsCode($request->post('sms_code'));
 

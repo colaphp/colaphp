@@ -8,9 +8,6 @@ use App\Http\Controllers\Controller;
 use Cola\Http\Request;
 use Cola\Http\Response;
 
-/**
- * Class LogoutController
- */
 class LogoutController extends Controller
 {
     /**

@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Common;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Common\SmsValidator;
-use App\Services\Sms\SmsService;
+use App\Service\Sms\SmsService;
 use Cola\Http\Request;
 use Cola\Http\Response;
 

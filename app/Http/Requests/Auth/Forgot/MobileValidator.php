@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\Auth\Forgot;
 
-use App\Services\Sms\SmsService;
+use App\Service\Sms\SmsService;
 use Cola\Validation\Validator;
 
 /**

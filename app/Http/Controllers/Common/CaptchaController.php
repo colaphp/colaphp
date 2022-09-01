@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Common;
 
 use App\Http\Controllers\Controller;
-use App\Services\Captcha\CaptchaService;
+use App\Service\Captcha\CaptchaService;
 use Cola\Http\Response;
 
 class CaptchaController extends Controller
