@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Auth\Object\Output;
+namespace App\Service\Auth\Output;
 
 /**
  * Class AuthOutput

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Services\OAuth;
+namespace App\Service\OAuth;
 
 use Exception;
 use Overtrue\Socialite\Contracts\UserInterface;

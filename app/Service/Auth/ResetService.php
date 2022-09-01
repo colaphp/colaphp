@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Auth;
+namespace App\Service\Auth;
 
 /**
  * Class ResetService

@@ -2,14 +2,35 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Auth;
+namespace App\Service\Auth;
 
+use App\Service\User\UserService;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use Cola\Support\Carbon;
 
 class AuthService
 {
+    /**
+     * 返回用户数据的属性
+     *
+     * @param $token
+     * @return array
+     */
+    public function auth($token = null): array
+    {
+        $payload = $this->getPayloadByToken($token);
+
+        if (isset($payload['uid'])) {
+            $userService = new UserService();
+            $userOutput = $userService->findOne($payload['uid']);
+
+            return $userOutput->toArray();
+        }
+
+        return [];
+    }
+
     /**
      * 创建JWT参数
      *

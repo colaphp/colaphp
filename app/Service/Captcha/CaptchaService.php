@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Captcha;
+namespace App\Service\Captcha;
 
 use Gregwar\Captcha\CaptchaBuilder;
 use Gregwar\Captcha\PhraseBuilder;

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Auth\Object\Input;
+namespace App\Service\Auth\Input;
 
-class MobileLoginInput
+class LoginByMobileInput
 {
     /**
      * @var string
