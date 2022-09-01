@@ -31,9 +31,9 @@ use App\Http\Traits\SimpleAccess;
  * @method setHideMenu(int $value)
  * @method getIsMenu() 是否菜单
  * @method setIsMenu(int $value)
- * @method getCreatedAt() 上次登录IP
+ * @method getCreatedAt() 创建时间
  * @method setCreatedAt(\DateTime $value)
- * @method getUpdatedAt() 上次登录IP
+ * @method getUpdatedAt() 更新时间
  * @method setUpdatedAt(\DateTime $value)
  * @package App\Entity
  */
@@ -97,12 +97,12 @@ class AuthRuleEntity
     private int $is_menu;
 
     /**
-     * @var \DateTime 上次登录IP
+     * @var \DateTime 创建时间
      */
     private \DateTime $created_at;
 
     /**
-     * @var \DateTime 上次登录IP
+     * @var \DateTime 更新时间
      */
     private \DateTime $updated_at;
 
