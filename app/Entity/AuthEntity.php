@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\Http\Traits\SimpleAccess;
+use App\Support\ArrayObject;
 
 /**
  * Class AuthEntity
@@ -27,10 +27,9 @@ use App\Http\Traits\SimpleAccess;
  * @method setUpdatedAt(\DateTime $value)
  * @package App\Entity
  */
-class AuthEntity
+class AuthEntity extends ArrayObject
 {
-    use SimpleAccess;
-    
+
     /**
      * @var int 
      */

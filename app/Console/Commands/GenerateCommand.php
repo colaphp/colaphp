@@ -114,17 +114,16 @@ declare(strict_types=1);
 
 namespace {$namespace};
 
-use App\\Http\\Traits\\SimpleAccess;
+use App\\Support\\ArrayObject;
 
 /**
  * Class {$entity}
  *
 {$annotation} * @package {$namespace}
  */
-class {$entity}
+class {$entity} extends ArrayObject
 {
-    use SimpleAccess;
-    {$content}
+{$content}
 }
 EOF;
         $folder = app_path('Entity');
