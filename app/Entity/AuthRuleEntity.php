@@ -8,34 +8,6 @@ use App\Support\ArrayObject;
 
 /**
  * Class AuthRuleEntity
- *
- * @method getId() 
- * @method setId(int $value)
- * @method getModule() 模块
- * @method setModule(string $value)
- * @method getTitle() 标题
- * @method setTitle(string $value)
- * @method getName() key
- * @method setName(string $value)
- * @method getParentId() 上级菜单
- * @method setParentId(int $value)
- * @method getComponent() 前端组件
- * @method setComponent(string $value)
- * @method getPath() 路径
- * @method setPath(string $value)
- * @method getIcon() 图标
- * @method setIcon(string $value)
- * @method getFrameSrc() url
- * @method setFrameSrc(string $value)
- * @method getHideMenu() 隐藏菜单
- * @method setHideMenu(int $value)
- * @method getIsMenu() 是否菜单
- * @method setIsMenu(int $value)
- * @method getCreatedAt() 创建时间
- * @method setCreatedAt(\DateTime $value)
- * @method getUpdatedAt() 更新时间
- * @method setUpdatedAt(\DateTime $value)
- * @package App\Entity
  */
 class AuthRuleEntity extends ArrayObject
 {
@@ -43,66 +15,300 @@ class AuthRuleEntity extends ArrayObject
     /**
      * @var int 
      */
-    private int $id;
+    public int $id;
 
     /**
      * @var string 模块
      */
-    private string $module;
+    public string $module;
 
     /**
      * @var string 标题
      */
-    private string $title;
+    public string $title;
 
     /**
      * @var string key
      */
-    private string $name;
+    public string $name;
 
     /**
      * @var int 上级菜单
      */
-    private int $parent_id;
+    public int $parent_id;
 
     /**
      * @var string 前端组件
      */
-    private string $component;
+    public string $component;
 
     /**
      * @var string 路径
      */
-    private string $path;
+    public string $path;
 
     /**
      * @var string 图标
      */
-    private string $icon;
+    public string $icon;
 
     /**
      * @var string url
      */
-    private string $frame_src;
+    public string $frame_src;
 
     /**
      * @var int 隐藏菜单
      */
-    private int $hide_menu;
+    public int $hide_menu;
 
     /**
      * @var int 是否菜单
      */
-    private int $is_menu;
+    public int $is_menu;
 
     /**
      * @var \DateTime 创建时间
      */
-    private \DateTime $created_at;
+    public \DateTime $created_at;
 
     /**
      * @var \DateTime 更新时间
      */
-    private \DateTime $updated_at;
+    public \DateTime $updated_at;
+
+    /**
+     * 获取
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * 设置
+     * @param int $value
+     */
+    public function setId(int $value): void
+    {
+        $this->id = $value;
+    }
+
+    /**
+     * 获取模块
+     * @return string
+     */
+    public function getModule(): string
+    {
+        return $this->module;
+    }
+
+    /**
+     * 设置模块
+     * @param string $value
+     */
+    public function setModule(string $value): void
+    {
+        $this->module = $value;
+    }
+
+    /**
+     * 获取标题
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * 设置标题
+     * @param string $value
+     */
+    public function setTitle(string $value): void
+    {
+        $this->title = $value;
+    }
+
+    /**
+     * 获取key
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * 设置key
+     * @param string $value
+     */
+    public function setName(string $value): void
+    {
+        $this->name = $value;
+    }
+
+    /**
+     * 获取上级菜单
+     * @return int
+     */
+    public function getParentId(): int
+    {
+        return $this->parent_id;
+    }
+
+    /**
+     * 设置上级菜单
+     * @param int $value
+     */
+    public function setParentId(int $value): void
+    {
+        $this->parent_id = $value;
+    }
+
+    /**
+     * 获取前端组件
+     * @return string
+     */
+    public function getComponent(): string
+    {
+        return $this->component;
+    }
+
+    /**
+     * 设置前端组件
+     * @param string $value
+     */
+    public function setComponent(string $value): void
+    {
+        $this->component = $value;
+    }
+
+    /**
+     * 获取路径
+     * @return string
+     */
+    public function getPath(): string
+    {
+        return $this->path;
+    }
+
+    /**
+     * 设置路径
+     * @param string $value
+     */
+    public function setPath(string $value): void
+    {
+        $this->path = $value;
+    }
+
+    /**
+     * 获取图标
+     * @return string
+     */
+    public function getIcon(): string
+    {
+        return $this->icon;
+    }
+
+    /**
+     * 设置图标
+     * @param string $value
+     */
+    public function setIcon(string $value): void
+    {
+        $this->icon = $value;
+    }
+
+    /**
+     * 获取url
+     * @return string
+     */
+    public function getFrameSrc(): string
+    {
+        return $this->frame_src;
+    }
+
+    /**
+     * 设置url
+     * @param string $value
+     */
+    public function setFrameSrc(string $value): void
+    {
+        $this->frame_src = $value;
+    }
+
+    /**
+     * 获取隐藏菜单
+     * @return int
+     */
+    public function getHideMenu(): int
+    {
+        return $this->hide_menu;
+    }
+
+    /**
+     * 设置隐藏菜单
+     * @param int $value
+     */
+    public function setHideMenu(int $value): void
+    {
+        $this->hide_menu = $value;
+    }
+
+    /**
+     * 获取是否菜单
+     * @return int
+     */
+    public function getIsMenu(): int
+    {
+        return $this->is_menu;
+    }
+
+    /**
+     * 设置是否菜单
+     * @param int $value
+     */
+    public function setIsMenu(int $value): void
+    {
+        $this->is_menu = $value;
+    }
+
+    /**
+     * 获取创建时间
+     * @return \DateTime
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * 设置创建时间
+     * @param \DateTime $value
+     */
+    public function setCreatedAt(\DateTime $value): void
+    {
+        $this->created_at = $value;
+    }
+
+    /**
+     * 获取更新时间
+     * @return \DateTime
+     */
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updated_at;
+    }
+
+    /**
+     * 设置更新时间
+     * @param \DateTime $value
+     */
+    public function setUpdatedAt(\DateTime $value): void
+    {
+        $this->updated_at = $value;
+    }
 
 }

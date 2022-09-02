@@ -14,7 +14,7 @@ return [
     'request_class' => Request::class,
 
     'providers' => [
-        // Cola\Database\DatabaseProvider::class,
+        Cola\Database\DatabaseProvider::class,
         Cola\Session\SessionProvider::class,
     ],
 ];

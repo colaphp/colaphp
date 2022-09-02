@@ -67,8 +67,8 @@ class GenerateCommand extends Kernel
      */
     private function entity($entity, $table, $database): void
     {
-        $annotation = '';
         $content = '';
+        $methods = '';
 
         $info = DB::select("select COLUMN_NAME,DATA_TYPE,COLUMN_COMMENT from information_schema.COLUMNS where table_name = '{$table}' and table_schema = '{$database}';");
         foreach ($info as $column) {
@@ -94,16 +94,32 @@ class GenerateCommand extends Kernel
     /**
      * @var {$type} {$comment}
      */
-    private {$type} \${$field};
+    public {$type} \${$field};
 EOF;
             $content .= PHP_EOL;
             // 方法注解
             $comment = str_replace(['(', '（', ')', '）'], [' '], $comment);
-            $annotation .= <<<EOF
- * @method get{$method}() {$comment}
- * @method set{$method}({$type} \$value)
+            $methods .= <<<EOF
+
+    /**
+     * 获取{$comment}
+     * @return {$type}
+     */
+    public function get{$method}(): {$type}
+    {
+        return \$this->{$field};
+    }
+
+    /**
+     * 设置{$comment}
+     * @param {$type} \$value
+     */
+    public function set{$method}({$type} \$value): void
+    {
+        \$this->{$field} = \$value;
+    }
 EOF;
-            $annotation .= PHP_EOL;
+            $methods .= PHP_EOL;
         }
 
         $namespace = 'App\Entity';
@@ -118,12 +134,10 @@ use App\\Support\\ArrayObject;
 
 /**
  * Class {$entity}
- *
-{$annotation} * @package {$namespace}
  */
 class {$entity} extends ArrayObject
 {
-{$content}
+{$content}{$methods}
 }
 EOF;
         $folder = app_path('Entity');
