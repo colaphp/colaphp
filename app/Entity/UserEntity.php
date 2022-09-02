@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\Http\Traits\SimpleAccess;
+use App\Support\ArrayObject;
 
 /**
  * Class UserEntity
@@ -43,10 +43,9 @@ use App\Http\Traits\SimpleAccess;
  * @method setDeletedAt(\DateTime $value)
  * @package App\Entity
  */
-class UserEntity
+class UserEntity extends ArrayObject
 {
-    use SimpleAccess;
-    
+
     /**
      * @var int 
      */
