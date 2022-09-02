@@ -8,18 +8,6 @@ use App\Support\ArrayObject;
 
 /**
  * Class DictOptionEntity
- *
- * @method getId() 
- * @method setId(int $value)
- * @method getName() 键
- * @method setName(string $value)
- * @method getValue() 值
- * @method setValue(string $value)
- * @method getCreatedAt() 创建时间
- * @method setCreatedAt(\DateTime $value)
- * @method getUpdatedAt() 更新时间
- * @method setUpdatedAt(\DateTime $value)
- * @package App\Entity
  */
 class DictOptionEntity extends ArrayObject
 {
@@ -27,26 +15,116 @@ class DictOptionEntity extends ArrayObject
     /**
      * @var int 
      */
-    private int $id;
+    public int $id;
 
     /**
      * @var string 键
      */
-    private string $name;
+    public string $name;
 
     /**
      * @var string 值
      */
-    private string $value;
+    public string $value;
 
     /**
      * @var \DateTime 创建时间
      */
-    private \DateTime $created_at;
+    public \DateTime $created_at;
 
     /**
      * @var \DateTime 更新时间
      */
-    private \DateTime $updated_at;
+    public \DateTime $updated_at;
+
+    /**
+     * 获取
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * 设置
+     * @param int $value
+     */
+    public function setId(int $value): void
+    {
+        $this->id = $value;
+    }
+
+    /**
+     * 获取键
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * 设置键
+     * @param string $value
+     */
+    public function setName(string $value): void
+    {
+        $this->name = $value;
+    }
+
+    /**
+     * 获取值
+     * @return string
+     */
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+
+    /**
+     * 设置值
+     * @param string $value
+     */
+    public function setValue(string $value): void
+    {
+        $this->value = $value;
+    }
+
+    /**
+     * 获取创建时间
+     * @return \DateTime
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * 设置创建时间
+     * @param \DateTime $value
+     */
+    public function setCreatedAt(\DateTime $value): void
+    {
+        $this->created_at = $value;
+    }
+
+    /**
+     * 获取更新时间
+     * @return \DateTime
+     */
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updated_at;
+    }
+
+    /**
+     * 设置更新时间
+     * @param \DateTime $value
+     */
+    public function setUpdatedAt(\DateTime $value): void
+    {
+        $this->updated_at = $value;
+    }
 
 }

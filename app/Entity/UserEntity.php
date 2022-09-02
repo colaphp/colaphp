@@ -8,40 +8,6 @@ use App\Support\ArrayObject;
 
 /**
  * Class UserEntity
- *
- * @method getId() 
- * @method setId(int $value)
- * @method getUuid() UUID
- * @method setUuid(string $value)
- * @method getName() 昵称
- * @method setName(string $value)
- * @method getAvatar() 头像
- * @method setAvatar(string $value)
- * @method getBirthday() 生日
- * @method setBirthday(\DateTime $value)
- * @method getMotto() 座右铭
- * @method setMotto(string $value)
- * @method getLevel() 等级
- * @method setLevel(string $value)
- * @method getMoney() 余额
- * @method setMoney(float $value)
- * @method getScore() 积分
- * @method setScore(int $value)
- * @method getJoinTime() 注册时间
- * @method setJoinTime(\DateTime $value)
- * @method getJoinIp() 注册IP
- * @method setJoinIp(string $value)
- * @method getLastTime() 上次登录时间
- * @method setLastTime(\DateTime $value)
- * @method getLastIp() 上次登录IP
- * @method setLastIp(string $value)
- * @method getCreatedAt() 创建时间
- * @method setCreatedAt(\DateTime $value)
- * @method getUpdatedAt() 更新时间
- * @method setUpdatedAt(\DateTime $value)
- * @method getDeletedAt() 
- * @method setDeletedAt(\DateTime $value)
- * @package App\Entity
  */
 class UserEntity extends ArrayObject
 {
@@ -49,81 +15,369 @@ class UserEntity extends ArrayObject
     /**
      * @var int 
      */
-    private int $id;
+    public int $id;
 
     /**
      * @var string UUID
      */
-    private string $uuid;
+    public string $uuid;
 
     /**
      * @var string 昵称
      */
-    private string $name;
+    public string $name;
 
     /**
      * @var string 头像
      */
-    private string $avatar;
+    public string $avatar;
 
     /**
      * @var \DateTime 生日
      */
-    private \DateTime $birthday;
+    public \DateTime $birthday;
 
     /**
      * @var string 座右铭
      */
-    private string $motto;
+    public string $motto;
 
     /**
      * @var string 等级
      */
-    private string $level;
+    public string $level;
 
     /**
      * @var float 余额
      */
-    private float $money;
+    public float $money;
 
     /**
      * @var int 积分
      */
-    private int $score;
+    public int $score;
 
     /**
      * @var \DateTime 注册时间
      */
-    private \DateTime $join_time;
+    public \DateTime $join_time;
 
     /**
      * @var string 注册IP
      */
-    private string $join_ip;
+    public string $join_ip;
 
     /**
      * @var \DateTime 上次登录时间
      */
-    private \DateTime $last_time;
+    public \DateTime $last_time;
 
     /**
      * @var string 上次登录IP
      */
-    private string $last_ip;
+    public string $last_ip;
 
     /**
      * @var \DateTime 创建时间
      */
-    private \DateTime $created_at;
+    public \DateTime $created_at;
 
     /**
      * @var \DateTime 更新时间
      */
-    private \DateTime $updated_at;
+    public \DateTime $updated_at;
 
     /**
      * @var \DateTime 
      */
-    private \DateTime $deleted_at;
+    public \DateTime $deleted_at;
+
+    /**
+     * 获取
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * 设置
+     * @param int $value
+     */
+    public function setId(int $value): void
+    {
+        $this->id = $value;
+    }
+
+    /**
+     * 获取UUID
+     * @return string
+     */
+    public function getUuid(): string
+    {
+        return $this->uuid;
+    }
+
+    /**
+     * 设置UUID
+     * @param string $value
+     */
+    public function setUuid(string $value): void
+    {
+        $this->uuid = $value;
+    }
+
+    /**
+     * 获取昵称
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * 设置昵称
+     * @param string $value
+     */
+    public function setName(string $value): void
+    {
+        $this->name = $value;
+    }
+
+    /**
+     * 获取头像
+     * @return string
+     */
+    public function getAvatar(): string
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * 设置头像
+     * @param string $value
+     */
+    public function setAvatar(string $value): void
+    {
+        $this->avatar = $value;
+    }
+
+    /**
+     * 获取生日
+     * @return \DateTime
+     */
+    public function getBirthday(): \DateTime
+    {
+        return $this->birthday;
+    }
+
+    /**
+     * 设置生日
+     * @param \DateTime $value
+     */
+    public function setBirthday(\DateTime $value): void
+    {
+        $this->birthday = $value;
+    }
+
+    /**
+     * 获取座右铭
+     * @return string
+     */
+    public function getMotto(): string
+    {
+        return $this->motto;
+    }
+
+    /**
+     * 设置座右铭
+     * @param string $value
+     */
+    public function setMotto(string $value): void
+    {
+        $this->motto = $value;
+    }
+
+    /**
+     * 获取等级
+     * @return string
+     */
+    public function getLevel(): string
+    {
+        return $this->level;
+    }
+
+    /**
+     * 设置等级
+     * @param string $value
+     */
+    public function setLevel(string $value): void
+    {
+        $this->level = $value;
+    }
+
+    /**
+     * 获取余额
+     * @return float
+     */
+    public function getMoney(): float
+    {
+        return $this->money;
+    }
+
+    /**
+     * 设置余额
+     * @param float $value
+     */
+    public function setMoney(float $value): void
+    {
+        $this->money = $value;
+    }
+
+    /**
+     * 获取积分
+     * @return int
+     */
+    public function getScore(): int
+    {
+        return $this->score;
+    }
+
+    /**
+     * 设置积分
+     * @param int $value
+     */
+    public function setScore(int $value): void
+    {
+        $this->score = $value;
+    }
+
+    /**
+     * 获取注册时间
+     * @return \DateTime
+     */
+    public function getJoinTime(): \DateTime
+    {
+        return $this->join_time;
+    }
+
+    /**
+     * 设置注册时间
+     * @param \DateTime $value
+     */
+    public function setJoinTime(\DateTime $value): void
+    {
+        $this->join_time = $value;
+    }
+
+    /**
+     * 获取注册IP
+     * @return string
+     */
+    public function getJoinIp(): string
+    {
+        return $this->join_ip;
+    }
+
+    /**
+     * 设置注册IP
+     * @param string $value
+     */
+    public function setJoinIp(string $value): void
+    {
+        $this->join_ip = $value;
+    }
+
+    /**
+     * 获取上次登录时间
+     * @return \DateTime
+     */
+    public function getLastTime(): \DateTime
+    {
+        return $this->last_time;
+    }
+
+    /**
+     * 设置上次登录时间
+     * @param \DateTime $value
+     */
+    public function setLastTime(\DateTime $value): void
+    {
+        $this->last_time = $value;
+    }
+
+    /**
+     * 获取上次登录IP
+     * @return string
+     */
+    public function getLastIp(): string
+    {
+        return $this->last_ip;
+    }
+
+    /**
+     * 设置上次登录IP
+     * @param string $value
+     */
+    public function setLastIp(string $value): void
+    {
+        $this->last_ip = $value;
+    }
+
+    /**
+     * 获取创建时间
+     * @return \DateTime
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * 设置创建时间
+     * @param \DateTime $value
+     */
+    public function setCreatedAt(\DateTime $value): void
+    {
+        $this->created_at = $value;
+    }
+
+    /**
+     * 获取更新时间
+     * @return \DateTime
+     */
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updated_at;
+    }
+
+    /**
+     * 设置更新时间
+     * @param \DateTime $value
+     */
+    public function setUpdatedAt(\DateTime $value): void
+    {
+        $this->updated_at = $value;
+    }
+
+    /**
+     * 获取
+     * @return \DateTime
+     */
+    public function getDeletedAt(): \DateTime
+    {
+        return $this->deleted_at;
+    }
+
+    /**
+     * 设置
+     * @param \DateTime $value
+     */
+    public function setDeletedAt(\DateTime $value): void
+    {
+        $this->deleted_at = $value;
+    }
 
 }
