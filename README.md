@@ -1,10 +1,10 @@
 # ColaPHP 🏝️
 
-> 👷 Under development. Releasing soon.
+一款基于 Workerman 的高性能 PHP HTTP 服务框架。
 
 ### 开发准备
 
-- 运行环境要求 PHP8.0。
+- 运行环境要求 PHP8.1。
 
 ### 升级 composer
 
