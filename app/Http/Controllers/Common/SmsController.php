@@ -7,8 +7,8 @@ namespace App\Http\Controllers\Common;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Common\SmsValidator;
 use App\Service\Sms\SmsService;
-use Cola\Http\Request;
-use Cola\Http\Response;
+use Flame\Http\Request;
+use Flame\Http\Response;
 
 class SmsController extends Controller
 {

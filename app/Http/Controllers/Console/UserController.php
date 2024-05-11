@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Console;
 
 use App\Http\Traits\CrudTrait;
 use App\Model\User;
-use Cola\Database\Model;
+use Flame\Database\Model;
 
 /**
  * 用户管理

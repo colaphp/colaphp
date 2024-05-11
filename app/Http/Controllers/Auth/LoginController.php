@@ -11,9 +11,9 @@ use App\Service\Auth\AuthService;
 use App\Service\Auth\Input\LoginByMobileInput;
 use App\Service\Auth\Input\LoginInput;
 use App\Service\Auth\LoginService;
-use Cola\Http\Request;
-use Cola\Http\Response;
-use Cola\Log\Log;
+use Flame\Http\Request;
+use Flame\Http\Response;
+use Flame\Log\Log;
 use Exception;
 
 class LoginController extends Controller

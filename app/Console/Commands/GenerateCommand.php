@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Console\Commands;
 
 use App\Console\Kernel;
-use Cola\Database\DB;
-use Cola\Support\Str;
+use Flame\Database\DB;
+use Flame\Support\Str;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -162,7 +162,7 @@ declare(strict_types=1);
 
 namespace {$namespace};
 
-use Cola\\Database\\Model;
+use Flame\\Database\\Model;
 
 /**
  * Class {$model}

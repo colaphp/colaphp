@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Exception;
 
-use Cola\Foundation\Exception\ExceptionHandler;
-use Cola\Http\Request;
-use Cola\Http\Response;
+use Flame\Foundation\Exception\ExceptionHandler;
+use Flame\Http\Request;
+use Flame\Http\Response;
 use Throwable;
 
 /**

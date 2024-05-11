@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Http\Traits;
 
 use App\Model\DictOption;
-use Cola\Database\DB;
-use Cola\Database\Model;
-use Cola\Http\Request;
-use Cola\Http\Response;
+use Flame\Database\DB;
+use Flame\Database\Model;
+use Flame\Http\Request;
+use Flame\Http\Response;
 use Exception;
 
 trait CrudTrait

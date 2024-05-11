@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\Sms;
 
-use Cola\Log\Log;
+use Flame\Log\Log;
 use Overtrue\EasySms\EasySms;
 use Overtrue\EasySms\Exceptions\InvalidArgumentException;
 use Overtrue\EasySms\Exceptions\NoGatewayAvailableException;

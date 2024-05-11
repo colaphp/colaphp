@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Web;
 
-use Cola\Http\Request;
-use Cola\Http\Response;
+use Flame\Http\Request;
+use Flame\Http\Response;
 
 class IndexController extends BaseController
 {

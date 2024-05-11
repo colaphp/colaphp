@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Requests\Auth\Login;
 
 use App\Service\Captcha\CaptchaService;
-use Cola\Validation\Validator;
+use Flame\Validation\Validator;
 
 /**
  * Class UsernameValidator

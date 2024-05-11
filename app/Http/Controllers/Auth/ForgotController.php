@@ -7,8 +7,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\Forgot\EmailValidator;
 use App\Http\Requests\Auth\Forgot\MobileValidator;
-use Cola\Http\Request;
-use Cola\Http\Response;
+use Flame\Http\Request;
+use Flame\Http\Response;
 
 class ForgotController extends Controller
 {

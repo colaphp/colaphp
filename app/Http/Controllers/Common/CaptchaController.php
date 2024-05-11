@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Common;
 
 use App\Http\Controllers\Controller;
 use App\Service\Captcha\CaptchaService;
-use Cola\Http\Response;
+use Flame\Http\Response;
 
 class CaptchaController extends Controller
 {

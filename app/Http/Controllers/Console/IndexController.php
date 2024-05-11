@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Console;
 
-use Cola\Http\Response;
+use Flame\Http\Response;
 
 /**
  * Class IndexController

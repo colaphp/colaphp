@@ -15,8 +15,8 @@ class Kernel
      * @var array
      */
     public static array $middleware = [
-        \Cola\Http\Middleware\HandleCors::class,
-        \Cola\Routing\Middleware\ThrottleRequests::class,
+        \Flame\Http\Middleware\HandleCors::class,
+        \Flame\Routing\Middleware\ThrottleRequests::class,
         \App\Http\Middleware\VerifyCsrfToken::class,
     ];
 

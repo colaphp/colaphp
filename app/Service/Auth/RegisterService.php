@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Service\Auth;
 
 use App\Service\Auth\Input\RegisterInput;
-use Cola\Database\DB;
+use Flame\Database\DB;
 use Exception;
 
 /**

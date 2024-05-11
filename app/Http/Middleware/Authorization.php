@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
-use Cola\Contracts\Middleware;
-use Cola\Http\Request;
-use Cola\Http\Response;
+use Flame\Contracts\Middleware;
+use Flame\Http\Request;
+use Flame\Http\Response;
 
 /**
  * Class Authorization

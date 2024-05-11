@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Cola\Http\Request;
-use Cola\Http\Response;
+use Flame\Http\Request;
+use Flame\Http\Response;
 
 class LogoutController extends Controller
 {

@@ -6,9 +6,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Service\OAuth\SocializeService;
-use Cola\Http\Request;
-use Cola\Http\Response;
-use Cola\Log\Log;
+use Flame\Http\Request;
+use Flame\Http\Response;
+use Flame\Log\Log;
 use Exception;
 
 class SocializeController extends Controller

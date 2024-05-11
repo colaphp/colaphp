@@ -6,9 +6,9 @@ namespace App\Http\Controllers\Console;
 
 use App\Http\Traits\CrudTrait;
 use App\Model\User;
-use Cola\Database\Model;
-use Cola\Http\Request;
-use Cola\Http\Response;
+use Flame\Database\Model;
+use Flame\Http\Request;
+use Flame\Http\Response;
 
 /**
  * 管理员设置

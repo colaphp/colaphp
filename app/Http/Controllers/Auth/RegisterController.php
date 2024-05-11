@@ -11,11 +11,11 @@ use App\Http\Requests\Auth\Register\UsernameValidator;
 use App\Service\Auth\AuthService;
 use App\Service\Auth\Input\RegisterInput;
 use App\Service\Auth\RegisterService;
-use Cola\Http\Request;
-use Cola\Http\Response;
-use Cola\Log\Log;
-use Cola\Support\Carbon;
-use Cola\Support\Str;
+use Flame\Http\Request;
+use Flame\Http\Response;
+use Flame\Log\Log;
+use Flame\Support\Carbon;
+use Flame\Support\Str;
 use Exception;
 
 class RegisterController extends Controller
