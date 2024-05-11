@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 return [
-    'handler' => \Cola\View\View::class,
+    'handler' => \Flame\View\View::class,
     'paths' => [
         resource_path('views'),
     ],

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Traits;
 
-use App\Model\DictOption;
+use App\Models\DictOption;
 use Flame\Database\DB;
 use Flame\Database\Model;
 use Flame\Http\Request;

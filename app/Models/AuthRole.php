@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace App\Model;
+namespace App\Models;
 
 use Flame\Database\Model;
 
 /**
- * Class Auth
+ * Class AuthRole
  * @package App\Model
  */
-class Auth extends Model
+class AuthRole extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'auth';
+    protected $table = 'auth_role';
 
     /**
      * The primary key associated with the table.

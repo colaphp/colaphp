@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\User;
 
-use App\Model\User;
+use App\Models\User;
 use App\Service\User\Output\UserOutput;
 
 /**

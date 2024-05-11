@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\Auth;
 
-use App\Model\Auth;
+use App\Models\Auth;
 use App\Service\Auth\Input\LoginByMobileInput;
 use App\Service\Auth\Input\LoginInput;
 use Exception;

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Console;
 
 use App\Http\Traits\CrudTrait;
-use App\Model\User;
+use App\Models\User;
 use Flame\Database\Model;
 
 /**

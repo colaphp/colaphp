@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Web\IndexController;
-use Cola\Routing\Route;
+use Flame\Routing\Route;
 
 Route::get('/admin', function () {
     $hash = md5((string) microtime(true));

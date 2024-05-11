@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace App\Model;
+namespace App\Models;
 
 use Flame\Database\Model;
 
 /**
- * Class DictOption
+ * Class User
  * @package App\Model
  */
-class DictOption extends Model
+class User extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'dict_option';
+    protected $table = 'user';
 
     /**
      * The primary key associated with the table.

@@ -5,7 +5,7 @@ declare(strict_types=1);
 return [
     'type' => 'file', // or redis or redis_cluster
 
-    'handler' => Cola\Session\FileSessionHandler::class,
+    'handler' => Flame\Session\FileSessionHandler::class,
 
     'config' => [
         'file' => [

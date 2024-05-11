@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Cola\Foundation\Console\ServeCommand;
 use Dotenv\Dotenv;
+use Flame\Foundation\Console\ServeCommand;
 use Phinx\Console\Command;
 use Symfony\Component\Console\Application as SymfonyApplication;
 

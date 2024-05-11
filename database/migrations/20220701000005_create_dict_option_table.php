@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Cola\Database\Migration\DB\Column;
+use Flame\Database\Migration\DB\Column;
 use Phinx\Migration\AbstractMigration;
 
 final class CreateDictOptionTable extends AbstractMigration

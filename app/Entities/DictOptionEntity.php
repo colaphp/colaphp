@@ -2,40 +2,30 @@
 
 declare(strict_types=1);
 
-namespace App\Entity;
+namespace App\Entities;
 
 use App\Support\ArrayObject;
 
 /**
- * Class AuthRoleEntity
+ * Class DictOptionEntity
  */
-class AuthRoleEntity extends ArrayObject
+class DictOptionEntity extends ArrayObject
 {
 
     /**
-     * @var int 
+     * @var int
      */
     public int $id;
 
     /**
-     * @var string 角色名称
+     * @var string 键
      */
     public string $name;
 
     /**
-     * @var string 角色描述
+     * @var string 值
      */
-    public string $description;
-
-    /**
-     * @var string 用户组拥有的规则id，多个规则","隔开
-     */
-    public string $rules;
-
-    /**
-     * @var int 状态：1正常，0禁用
-     */
-    public int $status;
+    public string $value;
 
     /**
      * @var \DateTime 创建时间
@@ -66,7 +56,7 @@ class AuthRoleEntity extends ArrayObject
     }
 
     /**
-     * 获取角色名称
+     * 获取键
      * @return string
      */
     public function getName(): string
@@ -75,7 +65,7 @@ class AuthRoleEntity extends ArrayObject
     }
 
     /**
-     * 设置角色名称
+     * 设置键
      * @param string $value
      */
     public function setName(string $value): void
@@ -84,57 +74,21 @@ class AuthRoleEntity extends ArrayObject
     }
 
     /**
-     * 获取角色描述
+     * 获取值
      * @return string
      */
-    public function getDescription(): string
+    public function getValue(): string
     {
-        return $this->description;
+        return $this->value;
     }
 
     /**
-     * 设置角色描述
+     * 设置值
      * @param string $value
      */
-    public function setDescription(string $value): void
+    public function setValue(string $value): void
     {
-        $this->description = $value;
-    }
-
-    /**
-     * 获取用户组拥有的规则id，多个规则","隔开
-     * @return string
-     */
-    public function getRules(): string
-    {
-        return $this->rules;
-    }
-
-    /**
-     * 设置用户组拥有的规则id，多个规则","隔开
-     * @param string $value
-     */
-    public function setRules(string $value): void
-    {
-        $this->rules = $value;
-    }
-
-    /**
-     * 获取状态：1正常，0禁用
-     * @return int
-     */
-    public function getStatus(): int
-    {
-        return $this->status;
-    }
-
-    /**
-     * 设置状态：1正常，0禁用
-     * @param int $value
-     */
-    public function setStatus(int $value): void
-    {
-        $this->status = $value;
+        $this->value = $value;
     }
 
     /**

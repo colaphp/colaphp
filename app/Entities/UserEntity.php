@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Entity;
+namespace App\Entities;
 
 use App\Support\ArrayObject;
 
@@ -13,7 +13,7 @@ class UserEntity extends ArrayObject
 {
 
     /**
-     * @var int 
+     * @var int
      */
     public int $id;
 
@@ -88,7 +88,7 @@ class UserEntity extends ArrayObject
     public \DateTime $updated_at;
 
     /**
-     * @var \DateTime 
+     * @var \DateTime
      */
     public \DateTime $deleted_at;
 

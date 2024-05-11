@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Entity;
+namespace App\Entities;
 
 use App\Support\ArrayObject;
 
@@ -13,7 +13,7 @@ class AuthRuleEntity extends ArrayObject
 {
 
     /**
-     * @var int 
+     * @var int
      */
     public int $id;
 
