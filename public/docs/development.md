@@ -1,6 +1,4 @@
-# FlamePHP
-
-> 运行环境要求 PHP8，启用 Redis 等扩展。
+# 开发环境
 
 ## 安装 MySql
 
@@ -84,60 +82,6 @@ sudo pecl install event
 ### WAMP 环境
 
 推荐使用 [Laragon](https://laragon.org/download/) 集成开发环境。
-
-## 快速开始
-
-### 克隆代码
-
-```shell
-composer config -g repos.packagist composer https://packagist.pages.dev
-composer install
-```
-
-### ENV配置
-
-```
-cp .env.example .env
-```
-
-### 数据库配置
-
-编辑 .env 文件，修改数据库连接信息：
-
-```
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=force
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-### 数据迁移
-
-```
-php artisan migrate
-```
-
-### 数据填充
-
-```
-php artisan seed:run
-```
-
-### 启动运行
-
-现在只需要做最后一步来验证是否正常运行。
-
-进入命令行下面，执行下面指令
-
-```
-php artisan serve
-```
-
-在浏览器中输入地址：
-
-http://127.0.0.1:8000/
 
 ## Worker 服务
 

@@ -1,13 +1,23 @@
 <?php
 
-declare(strict_types=1);
-
 return [
-    'scheme' => 'smtp', // "smtps": using TLS, "smtp": without using TLS.
-    'host' => '', // 服务器地址
-    'username' => '', // 用户名
-    'password' => '', // 密码
-    'port' => 25, // SMTP服务器端口号,一般为25
-    'options' => [], // See: https://symfony.com/doc/current/mailer.html#tls-peer-verification
-    'embed' => 'cid:', // 邮件中嵌入图片元数据标记
+    'default' => env('MAIL_MAILER', 'smtp'),
+
+    'mailers' => [
+        'smtp' => [
+            'transport' => 'smtp',
+            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+            'port' => env('MAIL_PORT', 587),
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'username' => env('MAIL_USERNAME'),
+            'password' => env('MAIL_PASSWORD'),
+            'timeout' => null,
+            'local_domain' => env('MAIL_EHLO_DOMAIN'),
+        ],
+    ],
+
+    'from' => [
+        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+        'name' => env('MAIL_FROM_NAME', 'Example'),
+    ],
 ];

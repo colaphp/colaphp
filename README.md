@@ -4,7 +4,7 @@
 
 ### 开发准备
 
-- 运行环境要求 PHP8.1。
+- 运行环境要求 PHP8.2。
 
 ### 升级 composer
 
@@ -19,7 +19,39 @@ composer selfupdate
 进入 www 目录下，执行命令：
 
 ```
+composer config -g repos.packagist composer https://packagist.pages.dev
 composer create-project colasoft/colaphp
+```
+
+### ENV配置
+
+```
+cp .env.example .env
+```
+
+### 数据库配置
+
+编辑 .env 文件，修改数据库连接信息：
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=force
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 数据迁移
+
+```
+php artisan migrate
+```
+
+### 数据填充
+
+```
+php artisan seed:run
 ```
 
 ### 开启调试模式
