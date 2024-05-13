@@ -44,6 +44,17 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "package/colasoft/framework",
+            "options": {
+                "versions": {
+                    "colasoft/framework": "1.0"
+                }
+            }
+        }
+    ]
 }

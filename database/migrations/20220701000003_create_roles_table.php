@@ -5,11 +5,11 @@ declare(strict_types=1);
 use Flame\Database\Migration\DB\Column;
 use Phinx\Migration\AbstractMigration;
 
-final class CreateAuthRoleTable extends AbstractMigration
+final class CreateRolesTable extends AbstractMigration
 {
     public function change(): void
     {
-        $table = $this->table('auth_role', [
+        $table = $this->table('roles', [
             'signed' => false,
             'collation' => 'utf8mb4_unicode_ci',
             'comment' => '用户角色表',
@@ -23,7 +23,7 @@ final class CreateAuthRoleTable extends AbstractMigration
             ->addColumn(Column::dateTime('updated_at')->setNullable()->setComment('更新时间'))
             ->create();
 
-        $this->table('auth_role')->insert([
+        $this->table('roles')->insert([
             'id' => 1,
             'name' => '超级管理员',
             'description' => '',

@@ -1,5 +1,6 @@
 /.phpunit.cache
 /app/Controllers
+/framework
 /node_modules
 /public/storage
 /runtime/*.key

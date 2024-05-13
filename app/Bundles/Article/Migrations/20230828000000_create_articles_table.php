@@ -5,11 +5,11 @@ declare(strict_types=1);
 use Flame\Database\Migration\DB\Column;
 use Phinx\Migration\AbstractMigration;
 
-class CreateArticleTable extends AbstractMigration
+class CreateArticlesTable extends AbstractMigration
 {
     public function change(): void
     {
-        $table = $this->table('article', [
+        $table = $this->table('articles', [
             'signed' => false,
             'collation' => 'utf8mb4_unicode_ci',
             'comment' => '文章表',

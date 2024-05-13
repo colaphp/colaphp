@@ -5,14 +5,14 @@ declare(strict_types=1);
 use Flame\Database\Migration\DB\Column;
 use Phinx\Migration\AbstractMigration;
 
-final class CreateAuthRuleTable extends AbstractMigration
+final class CreatePermissionsTable extends AbstractMigration
 {
     public function change(): void
     {
-        $table = $this->table('auth_rule', [
+        $table = $this->table('permissions', [
             'signed' => false,
             'collation' => 'utf8mb4_unicode_ci',
-            'comment' => '权限规则表',
+            'comment' => '权限表',
         ]);
 
         $table->addColumn(Column::string('module')->setComment('模块'))

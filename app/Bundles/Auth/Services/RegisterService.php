@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Auth;
+namespace App\Bundles\Auth\Services;
 
 use App\Service\Auth\Input\RegisterInput;
 use Flame\Database\DB;

@@ -6,8 +6,8 @@ namespace App\Bundles\Captcha\API\Common;
 
 use App\API\Common\Controllers\BaseController;
 use App\Bundles\Captcha\Response\ImageCaptchaResponse;
+use App\Bundles\Captcha\Services\CaptchaService;
 use App\Exceptions\CustomException;
-use Flame\Captcha\Captcha;
 use Flame\Http\Response;
 use Flame\Support\Facade\Log;
 use Flame\Support\Str;
@@ -22,7 +22,7 @@ class ImageController extends BaseController
     {
         try {
             $uuid = Str::uuid()->toString();
-            $captcha = (new Captcha())->create($uuid);
+            $captcha = (new CaptchaService())->create($uuid);
 
             $captchaResponse = new ImageCaptchaResponse();
             $captchaResponse->setCaptcha($captcha);
