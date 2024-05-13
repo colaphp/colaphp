@@ -2,55 +2,16 @@
 
 declare(strict_types=1);
 
-use Dotenv\Dotenv;
-use Flame\Foundation\Console\ServeCommand;
-use Phinx\Console\Command;
-use Symfony\Component\Console\Application as SymfonyApplication;
+use Flame\Support\Carbon;
 
-class Application extends SymfonyApplication
-{
-    const VERSION = 'v1.0.3';
+defined('APP_START') or define('APP_START', microtime(true));
 
-    const RELEASE = '20220811';
+defined('ROOT_PATH') or define('ROOT_PATH', str_replace('\\', '/', dirname(__DIR__)));
 
-    /**
-     * Initialize the console application.
-     */
-    public function __construct()
-    {
-        parent::__construct('ColaPHP Console.');
+require_once ROOT_PATH.'/vendor/autoload.php';
 
-        $this->addCommands([
-            new Command\Create(),
-            new Command\Migrate(),
-            new Command\Rollback(),
-            new Command\Status(),
-            new Command\SeedCreate(),
-            new Command\SeedRun(),
-        ]);
+(new Flame\Bootstrap\LoadEnvironmentVariables(ROOT_PATH))->bootstrap();
 
-        $this->add(new ServeCommand());
-        $commands = glob(app_path('Console/Commands/*.php'));
-        $pattern = '/(app\/Console\/Commands\/.+?)\.php/';
-        foreach ($commands as $file) {
-            preg_match($pattern, str_replace('\\', '/', $file), $matches);
-            if (isset($matches[1])) {
-                $command = ucfirst(str_replace('/', '\\', $matches[1]));
-                $this->add(new $command());
-            }
-        }
-    }
-}
+date_default_timezone_set(env('APP_TIMEZONE', 'Asia/Shanghai'));
 
-try {
-    if (class_exists('Dotenv\Dotenv')) {
-        if (method_exists('Dotenv\Dotenv', 'createUnsafeImmutable')) {
-            Dotenv::createUnsafeImmutable(base_path())->load();
-        } else {
-            Dotenv::createMutable(base_path())->load();
-        }
-    }
-    return new Application();
-} catch (Exception $e) {
-    exit($e->getMessage().PHP_EOL);
-}
+Carbon::setLocale('zh');

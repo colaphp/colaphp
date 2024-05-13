@@ -4,25 +4,19 @@ declare(strict_types=1);
 
 namespace App\Console;
 
-use Illuminate\Database\Capsule\Manager as Capsule;
-use Symfony\Component\Console\Command\Command;
+use Flame\Console\Kernel as BaseKernel;
 
-abstract class Kernel extends Command
+class Kernel extends BaseKernel
 {
-    /**
-     * @return void
-     */
-    protected function connection(): void
+    public function __construct()
     {
-        $database = require config_path('database.php');
+        parent::__construct();
 
-        $capsule = new Capsule();
-        if (isset($database['default'])) {
-            $default_config = $database['connections'][$database['default']];
-            $capsule->addConnection($default_config);
-        }
+        $commands = array_merge(
+            glob(__DIR__.'/Commands/*Command.php'),
+            glob(app_path('Bundles/*/Commands/*Command.php'))
+        );
 
-        $capsule->setAsGlobal();
-        $capsule->bootEloquent();
+        parent::registerCommands($commands);
     }
 }
