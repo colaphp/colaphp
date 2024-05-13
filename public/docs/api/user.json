@@ -1,0 +1,153 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API文档",
+        "description": "会员接口",
+        "contact": {
+            "name": "API Develop Team"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "/",
+            "description": "开发环境"
+        }
+    ],
+    "components": {
+        "schemas": {
+            "ArticleCreateRequest": {
+                "required": [
+                    "title"
+                ],
+                "properties": {
+                    "title": {
+                        "description": "文章标题",
+                        "type": "string",
+                        "example": "untitle"
+                    }
+                },
+                "type": "object"
+            },
+            "ArticleUpdateRequest": {
+                "required": [
+                    "id",
+                    "title"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "文章ID",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "description": "文章标题",
+                        "type": "string",
+                        "example": "untitle"
+                    }
+                },
+                "type": "object"
+            },
+            "ArticleResponse": {
+                "properties": {
+                    "id": {
+                        "description": "文章编号",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "description": "文章标题",
+                        "type": "string",
+                        "example": "untitle"
+                    }
+                },
+                "type": "object"
+            },
+            "LoginResponse": {
+                "properties": {
+                    "jwt": {
+                        "description": "用户JSON Web Token凭证",
+                        "type": "string",
+                        "example": "123456"
+                    }
+                },
+                "type": "object"
+            },
+            "UserCreateRequest": {
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "name": {
+                        "description": "名称",
+                        "type": "string",
+                        "example": "untitle"
+                    }
+                },
+                "type": "object"
+            },
+            "UserQueryRequest": {
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "name": {
+                        "description": "名称",
+                        "type": "string",
+                        "example": "untitle"
+                    }
+                },
+                "type": "object"
+            },
+            "UserUpdateRequest": {
+                "required": [
+                    "id",
+                    "name"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "用户ID",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "description": "用户标题",
+                        "type": "string",
+                        "example": "untitle"
+                    }
+                },
+                "type": "object"
+            },
+            "UserResponse": {
+                "properties": {
+                    "id": {
+                        "description": "编号",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "description": "名称",
+                        "type": "string",
+                        "example": "untitle"
+                    }
+                },
+                "type": "object"
+            },
+            "OptionResponse": {
+                "properties": {
+                    "name": {
+                        "description": "名称",
+                        "type": "string",
+                        "example": "name"
+                    },
+                    "val": {
+                        "description": "值",
+                        "type": "integer",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

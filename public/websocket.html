@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://127.0.0.1:8000/common/push/js"></script>
+</head>
+<body>
+<div id="messageQuantity"></div>
+
+<script type="text/javascript">
+    var messageQuantity = document.querySelector('#messageQuantity')
+    messageQuantity.innerText = 22;
+
+    // 建立连接
+    var connection = new Push({
+        url: 'ws://127.0.0.1:2347', // websocket地址
+        app_key: 'abc',
+        auth: '/common/push/auth', // 订阅鉴权(仅限于私有频道)
+        jwt: localStorage.getItem('token') || ''
+    });
+
+    // 浏览器监听user-1频道的消息，也就是用户uid为1的用户消息
+    var user_channel = connection.subscribe('user-' + 1);
+
+    // 当user-1频道有message事件的消息时
+    user_channel.on('message', function (data) {
+        // 添加提示音
+        // data里是消息内容
+        console.log(data);
+    });
+</script>
+</body>
+</html>

@@ -1,9 +1,15 @@
+/.phpunit.cache
+/app/Controllers
 /node_modules
-/.idea
-/.vscode
 /public/storage
+/runtime/*.key
 /vendor
 .env
 .env.backup
+.env.production
+.phpunit.result.cache
 *.lock
 *.log
+/.fleet
+/.idea
+/.vscode

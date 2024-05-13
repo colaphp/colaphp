@@ -9,7 +9,8 @@
     "tests"
   ],
   "dependencies": {
-    "layui": "layui/layui#^2.7",
-    "vue": "2.6.14"
+    "jquery": "^3.7.1",
+    "layui": "layui/layui#^2.9.7",
+    "vue": "~2.7.16"
   }
 }
