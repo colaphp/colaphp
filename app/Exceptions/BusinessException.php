@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace App\Exceptions;
 
-use Exception;
+use RuntimeException;
 
-/**
- * Class BusinessException
- */
-class BusinessException extends Exception
+class BusinessException extends RuntimeException
 {
 }
