@@ -2,4 +2,4 @@
 
 require __DIR__.'/../bootstrap/app.php';
 
-Flame\Foundation\App::run();
+Flame\Foundation\Application::run();

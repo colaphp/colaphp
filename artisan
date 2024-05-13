@@ -1,8 +1,10 @@
 #!/usr/bin/env php
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__.'/bootstrap/app.php';
 
-$app = require_once __DIR__ . '/bootstrap/app.php';
-
-$app->run();
+try {
+    return (new App\Console\Kernel())->run();
+} catch (Exception $e) {
+    exit($e->getMessage().PHP_EOL);
+}
