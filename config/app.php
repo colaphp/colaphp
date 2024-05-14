@@ -58,6 +58,6 @@ return [
 
     'providers' => [
         Flame\Database\DatabaseProvider::class,
-        Flame\Session\SessionProvider::class,
+        // Flame\Session\SessionProvider::class,
     ],
 ];
