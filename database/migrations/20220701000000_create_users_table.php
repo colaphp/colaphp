@@ -5,11 +5,11 @@ declare(strict_types=1);
 use Flame\Database\Migration\DB\Column;
 use Phinx\Migration\AbstractMigration;
 
-final class CreateUserTable extends AbstractMigration
+final class CreateUsersTable extends AbstractMigration
 {
     public function change(): void
     {
-        $table = $this->table('user', [
+        $table = $this->table('users', [
             'signed' => false,
             'collation' => 'utf8mb4_unicode_ci',
             'comment' => '用户表',
