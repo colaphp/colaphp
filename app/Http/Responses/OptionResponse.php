@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Responses;
+namespace App\Http\Responses;
 
 use Flame\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
