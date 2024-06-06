@@ -2,16 +2,13 @@
 
 declare(strict_types=1);
 
-use Flame\Support\Carbon;
+use Flame\Container\Container;
 
-require_once dirname(__DIR__).'/vendor/autoload.php';
-
-defined('APP_START') or define('APP_START', microtime(true));
-
-defined('ROOT_PATH') or define('ROOT_PATH', str_replace('\\', '/', dirname(__DIR__)));
-
-(new Flame\Bootstrap\LoadEnvironmentVariables(ROOT_PATH))->bootstrap();
-
-date_default_timezone_set(env('APP_TIMEZONE', 'Asia/Shanghai'));
-
-Carbon::setLocale('zh');
+try {
+    $builder = new Container();
+    $builder->useAutowiring(true);
+    $builder->useAttributes(true);
+    return $builder->build();
+} catch (Throwable $e) {
+    exit($e->getMessage().PHP_EOL);
+}
