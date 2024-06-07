@@ -10,10 +10,10 @@
         "colasoft/framework": "^1.0"
     },
     "require-dev": {
-        "laravel/pint": "^1.15",
-        "phpstan/phpstan": "^1.10",
-        "phpunit/phpunit": "^11.1",
-        "zircote/swagger-php": "^4.9"
+        "laravel/pint": "^1.16",
+        "phpstan/phpstan": "^1.11",
+        "phpunit/phpunit": "^11.2",
+        "zircote/swagger-php": "^4.10"
     },
     "autoload": {
         "psr-4": {

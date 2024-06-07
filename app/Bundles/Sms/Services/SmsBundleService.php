@@ -7,7 +7,7 @@ namespace App\Bundles\Sms\Services;
 use App\Bundles\Sms\Constants\SmsConst;
 use App\Exceptions\CustomException;
 use Exception;
-use Flame\Sms\Sms;
+use Flame\Sms\SmsManager;
 use Flame\Support\Facade\RateLimiter;
 
 class SmsBundleService
@@ -28,7 +28,7 @@ class SmsBundleService
 
         $code = mt_rand(100000, 999999);
 
-        $sms = new Sms();
+        $sms = new SmsManager();
         if ($sms->send($mobile, 'SMS_CODE', ['code' => $code])) {
             RateLimiter::hit($limiter);
 

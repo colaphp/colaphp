@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use Flame\Sms\Sms;
+use Flame\Sms\SmsManager;
 use Tests\TestCase;
 
 class SmsTest extends TestCase
@@ -12,7 +12,7 @@ class SmsTest extends TestCase
     public function test_send()
     {
         try {
-            $sms = new Sms();
+            $sms = new SmsManager();
             $sms->send('15858589999', 'SMS_CODE', ['code' => 123456]);
 
             $this->assertTrue(true);

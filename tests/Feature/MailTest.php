@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use Flame\Mail\Mail;
+use Flame\Mail\MailManager;
 use Tests\TestCase;
 
 class MailTest extends TestCase
@@ -12,7 +12,7 @@ class MailTest extends TestCase
     public function test_send()
     {
         try {
-            $mail = new Mail();
+            $mail = new MailManager();
             $mail->sendByTemplate('wanganlin@xhchuxing.com', 'mail template test', 'signup', [
                 'aa' => 'aaaaa',
                 'bb' => 'bbbbb',
