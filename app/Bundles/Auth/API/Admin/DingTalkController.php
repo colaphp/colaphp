@@ -20,7 +20,7 @@ class DingTalkController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
     public function login(): Response
     {
-        DB::startTrans();
+        DB::beginTransaction();
         try {
             $request = $this->requestBody();
 

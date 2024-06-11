@@ -12,6 +12,7 @@ class HealthController extends BaseController
     {
         return json([
             'status' => 'up',
+            'timezone' => date_default_timezone_get(),
             'version' => '240430',
         ]);
     }

@@ -6,9 +6,6 @@ namespace App\Http\Controllers\Console;
 
 use Flame\Http\Response;
 
-/**
- * Class IndexController
- */
 class IndexController extends BaseController
 {
     public function index(): Response

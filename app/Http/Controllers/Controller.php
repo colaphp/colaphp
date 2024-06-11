@@ -4,12 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Http\Traits\ResponseTrait;
+use Flame\Routing\Controller as BaseController;
 
-/**
- * Class Controller
- */
-abstract class Controller
+abstract class Controller extends BaseController
 {
-    use ResponseTrait;
 }

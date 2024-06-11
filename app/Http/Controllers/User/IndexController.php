@@ -4,14 +4,11 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\User;
 
-use App\Exceptions\CustomException;
+use Flame\Foundation\Exception\CustomException;
 use Flame\Http\Response;
 use Flame\Support\Facade\Log;
 use OpenApi\Attributes as OA;
 
-/**
- * Class IndexController
- */
 class IndexController extends BaseController
 {
     public function index(): Response

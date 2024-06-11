@@ -3,6 +3,8 @@
 
 require __DIR__.'/vendor/autoload.php';
 
+require_once __DIR__.'/bootstrap/app.php';
+
 try {
     return (new App\Console\Kernel())->run();
 } catch (Throwable $e) {

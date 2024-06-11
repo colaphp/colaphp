@@ -7,23 +7,14 @@ namespace App\Http\Requests\Auth\Forgot;
 use App\Service\Sms\SmsService;
 use Flame\Validation\Validator;
 
-/**
- * Class MobileValidator
- */
 class MobileValidator extends Validator
 {
-    /**
-     * @var array
-     */
-    protected $rule = [
+    protected array $rule = [
         'mobile' => 'require|mobile',
         'sms_code' => 'require|code',
     ];
 
-    /**
-     * @var array
-     */
-    protected $message = [
+    protected array $message = [
         'mobile.require' => '手机号码必须',
         'mobile.mobile' => '手机号码格式不正确',
         'sms_code.require' => '短信验证码必须',

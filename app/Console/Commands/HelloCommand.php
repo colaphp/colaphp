@@ -10,11 +10,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class HelloCommand extends Command
 {
-    public function __construct(?string $name = null)
-    {
-        parent::__construct($name);
-    }
-
     protected function configure(): void
     {
         $this->setName('hello')
