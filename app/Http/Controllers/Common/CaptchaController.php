@@ -12,8 +12,6 @@ class CaptchaController extends Controller
 {
     /**
      * 生成验证码
-     *
-     * @return Response
      */
     public function index(): Response
     {

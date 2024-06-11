@@ -33,10 +33,9 @@ class MobileValidator extends Validator
     /**
      * 自定义短信验证规则
      *
-     * @param  mixed  $value 验证数据
-     * @param  mixed  $rule 验证规则
-     * @param  array  $data 全部数据
-     * @return bool
+     * @param  mixed  $value  验证数据
+     * @param  mixed  $rule  验证规则
+     * @param  array  $data  全部数据
      */
     public function code(mixed $value, mixed $rule, array $data = []): bool
     {

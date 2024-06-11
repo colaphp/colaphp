@@ -16,7 +16,6 @@ class ArticleModel extends Model
      */
     protected $table = 'articles';
 
-
     /**
      * The attributes that are mass assignable.
      *

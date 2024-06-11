@@ -12,19 +12,11 @@ use Flame\Http\Response;
 
 class ForgotController extends Controller
 {
-    /**
-     * @param  Request  $request
-     * @return Response
-     */
     public function index(Request $request): Response
     {
         return view('forgot');
     }
 
-    /**
-     * @param  Request  $request
-     * @return Response
-     */
     public function email(Request $request): Response
     {
         $v = new EmailValidator();
@@ -37,10 +29,6 @@ class ForgotController extends Controller
         return $this->success($email);
     }
 
-    /**
-     * @param  Request  $request
-     * @return Response
-     */
     public function mobile(Request $request): Response
     {
         $v = new MobileValidator();

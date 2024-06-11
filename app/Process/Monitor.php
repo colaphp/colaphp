@@ -16,22 +16,12 @@ use Workerman\Worker;
  */
 class Monitor
 {
-    /**
-     * @var array
-     */
     protected array $_paths = [];
 
-    /**
-     * @var array
-     */
     protected array $_extensions = [];
 
     /**
      * FileMonitor constructor.
-     *
-     * @param $monitor_dir
-     * @param $monitor_extensions
-     * @param $memory_limit
      */
     public function __construct($monitor_dir, $monitor_extensions, $memory_limit = null)
     {
@@ -57,9 +47,6 @@ class Monitor
         }
     }
 
-    /**
-     * @param $monitor_dir
-     */
     public function checkFilesChange($monitor_dir)
     {
         static $last_mtime;
@@ -119,7 +106,6 @@ class Monitor
     }
 
     /**
-     * @param $memory_limit
      * @return void
      */
     public function checkMemory($memory_limit)

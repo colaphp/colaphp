@@ -10,9 +10,6 @@ use Overtrue\Socialite\SocialiteManager;
 
 class SocializeService
 {
-    /**
-     * @var array
-     */
     private array $supportOAuthType = [
         'qq', 'wechat', 'weibo',
     ];
@@ -20,8 +17,7 @@ class SocializeService
     /**
      * 社会化授权登录
      *
-     * @param  string  $type 授权类型
-     * @return string
+     * @param  string  $type  授权类型
      *
      * @throws Exception
      */
@@ -40,9 +36,8 @@ class SocializeService
     /**
      * 社会化授权登录回调
      *
-     * @param  string  $type 授权类型
-     * @param  string  $code 授权code
-     * @return UserInterface
+     * @param  string  $type  授权类型
+     * @param  string  $code  授权code
      *
      * @throws Exception
      */

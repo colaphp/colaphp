@@ -13,11 +13,6 @@ use Flame\Http\Response;
  */
 class AccessControl implements Middleware
 {
-    /**
-     * @param  Request  $request
-     * @param  callable  $next
-     * @return Response
-     */
     public function process(Request $request, callable $next): Response
     {
         // 允许uri以 /api 开头的地址跨域访问

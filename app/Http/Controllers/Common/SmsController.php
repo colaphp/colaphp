@@ -14,9 +14,6 @@ class SmsController extends Controller
 {
     /**
      * 发送短信验证码
-     *
-     * @param  Request  $request
-     * @return Response
      */
     public function index(Request $request): Response
     {

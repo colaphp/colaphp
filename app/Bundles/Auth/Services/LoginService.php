@@ -22,8 +22,6 @@ class LoginService
     /**
      * 登录服务
      *
-     * @param  LoginInput  $loginInput
-     * @return int
      *
      * @throws Exception
      */
@@ -50,8 +48,6 @@ class LoginService
     /**
      * 手机号码登录服务
      *
-     * @param  LoginByMobileInput  $mobileLoginInput
-     * @return int
      *
      * @throws Exception
      */
@@ -77,9 +73,6 @@ class LoginService
 
     /**
      * 根据用户获取登录类型
-     *
-     * @param  string  $username
-     * @return string
      */
     private function getAuthType(string $username): string
     {

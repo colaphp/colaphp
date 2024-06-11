@@ -18,10 +18,6 @@ class SmsService
 
     /**
      * 发送短信验证码
-     *
-     * @param  string  $mobile
-     * @param  string  $seed
-     * @return bool
      */
     public function send(string $mobile, string $seed): bool
     {
@@ -47,10 +43,6 @@ class SmsService
 
     /**
      * 验证短信验证码
-     *
-     * @param  string  $mobile
-     * @param  string  $code
-     * @return bool
      */
     public function valid(string $mobile, string $code): bool
     {

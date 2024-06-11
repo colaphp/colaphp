@@ -7,7 +7,6 @@ class UploadController extends BaseController
     /**
      * 上传文件
      *
-     * @param  Request  $request
      * @return \support\Response
      */
     public function file(Request $request)
@@ -36,7 +35,6 @@ class UploadController extends BaseController
     /**
      * 上传头像
      *
-     * @param  Request  $request
      * @return \support\Response
      *
      * @throws \Exception
@@ -90,7 +88,6 @@ class UploadController extends BaseController
     /**
      * 上传图片
      *
-     * @param  Request  $request
      * @return \support\Response
      */
     public function image(Request $request)
@@ -130,8 +127,6 @@ class UploadController extends BaseController
     /**
      * 获取上传数据
      *
-     * @param  Request  $request
-     * @param $relative_dir
      * @return array
      *
      * @throws \Exception
@@ -177,7 +172,6 @@ class UploadController extends BaseController
     /**
      * 格式化文件大小
      *
-     * @param $file_size
      * @return string
      */
     protected function formatSize($file_size)

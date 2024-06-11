@@ -18,9 +18,6 @@ class AdminController extends BaseController
 {
     use CrudTrait;
 
-    /**
-     * @var Model
-     */
     protected Model $model;
 
     /**
@@ -33,9 +30,6 @@ class AdminController extends BaseController
 
     /**
      * 删除
-     *
-     * @param  Request  $request
-     * @return Response
      */
     public function delete(Request $request): Response
     {

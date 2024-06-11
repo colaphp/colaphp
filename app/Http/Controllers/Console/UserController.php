@@ -14,9 +14,6 @@ class UserController extends BaseController
 {
     use CrudTrait;
 
-    /**
-     * @var Model
-     */
     protected Model $model;
 
     /**

@@ -11,8 +11,6 @@ class Kernel
 {
     /**
      * The application's global HTTP middleware stack.
-     *
-     * @var array
      */
     public static array $middleware = [
         \Flame\Http\Middleware\HandleCors::class,
@@ -22,8 +20,6 @@ class Kernel
 
     /**
      * The application's route middleware groups.
-     *
-     * @var array
      */
     public static array $middlewareGroups = [
         'Auth' => [

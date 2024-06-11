@@ -25,7 +25,6 @@ class AdminRuleController extends BaseController
     /**
      * 获取权限树
      *
-     * @param  Request  $request
      * @return \support\Response
      */
     public function tree(Request $request)
@@ -97,7 +96,6 @@ class AdminRuleController extends BaseController
     /**
      * 查询
      *
-     * @param  Request  $request
      * @return \support\Response
      */
     public function select(Request $request)
@@ -141,7 +139,6 @@ class AdminRuleController extends BaseController
     /**
      * 添加
      *
-     * @param  Request  $request
      * @return \support\Response
      */
     public function insert(Request $request)
@@ -177,7 +174,6 @@ class AdminRuleController extends BaseController
     /**
      * 删除
      *
-     * @param  Request  $request
      * @return \support\Response
      *
      * @throws \Support\Exception\BusinessException
@@ -204,7 +200,6 @@ class AdminRuleController extends BaseController
     /**
      * 一键生成菜单
      *
-     * @param  Request  $request
      * @return \support\Response
      *
      * @throws \Support\Exception\BusinessException
@@ -308,10 +303,6 @@ class AdminRuleController extends BaseController
     /**
      * 创建model
      *
-     * @param $class
-     * @param $namespace
-     * @param $file
-     * @param $table
      * @return void
      */
     protected function createModel($class, $namespace, $file, $table)
@@ -380,11 +371,6 @@ EOF;
     /**
      * 创建控制器
      *
-     * @param $controller_class
-     * @param $namespace
-     * @param $file
-     * @param $model_class
-     * @param $name
      * @return void
      */
     protected function createController($controller_class, $namespace, $file, $model_class, $name)
@@ -436,7 +422,6 @@ EOF;
     /**
      * 字段类型到php类型映射
      *
-     * @param  string  $type
      * @return string
      */
     protected function getType(string $type)

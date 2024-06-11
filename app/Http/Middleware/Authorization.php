@@ -13,11 +13,6 @@ use Flame\Http\Response;
  */
 class Authorization implements Middleware
 {
-    /**
-     * @param  Request  $request
-     * @param  callable  $next
-     * @return Response
-     */
     public function process(Request $request, callable $next): Response
     {
         // check auth rule

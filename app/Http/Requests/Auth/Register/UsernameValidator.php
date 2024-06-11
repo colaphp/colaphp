@@ -37,8 +37,7 @@ class UsernameValidator extends Validator
     /**
      * 自定义图片验证规则
      *
-     * @param  mixed  $value 验证数据
-     * @return bool
+     * @param  mixed  $value  验证数据
      */
     public function catpcha(mixed $value): bool
     {

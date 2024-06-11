@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Bundles\Auth\Services;
 
 use App\Service\Auth\Input\RegisterInput;
-use Flame\Database\DB;
 use Exception;
+use Flame\Database\DB;
 
 /**
  * Class RegisterService
@@ -16,9 +16,6 @@ class RegisterService
     /**
      * 注册服务
      *
-     * @param  RegisterInput  $registerInput
-     * @param  string  $type
-     * @return int
      *
      * @throws Exception
      */

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Flame\Database\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MigrationModel extends Model
 {
@@ -18,7 +17,6 @@ class MigrationModel extends Model
      * 主键
      */
     protected $primaryKey = 'version';
-
 
     /**
      * The attributes that are mass assignable.

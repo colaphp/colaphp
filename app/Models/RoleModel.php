@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Flame\Database\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class RoleModel extends Model
 {
@@ -13,7 +12,6 @@ class RoleModel extends Model
      * 设置表
      */
     protected $table = 'roles';
-
 
     /**
      * The attributes that are mass assignable.

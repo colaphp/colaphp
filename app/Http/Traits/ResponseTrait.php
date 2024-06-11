@@ -10,16 +10,11 @@ trait ResponseTrait
 {
     /**
      * 模板变量
-     *
-     * @var array
      */
     protected array $vars = [];
 
     /**
      * 变量赋值
-     *
-     * @param $name
-     * @param $value
      */
     protected function assign($name, $value): void
     {
@@ -28,11 +23,6 @@ trait ResponseTrait
 
     /**
      * 获取内容
-     *
-     * @param $template
-     * @param  array  $vars
-     * @param $app
-     * @return string
      */
     protected function fetch($template, array $vars = [], $app = null): string
     {
@@ -41,11 +31,6 @@ trait ResponseTrait
 
     /**
      * 视图渲染
-     *
-     * @param $template
-     * @param  array  $vars
-     * @param $app
-     * @return Response
      */
     protected function display($template, array $vars = [], $app = null): Response
     {
@@ -57,9 +42,8 @@ trait ResponseTrait
     /**
      * 返回封装后的API数据到客户端
      *
-     * @param  mixed  $data 要返回的数据
-     * @param  array  $header 发送的Header信息
-     * @return Response
+     * @param  mixed  $data  要返回的数据
+     * @param  array  $header  发送的Header信息
      */
     protected function success(mixed $data, array $header = []): Response
     {
@@ -73,10 +57,9 @@ trait ResponseTrait
     /**
      * 返回异常数据到客户端
      *
-     * @param  mixed  $message 错误信息
-     * @param  int  $code 错误码
-     * @param  array  $headers 发送的Header信息
-     * @return Response
+     * @param  mixed  $message  错误信息
+     * @param  int  $code  错误码
+     * @param  array  $headers  发送的Header信息
      */
     protected function error(mixed $message, int $code = 400, array $headers = []): Response
     {

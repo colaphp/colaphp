@@ -6,18 +6,15 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Service\OAuth\SocializeService;
+use Exception;
 use Flame\Http\Request;
 use Flame\Http\Response;
 use Flame\Log\Log;
-use Exception;
 
 class SocializeController extends Controller
 {
     /**
      * 社会化授权登录
-     *
-     * @param  Request  $request
-     * @return Response
      */
     public function redirect(Request $request): Response
     {
@@ -37,9 +34,6 @@ class SocializeController extends Controller
 
     /**
      * 社会化授权登录回调
-     *
-     * @param  Request  $request
-     * @return Response
      */
     public function callback(Request $request): Response
     {
@@ -49,6 +43,7 @@ class SocializeController extends Controller
         try {
             $socializeService = new SocializeService();
             $user = $socializeService->callback($type, $code);
+
             // TODO && login or register
             return $user->getId();
         } catch (Exception $e) {

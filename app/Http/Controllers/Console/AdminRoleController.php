@@ -31,7 +31,6 @@ class AdminRoleController extends BaseController
     /**
      * 更新
      *
-     * @param  Request  $request
      * @return \support\Response
      */
     public function update(Request $request)
@@ -78,7 +77,6 @@ class AdminRoleController extends BaseController
     /**
      * 删除
      *
-     * @param  Request  $request
      * @return \support\Response
      *
      * @throws \Support\Exception\BusinessException

@@ -13,11 +13,6 @@ use Flame\Http\Response;
  */
 class RedirectIfAuthenticated implements Middleware
 {
-    /**
-     * @param  Request  $request
-     * @param  callable  $next
-     * @return Response
-     */
     public function process(Request $request, callable $next): Response
     {
         if (session('?uid')) {

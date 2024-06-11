@@ -11,16 +11,13 @@ use App\Service\Auth\AuthService;
 use App\Service\Auth\Input\LoginByMobileInput;
 use App\Service\Auth\Input\LoginInput;
 use App\Service\Auth\LoginService;
+use Exception;
 use Flame\Http\Request;
 use Flame\Http\Response;
 use Flame\Log\Log;
-use Exception;
 
 class LoginController extends Controller
 {
-    /**
-     * @return Response
-     */
     public function index(): Response
     {
         return view('login');
@@ -28,9 +25,6 @@ class LoginController extends Controller
 
     /**
      * 用户名、邮箱、手机号码与密码登录
-     *
-     * @param  Request  $request
-     * @return Response
      */
     public function passport(Request $request): Response
     {
@@ -59,9 +53,6 @@ class LoginController extends Controller
 
     /**
      * 手机号码与短信验证码登录
-     *
-     * @param  Request  $request
-     * @return Response
      */
     public function sms(Request $request): Response
     {

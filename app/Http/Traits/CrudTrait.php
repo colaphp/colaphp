@@ -5,26 +5,20 @@ declare(strict_types=1);
 namespace App\Http\Traits;
 
 use App\Models\DictOption;
+use Exception;
 use Flame\Database\DB;
 use Flame\Database\Model;
 use Flame\Http\Request;
 use Flame\Http\Response;
-use Exception;
 
 trait CrudTrait
 {
     use ResponseTrait;
 
-    /**
-     * @var Model
-     */
     protected Model $model;
 
     /**
      * 查询
-     *
-     * @param  Request  $request
-     * @return Response
      */
     public function select(Request $request): Response
     {
@@ -67,9 +61,6 @@ trait CrudTrait
 
     /**
      * 添加
-     *
-     * @param  Request  $request
-     * @return Response
      */
     public function insert(Request $request): Response
     {
@@ -109,9 +100,6 @@ trait CrudTrait
 
     /**
      * 更新
-     *
-     * @param  Request  $request
-     * @return Response
      */
     public function update(Request $request): Response
     {
@@ -147,9 +135,6 @@ trait CrudTrait
 
     /**
      * 删除
-     *
-     * @param  Request  $request
-     * @return Response
      */
     public function delete(Request $request): Response
     {
@@ -164,8 +149,6 @@ trait CrudTrait
     /**
      * 摘要
      *
-     * @param  Request  $request
-     * @return Response
      *
      * @throws Exception
      */
@@ -198,8 +181,6 @@ trait CrudTrait
     /**
      * 按表获取摘要
      *
-     * @param $table
-     * @param $section
      * @return array|mixed
      */
     protected function getSchema($table, $section = null)
@@ -262,10 +243,6 @@ trait CrudTrait
         return $section ? $data[$section] : $data;
     }
 
-    /**
-     * @param $schema
-     * @return string
-     */
     protected function getLengthValue($schema): string
     {
         $type = $schema->DATA_TYPE;
@@ -287,10 +264,6 @@ trait CrudTrait
         return '';
     }
 
-    /**
-     * @param  Request  $request
-     * @return Response|array
-     */
     protected function selectInput(Request $request): Response|array
     {
         $field = $request->get('field');
@@ -323,9 +296,6 @@ trait CrudTrait
 
     /**
      * 树
-     *
-     * @param $items
-     * @return Response
      */
     protected function formatTree($items): Response
     {
@@ -357,9 +327,6 @@ trait CrudTrait
 
     /**
      * 表格树
-     *
-     * @param $items
-     * @return Response
      */
     protected function formatTableTree($items): Response
     {
@@ -384,10 +351,6 @@ trait CrudTrait
         return $this->success($formattedItems);
     }
 
-    /**
-     * @param $items
-     * @return Response
-     */
     protected function formatSelect($items): Response
     {
         $formattedItems = [];
@@ -403,9 +366,6 @@ trait CrudTrait
         return $this->success($formattedItems);
     }
 
-    /**
-     * @return array
-     */
     private function methodControlMap(): array
     {
         return [
@@ -445,10 +405,6 @@ trait CrudTrait
         ];
     }
 
-    /**
-     * @param $type
-     * @return string
-     */
     private function typeToControl($type): string
     {
         if (stripos($type, 'int') !== false) {
@@ -467,11 +423,6 @@ trait CrudTrait
         return 'Input';
     }
 
-    /**
-     * @param $type
-     * @param  bool  $unsigned
-     * @return string
-     */
     private function typeToMethod($type, bool $unsigned = false): string
     {
         if (stripos($type, 'int') !== false) {

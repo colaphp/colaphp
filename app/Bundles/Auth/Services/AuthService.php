@@ -5,17 +5,14 @@ declare(strict_types=1);
 namespace App\Bundles\Auth\Services;
 
 use App\Service\User\UserService;
-use Flame\Support\Carbon;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
+use Flame\Support\Carbon;
 
 class AuthService
 {
     /**
      * 返回用户数据的属性
-     *
-     * @param $token
-     * @return array
      */
     public function auth($token = null): array
     {
@@ -33,10 +30,6 @@ class AuthService
 
     /**
      * 创建JWT参数
-     *
-     * @param  int  $uid
-     * @param  int  $expire
-     * @return string
      */
     public function createToken(int $uid, int $expire = 7200): string
     {
@@ -52,9 +45,6 @@ class AuthService
 
     /**
      * 根据Token头获取JWT参数
-     *
-     * @param  string  $token
-     * @return array
      */
     public function getPayloadByToken(string $token): array
     {
@@ -66,9 +56,8 @@ class AuthService
     /**
      * 获取管理资源链接
      *
-     * @param  int  $menu 是否仅显示菜单
-     * @param  int  $status 显示状态
-     * @return array
+     * @param  int  $menu  是否仅显示菜单
+     * @param  int  $status  显示状态
      */
     public function getMenu(int $menu = 1, int $status = 1): array
     {

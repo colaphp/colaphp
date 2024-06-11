@@ -115,15 +115,12 @@ class MenuController extends BaseController
             $this->arrayValues($item);
         }
 
-        return  $this->json(0, 'ok', $formatted_items);
+        return $this->json(0, 'ok', $formatted_items);
     }
 
     /**
      * 移除不包含某些数据的数组
      *
-     * @param $array
-     * @param $key
-     * @param $values
      * @return void
      */
     protected function removeUncontain(&$array, $key, $values)
@@ -146,9 +143,6 @@ class MenuController extends BaseController
     /**
      * 判断数组是否包含某些数据
      *
-     * @param $array
-     * @param $key
-     * @param $values
      * @return bool
      */
     protected function arrayContain(&$array, $key, $values)
@@ -174,8 +168,6 @@ class MenuController extends BaseController
     /**
      * 递归删除某些key
      *
-     * @param $array
-     * @param $keys
      * @return void
      */
     protected function recursiveRemove(&$array, $keys)

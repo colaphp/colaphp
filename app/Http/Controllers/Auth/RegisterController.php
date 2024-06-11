@@ -11,18 +11,15 @@ use App\Http\Requests\Auth\Register\UsernameValidator;
 use App\Service\Auth\AuthService;
 use App\Service\Auth\Input\RegisterInput;
 use App\Service\Auth\RegisterService;
+use Exception;
 use Flame\Http\Request;
 use Flame\Http\Response;
 use Flame\Log\Log;
 use Flame\Support\Carbon;
 use Flame\Support\Str;
-use Exception;
 
 class RegisterController extends Controller
 {
-    /**
-     * @return Response
-     */
     public function index(): Response
     {
         return view('register');
@@ -30,9 +27,6 @@ class RegisterController extends Controller
 
     /**
      * 用户注册服务
-     *
-     * @param  Request  $request
-     * @return Response
      */
     public function username(Request $request): Response
     {
@@ -57,9 +51,6 @@ class RegisterController extends Controller
 
     /**
      * 邮箱注册服务
-     *
-     * @param  Request  $request
-     * @return Response
      */
     public function email(Request $request): Response
     {
@@ -85,9 +76,6 @@ class RegisterController extends Controller
 
     /**
      * 手机号码注册服务
-     *
-     * @param  Request  $request
-     * @return Response
      */
     public function mobile(Request $request): Response
     {
@@ -114,9 +102,6 @@ class RegisterController extends Controller
     /**
      * 注册处理及响应
      *
-     * @param  RegisterInput  $registerInput
-     * @param  string  $registerType
-     * @return Response
      *
      * @throws Exception
      */

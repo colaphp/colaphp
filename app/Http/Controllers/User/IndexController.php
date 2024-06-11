@@ -8,16 +8,12 @@ use App\Exceptions\CustomException;
 use Flame\Http\Response;
 use Flame\Support\Facade\Log;
 use OpenApi\Attributes as OA;
-use OpenApi\Attributes\Contact;
 
 /**
  * Class IndexController
  */
 class IndexController extends BaseController
 {
-    /**
-     * @return Response
-     */
     public function index(): Response
     {
         return view('index');

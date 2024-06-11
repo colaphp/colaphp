@@ -10,10 +10,6 @@ use Flame\Http\Response;
 
 class LogoutController extends Controller
 {
-    /**
-     * @param  Request  $request
-     * @return Response
-     */
     public function index(Request $request): Response
     {
         if ($request->isAjax()) {
