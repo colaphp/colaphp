@@ -8,16 +8,8 @@ use Flame\Contracts\Middleware;
 use Flame\Http\Request;
 use Flame\Http\Response;
 
-/**
- * Class StaticFile
- */
 class StaticFile implements Middleware
 {
-    /**
-     * @param  Request  $request
-     * @param  callable  $next
-     * @return Response
-     */
     public function process(Request $request, callable $next): Response
     {
         // 禁止访问.开头的隐藏文件

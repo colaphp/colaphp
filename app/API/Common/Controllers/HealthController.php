@@ -10,7 +10,7 @@ class HealthController extends BaseController
 {
     public function index(): Response
     {
-        return $this->json([
+        return json([
             'status' => 'up',
             'version' => '240430',
         ]);
