@@ -32,7 +32,7 @@ class RegisterController extends BaseController
     {
         $v = new UsernameValidator();
         if (! $v->check($request->post())) {
-            return $this->error($v->getError());
+            return $this->fail($v->getError());
         }
 
         $registerInput = new RegisterInput();
@@ -45,7 +45,7 @@ class RegisterController extends BaseController
         } catch (Exception $e) {
             Log::error($e->getMessage());
 
-            return $this->error('用户注册失败');
+            return $this->fail('用户注册失败');
         }
     }
 
@@ -56,7 +56,7 @@ class RegisterController extends BaseController
     {
         $v = new EmailValidator();
         if (! $v->check($request->post())) {
-            return $this->error($v->getError());
+            return $this->fail($v->getError());
         }
 
         $registerInput = new RegisterInput();
@@ -70,7 +70,7 @@ class RegisterController extends BaseController
         } catch (Exception $e) {
             Log::error($e->getMessage());
 
-            return $this->error('用户注册失败');
+            return $this->fail('用户注册失败');
         }
     }
 
@@ -81,7 +81,7 @@ class RegisterController extends BaseController
     {
         $v = new MobileValidator();
         if (! $v->check($request->post())) {
-            return $this->error($v->getError());
+            return $this->fail($v->getError());
         }
 
         $registerInput = new RegisterInput();
@@ -95,7 +95,7 @@ class RegisterController extends BaseController
         } catch (Exception $e) {
             Log::error($e->getMessage());
 
-            return $this->error('手机号注册失败');
+            return $this->fail('手机号注册失败');
         }
     }
 

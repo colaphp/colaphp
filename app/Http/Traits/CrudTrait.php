@@ -66,7 +66,7 @@ trait CrudTrait
 
         $allow_column = DB::select("desc `$table`");
         if (! $allow_column) {
-            return $this->error('表不存在');
+            return $this->fail('表不存在');
         }
 
         $columns = array_column($allow_column, 'Field', 'Field');
@@ -107,7 +107,7 @@ trait CrudTrait
         $table = $this->model->getTable();
         $allow_column = DB::select("desc `$table`");
         if (! $allow_column) {
-            return $this->error('表不存在');
+            return $this->fail('表不存在');
         }
 
         foreach ($data as $col => $item) {
@@ -273,7 +273,7 @@ trait CrudTrait
 
         $allow_column = DB::select("desc `$table`");
         if (! $allow_column) {
-            return $this->error('表不存在');
+            return $this->fail('表不存在');
         }
 
         $allow_column = array_column($allow_column, 'Field', 'Field');

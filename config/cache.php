@@ -13,5 +13,5 @@ return [
         ],
     ],
 
-    'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'FlamePHP'), '_').'_cache_'),
+    'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'ColaPHP'), '_').'_cache_'),
 ];

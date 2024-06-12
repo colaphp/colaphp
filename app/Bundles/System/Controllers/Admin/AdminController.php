@@ -38,7 +38,7 @@ class AdminController extends BaseController
 
         $admin = session('auth_admin');
         if ($value == $admin['id']) {
-            return $this->error('不能删除自己');
+            return $this->fail('不能删除自己');
         }
 
         $this->model->where([$column => $value])->delete();

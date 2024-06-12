@@ -9,6 +9,8 @@ use Exception;
 use Flame\Database\Contracts\RepositoryInterface;
 use Flame\Database\Model;
 use Flame\Database\Repositories\CurdRepository;
+use Flame\Support\Facade\DB;
+use Illuminate\Database\Query\Builder;
 
 class UserRepository extends CurdRepository implements RepositoryInterface
 {
@@ -31,7 +33,7 @@ class UserRepository extends CurdRepository implements RepositoryInterface
      */
     public function createByEntity(UserEntity $entity): int
     {
-        return $this->create($entity->toArray());
+        return $this->save($entity->toArray());
     }
 
     /**
@@ -39,7 +41,7 @@ class UserRepository extends CurdRepository implements RepositoryInterface
      */
     public function findOneEntityById(int $id): ?UserEntity
     {
-        $data = $this->findOneById($id);
+        $data = $this->findById($id);
         if (empty($data)) {
             return null;
         }
@@ -55,7 +57,7 @@ class UserRepository extends CurdRepository implements RepositoryInterface
      */
     public function findOneEntity(array $condition): ?UserEntity
     {
-        $data = $this->findOneByWhere($condition);
+        $data = $this->find($condition);
         if (empty($data)) {
             return null;
         }
@@ -94,7 +96,7 @@ class UserRepository extends CurdRepository implements RepositoryInterface
      */
     public function paginateEntity(array $condition, int $page, int $pageSize): array
     {
-        $result = $this->paginate($condition, $page, $pageSize);
+        $result = $this->page($condition, $page, $pageSize);
 
         foreach ($result['data'] as $key => $item) {
             $entity = new UserEntity();
@@ -113,5 +115,13 @@ class UserRepository extends CurdRepository implements RepositoryInterface
         $model = '\\App\\Models\\'.$modelName.'Model';
 
         return new $model();
+    }
+
+    /**
+     * 定义数据数据模型类
+     */
+    public function builder(string $tableName = 'users'): Builder
+    {
+        return DB::table($tableName);
     }
 }

@@ -14,7 +14,7 @@ use App\Service\Auth\LoginService;
 use Exception;
 use Flame\Http\Request;
 use Flame\Http\Response;
-use Flame\Log\Log;
+use Flame\Support\Facade\Log;
 
 class LoginController extends BaseController
 {
@@ -30,7 +30,7 @@ class LoginController extends BaseController
     {
         $v = new UsernameValidator();
         if (! $v->check($request->post())) {
-            return $this->error($v->getError());
+            return $this->fail($v->getError());
         }
 
         $loginInput = new LoginInput();
@@ -47,7 +47,7 @@ class LoginController extends BaseController
         } catch (Exception $e) {
             Log::error($e->getMessage());
 
-            return $this->error('用户名或密码不正确');
+            return $this->fail('用户名或密码不正确');
         }
     }
 
@@ -58,7 +58,7 @@ class LoginController extends BaseController
     {
         $v = new MobileValidator();
         if (! $v->check($request->post())) {
-            return $this->error($v->getError());
+            return $this->fail($v->getError());
         }
 
         $mobileLoginInput = new LoginByMobileInput();
@@ -75,7 +75,7 @@ class LoginController extends BaseController
         } catch (Exception $e) {
             Log::error($e->getMessage());
 
-            return $this->error('手机验证码不正确');
+            return $this->fail('手机验证码不正确');
         }
     }
 }
