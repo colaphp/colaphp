@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace App\Http;
 
-/**
- * Class Kernel
- */
 class Kernel
 {
     /**
@@ -25,15 +22,12 @@ class Kernel
         'Auth' => [
             \App\Http\Middleware\RedirectIfAuthenticated::class,
         ],
-        'Console' => [
+        'Manager' => [
             \App\Http\Middleware\Authenticate::class,
             \App\Http\Middleware\Authorization::class,
         ],
         'User' => [
             \App\Http\Middleware\Authenticate::class,
-        ],
-        'Web' => [
-            //
         ],
     ];
 }

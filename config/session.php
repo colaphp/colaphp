@@ -1,6 +1,7 @@
 <?php
 
 use Flame\Session\RedisSessionHandler;
+use Flame\Support\Str;
 
 return [
     'type' => 'redis', // or file
@@ -12,12 +13,12 @@ return [
             'save_path' => runtime_path('sessions'),
         ],
         'redis' => [
-            'host' => '127.0.0.1',
-            'port' => 6379,
-            'auth' => '',
-            'timeout' => 2,
-            'database' => '',
-            'prefix' => 'redis_session_',
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'port' => env('REDIS_PORT', '6379'),
+            'auth' => env('REDIS_PASSWORD'),
+            'timeout' => env('REDIS_TIMEOUT', 2),
+            'database' => env('REDIS_SESSION_DB', '3'),
+            'prefix' => env('REDIS_SESSION_PREFIX', Str::slug(env('APP_NAME', 'ColaPHP'), '_').'_session_'),
         ],
     ],
 

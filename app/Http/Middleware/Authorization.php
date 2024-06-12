@@ -8,9 +8,6 @@ use Flame\Contracts\Middleware;
 use Flame\Http\Request;
 use Flame\Http\Response;
 
-/**
- * Class Authorization
- */
 class Authorization implements Middleware
 {
     public function process(Request $request, callable $next): Response
