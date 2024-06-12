@@ -6,7 +6,7 @@ use Flame\Http\Request;
 use Flame\Routing\Route;
 
 Route::group('api', function () {
-    Route::any('test', function (Request $request) {
+    Route::get('test', function (Request $request) {
         return response('test');
     });
 });
