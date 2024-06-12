@@ -16,14 +16,18 @@ class IndexController extends BaseController
 
     public function json(Request $request): Response
     {
-        return $this->success(['msg' => 'ok', 'request' => $request->all()]);
+        return $this->success([
+            'msg' => 'ok',
+            'request' => $request->all(),
+            'path' => $request->path(),
+        ]);
     }
 
     public function file(Request $request): Response
     {
         $file = $request->file('upload');
         if ($file && $file->isValid()) {
-            $file->move(public_path('storage/myfile.'.$file->getUploadExtension()));
+            $file->move(public_path('storage/myfile.' . $file->getUploadExtension()));
 
             return $this->success(['msg' => 'upload success']);
         }

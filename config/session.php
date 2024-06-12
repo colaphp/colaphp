@@ -4,7 +4,7 @@ use Flame\Session\RedisSessionHandler;
 use Flame\Support\Str;
 
 return [
-    'type' => 'redis', // or file
+    'type' => env('SESSION_DRIVER', 'redis'),
 
     'handler' => RedisSessionHandler::class,
 

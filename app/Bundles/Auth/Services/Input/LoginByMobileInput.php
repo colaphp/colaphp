@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Auth\Input;
+namespace App\Bundles\Auth\Services\Input;
 
 class LoginByMobileInput
 {

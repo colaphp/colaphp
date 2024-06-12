@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Sms;
+namespace App\Bundles\Sms\Services;
 
-use Flame\Log\Log;
+use Flame\Support\Facade\Log;
 use Overtrue\EasySms\EasySms;
 use Overtrue\EasySms\Exceptions\InvalidArgumentException;
 use Overtrue\EasySms\Exceptions\NoGatewayAvailableException;

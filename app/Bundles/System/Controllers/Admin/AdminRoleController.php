@@ -4,11 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bundles\System\Controllers\Admin;
 
-use App\Http\Controllers\Manager\AdminRole;
-use App\Http\Controllers\Manager\Crud;
-use App\Http\Controllers\Manager\Db;
-use App\Http\Controllers\Manager\Request;
-use App\Http\Controllers\Manager\Util;
+use App\API\Admin\Controllers\BaseController;
 
 /**
  * 管理员角色设置

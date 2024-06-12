@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Auth\Output;
+namespace App\Bundles\Auth\Services\Output;
 
 /**
  * Class AuthOutput

@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Bundles\Auth\Controllers\Admin;
 
+use App\API\Common\Controllers\BaseController;
 use App\Bundles\System\Requests\Auth\LoginMobileRequest;
 use App\Bundles\System\Responses\LoginResponse;
 use Flame\Http\Response;
-use Flame\Routing\Controller;
 use Flame\Support\Facade\Log;
 use OpenApi\Attributes as OA;
 use Throwable;
 
-class AuthController extends Controller
+class AuthController extends BaseController
 {
     #[OA\Post(path: '/admin/auth/login', summary: '通过手机号码登录', tags: ['登录'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LoginMobileRequest::class))]

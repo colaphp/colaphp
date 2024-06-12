@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 
 use App\Services\UserService;
 use Flame\Http\Response;
-use Flame\Support\Facade\Cache;
 
 class CategoryController extends BaseController
 {
@@ -18,20 +17,8 @@ class CategoryController extends BaseController
 
     public function index(): Response
     {
+        $list = $this->userService->getList();
+
         return view('category');
-    }
-
-    public function json(): Response
-    {
-        $list2 = Cache::rememberForever('list2', function () {
-            return $this->userService->getList();
-        });
-
-        $data = [];
-        for ($i = 0; $i < 20; $i++) {
-            $data[] = $list2;
-        }
-
-        return json($data);
     }
 }

@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bundles\System\Controllers\Admin;
 
-use App\Http\Controllers\Manager\OA;
-use App\Http\Controllers\Manager\Throwable;
+use App\API\Admin\Controllers\BaseController;
 use Flame\Foundation\Exception\CustomException;
 use Flame\Http\Response;
 use Flame\Support\Facade\Log;

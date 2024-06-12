@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bundles\Auth\Controllers\Admin;
 
+use App\API\Common\Controllers\BaseController;
 use App\Support\JWTHelper;
 use Flame\Http\Response;
 use Flame\Support\Facade\Crypt;

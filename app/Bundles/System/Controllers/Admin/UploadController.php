@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bundles\System\Controllers\Admin;
 
-use App\Http\Controllers\Manager\Image;
-use App\Http\Controllers\Manager\Request;
+use App\API\Admin\Controllers\BaseController;
 
 class UploadController extends BaseController
 {

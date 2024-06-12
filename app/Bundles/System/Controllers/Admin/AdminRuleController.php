@@ -4,14 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bundles\System\Controllers\Admin;
 
-use App\Http\Controllers\Manager\AdminRole;
-use App\Http\Controllers\Manager\AdminRule;
-use App\Http\Controllers\Manager\Crud;
-use App\Http\Controllers\Manager\Db;
-use App\Http\Controllers\Manager\Request;
-use App\Http\Controllers\Manager\Util;
-
-use function App\Http\Controllers\Manager\admin;
+use App\API\Admin\Controllers\BaseController;
 
 class AdminRuleController extends BaseController
 {

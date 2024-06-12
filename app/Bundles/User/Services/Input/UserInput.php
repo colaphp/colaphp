@@ -2,11 +2,8 @@
 
 declare(strict_types=1);
 
-namespace App\Service\User\Input;
+namespace App\Bundles\User\Services\Input;
 
-/**
- * Class UserInput
- */
 class UserInput
 {
 }

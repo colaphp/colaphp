@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bundles\User\Controllers\Admin;
 
-use App\API\Manager\Controllers\BaseController;
+use App\API\Admin\Controllers\BaseController;
 use App\Bundles\User\Requests\UserCreateRequest;
 use App\Bundles\User\Requests\UserQueryRequest;
 use App\Bundles\User\Responses\UserResponse;
@@ -12,6 +12,7 @@ use App\Bundles\User\Services\UserBundleService;
 use Flame\Foundation\Exception\CustomException;
 use Flame\Http\Response;
 use Flame\Support\Facade\Log;
+use Flame\Validation\Exception\ValidationException;
 use OpenApi\Attributes as OA;
 use Throwable;
 
@@ -30,7 +31,7 @@ class UserController extends BaseController
             // 表单校验
             $v = new UserQueryRequest();
             if (! $v->check($request)) {
-                throw new CustomException($v->getError());
+                throw new ValidationException($v->getError());
             }
 
             // 接收参数
