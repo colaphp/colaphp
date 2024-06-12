@@ -7,9 +7,9 @@ namespace App\Repositories;
 use App\Entities\UserEntity;
 use Exception;
 use Flame\Database\Contracts\RepositoryInterface;
-use Flame\Database\Model;
 use Flame\Database\Repositories\CurdRepository;
 use Flame\Support\Facade\DB;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
 class UserRepository extends CurdRepository implements RepositoryInterface
@@ -108,6 +108,14 @@ class UserRepository extends CurdRepository implements RepositoryInterface
     }
 
     /**
+     * 定义数据表查询构造器
+     */
+    public function builder(): Builder
+    {
+        return DB::table('users');
+    }
+
+    /**
      * 定义数据数据模型类
      */
     public function model(string $modelName = 'User'): Model
@@ -115,13 +123,5 @@ class UserRepository extends CurdRepository implements RepositoryInterface
         $model = '\\App\\Models\\'.$modelName.'Model';
 
         return new $model();
-    }
-
-    /**
-     * 定义数据数据模型类
-     */
-    public function builder(string $tableName = 'users'): Builder
-    {
-        return DB::table($tableName);
     }
 }

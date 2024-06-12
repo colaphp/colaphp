@@ -6,7 +6,7 @@ namespace App\Bundles\Auth\Services;
 
 use App\Service\Auth\Input\RegisterInput;
 use Exception;
-use Flame\Database\DB;
+use Flame\Support\Facade\DB;
 
 /**
  * Class RegisterService

@@ -6,7 +6,7 @@ namespace App\Http\Traits;
 
 use Exception;
 use Flame\Database\Contracts\ServiceInterface;
-use Flame\Database\DB;
+use Flame\Support\Facade\DB;
 use Flame\Http\Request;
 use Flame\Http\Response;
 

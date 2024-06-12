@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bundles\System\Controllers\Admin;
 
-use App\Bundles\System\User;
 use App\Http\Traits\CrudTrait;
-use Flame\Database\Model;
 use Flame\Http\Request;
 use Flame\Http\Response;
 
