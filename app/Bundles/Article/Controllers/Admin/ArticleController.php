@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Bundles\Article\Controllers\Admin;
 
+use App\API\Admin\Controllers\BaseController;
 use App\Bundles\Article\Requests\ArticleCreateRequest;
 use App\Bundles\Article\Responses\ArticleResponse;
-use App\Bundles\Article\Services\ArticleService;
-use App\Exceptions\CustomException;
-use App\Http\Controllers\Admin\BaseController;
+use App\Bundles\Article\Services\ArticleBundleService;
+use Flame\Foundation\Exception\CustomException;
 use Flame\Http\Response;
 use Flame\Support\Facade\Log;
 use OpenApi\Attributes as OA;
@@ -22,7 +22,7 @@ class ArticleController extends BaseController
     public function index(): Response
     {
         try {
-            $articleService = new ArticleService();
+            $articleService = new ArticleBundleService();
 
             return $this->success(__FILE__);
         } catch (CustomException $e) {

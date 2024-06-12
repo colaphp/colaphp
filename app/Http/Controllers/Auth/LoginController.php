@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BaseController;
 use App\Http\Requests\Auth\Login\MobileValidator;
 use App\Http\Requests\Auth\Login\UsernameValidator;
 use App\Service\Auth\AuthService;
@@ -16,7 +16,7 @@ use Flame\Http\Request;
 use Flame\Http\Response;
 use Flame\Log\Log;
 
-class LoginController extends Controller
+class LoginController extends BaseController
 {
     public function index(): Response
     {

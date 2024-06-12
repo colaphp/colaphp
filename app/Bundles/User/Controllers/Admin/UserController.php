@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Bundles\User\Controllers\Admin;
 
+use App\API\Manager\Controllers\BaseController;
 use App\Bundles\User\Requests\UserCreateRequest;
 use App\Bundles\User\Requests\UserQueryRequest;
 use App\Bundles\User\Responses\UserResponse;
-use App\Bundles\User\Services\UserService;
-use App\Exceptions\CustomException;
-use App\Http\Controllers\Admin\BaseController;
+use App\Bundles\User\Services\UserBundleService;
+use Flame\Foundation\Exception\CustomException;
 use Flame\Http\Response;
 use Flame\Support\Facade\Log;
 use OpenApi\Attributes as OA;
@@ -50,7 +50,7 @@ class UserController extends BaseController
             }
 
             // 查询数据
-            $userService = new UserService();
+            $userService = new UserBundleService();
             $result = $userService->page($condition, $page, $pageSize);
 
             // 格式化数据
@@ -76,7 +76,7 @@ class UserController extends BaseController
     public function create(): Response
     {
         try {
-            $userService = new UserService();
+            $userService = new UserBundleService();
 
             return $this->success(__FILE__);
         } catch (CustomException $e) {

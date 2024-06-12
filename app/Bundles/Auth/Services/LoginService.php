@@ -4,14 +4,10 @@ declare(strict_types=1);
 
 namespace App\Bundles\Auth\Services;
 
-use App\Models\Auth;
 use App\Service\Auth\Input\LoginByMobileInput;
 use App\Service\Auth\Input\LoginInput;
 use Exception;
 
-/**
- * Class LoginService
- */
 class LoginService
 {
     /**

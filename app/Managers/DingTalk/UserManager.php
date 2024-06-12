@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Managers\DingTalk;
 
-use App\Exceptions\CustomException;
 use App\Managers\DingTalk\Enums\UserActiveEnum;
 use App\Managers\DingTalk\Enums\UserAdminEnum;
 use App\Managers\DingTalk\Enums\UserBossEnum;
 use App\Managers\DingTalk\Enums\UserSeniorEnum;
 use App\Managers\DingTalk\Model\User;
+use Flame\Foundation\Exception\CustomException;
 use Flame\Http\HttpClient;
 use Flame\Support\Facade\Log;
 use Throwable;

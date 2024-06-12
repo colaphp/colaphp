@@ -4,18 +4,15 @@ declare(strict_types=1);
 
 namespace App\Http\Traits;
 
-use App\Models\DictOption;
 use Exception;
+use Flame\Database\Contracts\ServiceInterface;
 use Flame\Database\DB;
-use Flame\Database\Model;
 use Flame\Http\Request;
 use Flame\Http\Response;
 
 trait CrudTrait
 {
-    use ResponseTrait;
-
-    protected Model $model;
+    protected ServiceInterface $service;
 
     /**
      * 查询

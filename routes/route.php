@@ -2,7 +2,11 @@
 
 declare(strict_types=1);
 
-use App\API\Common\Controllers\HealthController;
+use Flame\Http\Request;
 use Flame\Routing\Route;
 
-Route::get('/', [HealthController::class, 'index']);
+Route::group('api', function () {
+    Route::any('test', function (Request $request) {
+        return response('test');
+    });
+});

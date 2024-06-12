@@ -5,7 +5,7 @@ declare(strict_types=1);
 if (! function_exists('asset')) {
     function asset(string $url): string
     {
-        return '/'.$url.'?v='.Application::RELEASE;
+        return '/'.$url.'?v=';
     }
 }
 
@@ -52,12 +52,5 @@ if (! function_exists('skin')) {
     function skin(string $url): string
     {
         return asset('themes/default/'.ltrim($url, '/'));
-    }
-}
-
-if (! function_exists('url')) {
-    function url(string $url): string
-    {
-        return $url;
     }
 }

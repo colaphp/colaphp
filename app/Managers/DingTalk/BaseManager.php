@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Managers\DingTalk;
 
-use App\Exceptions\CustomException;
 use Exception;
+use Flame\Foundation\Exception\CustomException;
 use Flame\Http\HttpClient;
 
 class BaseManager

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BaseController;
 use App\Http\Requests\Auth\Register\EmailValidator;
 use App\Http\Requests\Auth\Register\MobileValidator;
 use App\Http\Requests\Auth\Register\UsernameValidator;
@@ -18,7 +18,7 @@ use Flame\Log\Log;
 use Flame\Support\Carbon;
 use Flame\Support\Str;
 
-class RegisterController extends Controller
+class RegisterController extends BaseController
 {
     public function index(): Response
     {

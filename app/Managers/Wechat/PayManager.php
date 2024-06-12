@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Managers\Wechat;
 
-use App\Exceptions\CustomException;
 use EasyWeChat\Kernel\Exceptions\InvalidArgumentException;
 use EasyWeChat\Pay\Application;
+use Flame\Foundation\Exception\CustomException;
 
 class PayManager extends BaseManager
 {

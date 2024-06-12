@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Bundles\Sms\Services;
 
 use App\Bundles\Sms\Constants\SmsConst;
-use App\Exceptions\CustomException;
 use Exception;
+use Flame\Foundation\Exception\CustomException;
 use Flame\Sms\SmsManager;
 use Flame\Support\Facade\RateLimiter;
 

@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace App\Bundles\Article\Enums;
 
+use Flame\Foundation\Contract\EnumMethodInterface;
+use Flame\Foundation\Enums\EnumMethods;
+
 /**
  * 文章状态
  */
-enum ArticleStatusEnum: int
+enum ArticleStatusEnum: int implements EnumMethodInterface
 {
+    use EnumMethods;
+
     /**
      * 正常
      */

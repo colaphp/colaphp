@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Managers\Wechat;
 
-use App\Exceptions\CustomException;
 use EasyWeChat\Kernel\Exceptions\InvalidArgumentException;
 use EasyWeChat\Kernel\HttpClient\AccessTokenAwareClient;
 use EasyWeChat\MiniApp\Application;
 use EasyWeChat\MiniApp\Utils;
+use Flame\Foundation\Exception\CustomException;
 use Throwable;
 
 class MiniAppManager extends BaseManager
