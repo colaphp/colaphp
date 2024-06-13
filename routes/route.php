@@ -2,11 +2,17 @@
 
 declare(strict_types=1);
 
-use Flame\Http\Request;
 use Flame\Routing\Route;
 
-Route::group('api', function () {
-    Route::get('test', function (Request $request) {
-        return response('test');
+$dirs = glob(base_path('frontend/*'), GLOB_ONLYDIR);
+foreach ($dirs as $path) {
+    $module = basename($path);
+    Route::get('/'.$module, function () use ($module) {
+        $template = public_path($module.'/index.html');
+        if (file_exists($template)) {
+            return response()->file($template);
+        } else {
+            return not_found();
+        }
     });
-});
+}

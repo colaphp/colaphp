@@ -16,7 +16,7 @@ use Throwable;
 
 class ArticleController extends BaseController
 {
-    #[OA\Post(path: '/article/manager/article/index', summary: '创建文章接口', tags: ['文章管理'])]
+    #[OA\Post(path: '/article', summary: '创建文章接口', tags: ['文章管理'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ArticleCreateRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ArticleResponse::class))]
     public function index(): Response

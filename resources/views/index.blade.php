@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    welcome page.
+    welcome page.<br><br>
+
+    <a href="{{ url('category') }}">category</a>
 @endsection

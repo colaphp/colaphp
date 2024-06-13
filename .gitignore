@@ -2,7 +2,10 @@
 /app/Controllers
 /framework
 /node_modules
+/public/admin
+/public/mobile
 /public/storage
+/public/user
 /runtime/*.key
 /vendor
 .env
