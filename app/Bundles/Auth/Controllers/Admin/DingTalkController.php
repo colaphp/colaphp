@@ -16,7 +16,7 @@ use Throwable;
 
 class DingTalkController extends BaseController
 {
-    #[OA\Post(path: '/api/auth/employee/dingTalk/login', summary: '钉钉内部应用免登', tags: ['员工认证'])]
+    #[OA\Post(path: '/dingTalk/login', summary: '钉钉内部应用免登', tags: ['员工认证'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: DingTalkLoginRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
     public function login(): Response
@@ -59,7 +59,7 @@ class DingTalkController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/api/auth/employee/dingTalk/scan', summary: '钉钉扫码登录', tags: ['员工认证'])]
+    #[OA\Post(path: '/dingTalk/scan', summary: '钉钉扫码登录', tags: ['员工认证'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: DingTalkLoginRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
     public function scan(): Response

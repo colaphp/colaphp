@@ -15,7 +15,7 @@ use Throwable;
 
 class WechatController extends BaseController
 {
-    #[OA\Post(path: '/api/auth/passenger/wechat/login', summary: '微信小程序登录', tags: ['乘客认证'])]
+    #[OA\Post(path: '/wechat/login', summary: '微信小程序登录', tags: ['乘客认证'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: WechatLoginRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
     public function login(): Response

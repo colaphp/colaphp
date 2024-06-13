@@ -11,11 +11,6 @@ use Flame\Support\Facade\Log;
 
 class IndexController extends BaseController
 {
-    public function index(): Response
-    {
-        return view('index');
-    }
-
     #[OA\Post(path: '/admin', summary: '管理控制台', security: [['bearerAuth' => []]], tags: ['控制台'])]
     #[OA\Response(response: 200, description: 'OK')]
     public function index(): Response

@@ -14,9 +14,9 @@ use Flame\Support\Str;
 use OpenApi\Attributes as OA;
 use Throwable;
 
-class ImageController extends BaseController
+class CaptchaController extends BaseController
 {
-    #[OA\Get(path: '/api/captcha/common/image', summary: '获取图片验证码', tags: ['验证码'])]
+    #[OA\Get(path: '/captcha', summary: '获取图片验证码', tags: ['验证码'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ImageCaptchaResponse::class))]
     public function index(): Response
     {

@@ -16,7 +16,7 @@ use Throwable;
 
 class SmsController extends BaseController
 {
-    #[OA\Post(path: '/api/auth/passenger/sms/login', summary: '通过短信验证码登录', tags: ['乘客认证'])]
+    #[OA\Post(path: '/sms/login', summary: '通过短信验证码登录', tags: ['乘客认证'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: SmsCodeLoginRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
     public function login(): Response
