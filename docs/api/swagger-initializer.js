@@ -5,10 +5,9 @@ window.onload = function() {
   window.ui = SwaggerUIBundle({
     // url: "https://petstore.swagger.io/v2/swagger.json",
     urls: [
-        {name: '认证模块', url: '/api/auth.json'},
-        {name: '运营模块', url: '/api/manager.json'},
-        {name: '门户模块', url: '/api/portal.json'},
+        {name: '公共模块', url: '/api/common.json'},
         {name: '用户模块', url: '/api/user.json'},
+        {name: '运营模块', url: '/api/admin.json'}
     ],
     dom_id: '#swagger-ui',
     deepLinking: true,
