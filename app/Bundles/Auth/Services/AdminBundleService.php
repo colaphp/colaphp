@@ -7,7 +7,7 @@ namespace App\Bundles\Auth\Services;
 use Exception;
 use Flame\JsonRpc\JsonRpcClient;
 
-class AdminUserBundleService extends AdminUserService
+class AdminBundleService
 {
     /**
      * 获取员工ID

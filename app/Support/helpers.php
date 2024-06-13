@@ -5,7 +5,7 @@ declare(strict_types=1);
 if (! function_exists('asset')) {
     function asset(string $url): string
     {
-        return '/'.$url.'?v=';
+        return url($url);
     }
 }
 
