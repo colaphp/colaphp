@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "API文档",
-        "description": "会员接口",
+        "description": "管理平台",
         "contact": {
             "name": "API Develop Team"
         },
@@ -10,24 +10,24 @@
     },
     "servers": [
         {
-            "url": "/api/v1/user",
+            "url": "/api/v1/admin",
             "description": "开发环境"
         }
     ],
     "paths": {
-        "/sms/login": {
+        "/article": {
             "post": {
                 "tags": [
-                    "乘客认证"
+                    "文章管理"
                 ],
-                "summary": "通过短信验证码登录",
-                "operationId": "b113e2f68805f463acc078ccbe9bf777",
+                "summary": "创建文章接口",
+                "operationId": "5acf6f41b97320561c646bb2f780d320",
                 "requestBody": {
                     "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "App\\Bundles\\Auth\\Controllers\\User\\SmsCodeLoginRequest"
+                                "$ref": "#/components/schemas/ArticleCreateRequest"
                             }
                         }
                     }
@@ -38,7 +38,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "App\\Bundles\\Auth\\Controllers\\User\\LoginResponse"
+                                    "$ref": "#/components/schemas/ArticleResponse"
                                 }
                             }
                         }
@@ -46,19 +46,19 @@
                 }
             }
         },
-        "/wechat/login": {
+        "/admin/auth/login": {
             "post": {
                 "tags": [
-                    "乘客认证"
+                    "登录"
                 ],
-                "summary": "微信小程序登录",
-                "operationId": "5703a1debb44713f100a4d33cc6812d1",
+                "summary": "通过手机号码登录",
+                "operationId": "8bba8a9ec2503c11b268ca5feb49bc9d",
                 "requestBody": {
                     "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "App\\Bundles\\Auth\\Controllers\\User\\WechatLoginRequest"
+                                "$ref": "#/components/schemas/LoginMobileRequest"
                             }
                         }
                     }
@@ -69,7 +69,152 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "App\\Bundles\\Auth\\Controllers\\User\\LoginResponse"
+                                    "$ref": "App\\Bundles\\System\\Responses\\LoginResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dingTalk/login": {
+            "post": {
+                "tags": [
+                    "员工认证"
+                ],
+                "summary": "钉钉内部应用免登",
+                "operationId": "433381daaab143004ded5b4edce54101",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "App\\Bundles\\Auth\\Controllers\\Admin\\DingTalkLoginRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "App\\Bundles\\Auth\\Controllers\\Admin\\LoginResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dingTalk/scan": {
+            "post": {
+                "tags": [
+                    "员工认证"
+                ],
+                "summary": "钉钉扫码登录",
+                "operationId": "593bbbf9ef84b5d895819ca75b6ba7f0",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "App\\Bundles\\Auth\\Controllers\\Admin\\DingTalkLoginRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "App\\Bundles\\Auth\\Controllers\\Admin\\LoginResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/index": {
+            "post": {
+                "tags": [
+                    "用户管理"
+                ],
+                "summary": "用户列表",
+                "operationId": "cac818829702dd026bdfe6d3541bc686",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "当前页码",
+                        "required": true,
+                        "example": 1
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "每页分页数",
+                        "required": false,
+                        "example": 10
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserQueryRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user/create": {
+            "post": {
+                "tags": [
+                    "用户管理"
+                ],
+                "summary": "创建用户接口",
+                "operationId": "f9670410e73492c1ecda71b74e7b3a6a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserCreateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResponse"
                                 }
                             }
                         }
@@ -127,46 +272,15 @@
                 },
                 "type": "object"
             },
-            "SmsCodeLoginRequest": {
+            "DingTalkLoginRequest": {
                 "required": [
-                    "mobile",
-                    "sms_code",
-                    "login_code"
+                    "code"
                 ],
                 "properties": {
-                    "mobile": {
-                        "description": "手机号码",
+                    "code": {
+                        "description": "钉钉code",
                         "type": "string",
-                        "example": "13901889999"
-                    },
-                    "sms_code": {
-                        "description": "短信验证码",
-                        "type": "string",
-                        "example": "1234"
-                    },
-                    "login_code": {
-                        "description": "用户登录凭证，在小程序登录时获取的 code，可通过wx.login获取",
-                        "type": "string",
-                        "example": "example..."
-                    }
-                },
-                "type": "object"
-            },
-            "WechatLoginRequest": {
-                "required": [
-                    "login_code",
-                    "phone_code"
-                ],
-                "properties": {
-                    "login_code": {
-                        "description": "用户登录凭证，在小程序登录时获取的 code，可通过wx.login获取",
-                        "type": "string",
-                        "example": "example..."
-                    },
-                    "phone_code": {
-                        "description": "手机号获取凭证，通过手机号实时验证组件",
-                        "type": "string",
-                        "example": "example..."
+                        "example": "abc"
                     }
                 },
                 "type": "object"

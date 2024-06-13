@@ -10,10 +10,57 @@
     },
     "servers": [
         {
-            "url": "/",
+            "url": "/api/v1/common",
             "description": "开发环境"
         }
     ],
+    "paths": {
+        "/captcha": {
+            "get": {
+                "tags": [
+                    "验证码"
+                ],
+                "summary": "获取图片验证码",
+                "operationId": "a65b88b9fda72070b59fc09fc63de277",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "App\\Bundles\\Captcha\\Response\\ImageCaptchaResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sms/send": {
+            "post": {
+                "tags": [
+                    "短信"
+                ],
+                "summary": "发送手机短信验证码",
+                "operationId": "2211081ec175b3559cb23a120e33255f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SmsSendRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
     "components": {
         "schemas": {
             "ArticleCreateRequest": {
@@ -69,6 +116,62 @@
                         "description": "用户JSON Web Token凭证",
                         "type": "string",
                         "example": "123456"
+                    }
+                },
+                "type": "object"
+            },
+            "SmsSendRequest": {
+                "required": [
+                    "mobile",
+                    "captcha",
+                    "uuid"
+                ],
+                "properties": {
+                    "mobile": {
+                        "description": "手机号码",
+                        "type": "string",
+                        "example": "13901889999"
+                    },
+                    "captcha": {
+                        "description": "图片验证码",
+                        "type": "string",
+                        "example": "000000"
+                    },
+                    "uuid": {
+                        "description": "图片验证码UUID",
+                        "type": "string",
+                        "example": "123456"
+                    }
+                },
+                "type": "object"
+            },
+            "LoginMobileRequest": {
+                "required": [
+                    "mobile",
+                    "password",
+                    "captcha",
+                    "uuid"
+                ],
+                "properties": {
+                    "mobile": {
+                        "description": "手机号码",
+                        "type": "string",
+                        "example": "13901889999"
+                    },
+                    "password": {
+                        "description": "登录密码",
+                        "type": "string",
+                        "example": "123456aA"
+                    },
+                    "captcha": {
+                        "description": "图片验证码",
+                        "type": "string",
+                        "example": "1234"
+                    },
+                    "uuid": {
+                        "description": "图片验证码UUID参数",
+                        "type": "string",
+                        "example": "1234"
                     }
                 },
                 "type": "object"

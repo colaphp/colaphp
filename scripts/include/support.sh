@@ -35,15 +35,15 @@ Gen_OpenAPI() {
             fi
         fi
 
-        c=("app/Responses/")
+        c=("app/Http/Responses/")
         if [ -d "$c" ]; then
             result+=($c)
         fi
 
         result+=($(Get_Bundles ${item}))
 
-        # vendor/bin/openapi ${result[@]} -o public/docs/api/${item,,}.json -f json # bash 4.0 支持
-        vendor/bin/openapi ${result[@]} -o public/docs/api/$(echo $item | tr '[:upper:]' '[:lower:]').json -f json
+        # vendor/bin/openapi ${result[@]} -o docs/api/${item,,}.json -f json # bash 4.0 支持
+        vendor/bin/openapi ${result[@]} -o docs/api/$(echo $item | tr '[:upper:]' '[:lower:]').json -f json
     done
 }
 
