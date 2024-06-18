@@ -46,15 +46,10 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "path",
-            "url": "package/colasoft/framework",
-            "options": {
-                "versions": {
-                    "colasoft/framework": "1.0"
-                }
-            }
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.pages.dev"
         }
-    ]
+    }
 }

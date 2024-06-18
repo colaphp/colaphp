@@ -11,8 +11,7 @@ class CategoryController extends BaseController
 {
     public function __construct(
         private readonly UserService $userService = new UserService(),
-    )
-    {
+    ) {
     }
 
     public function index(): Response

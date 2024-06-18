@@ -3,9 +3,9 @@
 /framework
 /node_modules
 /public/admin
+/public/member
 /public/mobile
 /public/storage
-/public/user
 /runtime/*.key
 /vendor
 .env

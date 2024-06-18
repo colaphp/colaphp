@@ -16,7 +16,7 @@ class AdminRuleController extends BaseController
     /**
      * 增删改查
      */
-//    use Crud;
+    //    use Crud;
 
     /**
      * 构造函数

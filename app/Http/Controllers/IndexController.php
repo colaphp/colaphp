@@ -27,7 +27,7 @@ class IndexController extends BaseController
     {
         $file = $request->file('upload');
         if ($file && $file->isValid()) {
-            $file->move(public_path('storage/myfile.' . $file->getUploadExtension()));
+            $file->move(public_path('storage/myfile.'.$file->getUploadExtension()));
 
             return $this->success(['msg' => 'upload success']);
         }

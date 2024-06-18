@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Bundles\Auth\Controllers\User;
+namespace App\Bundles\Auth\Controllers\Member;
 
-use App\API\User\Controllers\BaseController;
+use App\API\Member\Controllers\BaseController;
 use App\Support\JWTHelper;
 use Flame\Http\Response;
 use Flame\Support\Facade\Crypt;

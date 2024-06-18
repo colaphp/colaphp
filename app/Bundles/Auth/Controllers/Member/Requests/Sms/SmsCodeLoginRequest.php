@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Bundles\Auth\Controllers\User\Requests\Sms;
+namespace App\Bundles\Auth\Controllers\Member\Requests\Sms;
 
 use Flame\Validation\Validator;
 use OpenApi\Attributes as OA;

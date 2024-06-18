@@ -10,7 +10,7 @@
     },
     "servers": [
         {
-            "url": "/api/v1/user",
+            "url": "/api/v1/member",
             "description": "开发环境"
         }
     ],
@@ -21,13 +21,13 @@
                     "乘客认证"
                 ],
                 "summary": "通过短信验证码登录",
-                "operationId": "b113e2f68805f463acc078ccbe9bf777",
+                "operationId": "a590610c73eae5f432c4a29a8a5f1f94",
                 "requestBody": {
                     "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "App\\Bundles\\Auth\\Controllers\\User\\SmsCodeLoginRequest"
+                                "$ref": "App\\Bundles\\Auth\\Controllers\\Member\\SmsCodeLoginRequest"
                             }
                         }
                     }
@@ -38,7 +38,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "App\\Bundles\\Auth\\Controllers\\User\\LoginResponse"
+                                    "$ref": "App\\Bundles\\Auth\\Controllers\\Member\\LoginResponse"
                                 }
                             }
                         }
@@ -52,13 +52,13 @@
                     "乘客认证"
                 ],
                 "summary": "微信小程序登录",
-                "operationId": "5703a1debb44713f100a4d33cc6812d1",
+                "operationId": "fb5065cb87920ef1b73545910d662718",
                 "requestBody": {
                     "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "App\\Bundles\\Auth\\Controllers\\User\\WechatLoginRequest"
+                                "$ref": "App\\Bundles\\Auth\\Controllers\\Member\\WechatLoginRequest"
                             }
                         }
                     }
@@ -69,7 +69,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "App\\Bundles\\Auth\\Controllers\\User\\LoginResponse"
+                                    "$ref": "App\\Bundles\\Auth\\Controllers\\Member\\LoginResponse"
                                 }
                             }
                         }

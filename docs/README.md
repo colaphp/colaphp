@@ -6,20 +6,11 @@
 
 - 运行环境要求 PHP8.2。
 
-### 升级 composer
+### 创建项目
 
-打开终端，执行命令：
-
-```
-composer selfupdate
-```
-
-### 克隆代码
-
-进入 www 目录下，执行命令：
+在控制台执行如下命令：
 
 ```
-composer config -g repos.packagist composer https://packagist.pages.dev
 composer create-project colasoft/colaphp
 ```
 
@@ -67,20 +58,20 @@ php artisan seed:run
 进入命令行下面，执行下面指令
 
 ```
-php artisan serve
+php artisan serve start
 ```
 
 ### 正式运行
 
 daemon方式运行(用于正式环境)
 
-`php artisan serve -d`
+`php artisan serve start -d`
 
 ### 预览
 
 在浏览器中输入地址：
 
-http://localhost:8080/
+http://localhost:8000/
 
 ### License
 

@@ -3,28 +3,21 @@
 ## 安装 MySql
 
 ```shell
-docker run -d --name mysql -p 3306:3306 -v %CD%/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+docker run -d --name mysql -p 3306:3306 -v %CD%/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:8.0 --character-set-server=utf8mb4 --collation-server=utf8mb4_bin
 ```
 
 ## 安装 Redis
 
 ```shell
-docker run -d --name redis -p 6379:6379 redis:latest redis-server --save 60 1 --loglevel warning
+docker run -d --name redis -p 6379:6379 -e REDIS_PASSWORD='root' redis:latest redis-server --save 60 1 --loglevel warning --requirepass root
 ```
 
 ## 安装 rabbitMQ
 ```shell
-docker run -d --hostname rabbit --name rabbit -p 8001:15672 -e RABBITMQ_DEFAULT_USER=root -e RABBITMQ_DEFAULT_PASS=root -e RABBITMQ_DEFAULT_VHOST=default_vhost rabbitmq:3-management
+docker run -d --hostname rabbit --name rabbit -p 15672:15672 -e RABBITMQ_DEFAULT_USER=root -e RABBITMQ_DEFAULT_PASS=root -e RABBITMQ_DEFAULT_VHOST=cola_vhost rabbitmq:3-management
 ```
 
 ## 环境准备
-
-### Docker 环境
-
-```shell
-docker build -t apache-php8 docker
-docker run --rm -d --name xiehua-auth -v %cd%:/var/www/html -v %cd%/docker/conf:/etc/apache2/sites-enabled -p 8000:80 apache-php8
-```
 
 注意在`cmd`模式下运行以上代码。
 
@@ -149,25 +142,25 @@ extension=event.so
 
 ```
 ├── app                    核心应用目录
-│   ├── api                API访问模块
-│   │   ├── auth           统一认证接口
-│   │   │   ├── controller 业务控制器
-│   │   │   ├── request    业务请求类
-│   │   │   ├── response   业务响应类
-│   │   │   └── service    业务服务类
-│   │   └── common         公共模块接口
-│   ├── console            控制台程序类
-│   ├── constant           应用常量
-│   ├── contract           契约接口类
-│   ├── entity             数据表实体类
-│   ├── enums              枚举类
-│   ├── exception          异常类
-│   ├── jobs               异步任务类
-│   ├── manager            外部接口服务类
-│   ├── model              数据表模型类
-│   ├── repository         DAO数据访问
-│   ├── service            公共业务服务
-│   └── support            支持工具包
+│   ├── API                API访问模块
+│   │   ├── Auth           统一认证接口
+│   │   │   ├── Controllers业务控制器
+│   │   │   ├── Requests   业务请求类
+│   │   │   ├── Responses  业务响应类
+│   │   │   └── Services   业务服务类
+│   │   └── Common         公共模块接口
+│   ├── Console            控制台程序类
+│   ├── Constants          应用常量
+│   ├── Contracts          契约接口类
+│   ├── Entities           数据表实体类
+│   ├── Enums              枚举类
+│   ├── Exceptions         异常类
+│   ├── Jobs               异步任务类
+│   ├── Managers           外部接口服务类
+│   ├── Models             数据表模型类
+│   ├── Repositories       DAO数据访问
+│   ├── Services           公共业务服务
+│   └── Support            支持工具包
 ├── artisan                控制台脚本入口
 ├── bootstrap              启动目录
 │   └── app.php            应用准备程序
@@ -206,7 +199,7 @@ extension=event.so
 │   ├── robots.txt         
 │   └── storage            本地文件存储目录
 ├── README.md              项目介绍
-├── resource               资源文件目录
+├── resources              资源文件目录
 │   └── emails             邮件模板
 ├── runtime                运行时目录
 │   ├── cache              运行时缓存
@@ -234,18 +227,6 @@ API 网关 -> index.php -> 启动核心框架
 ```
 
 返回的数据按照逆向数据流响应给客户端的API.
-
-### 配置伪静态
-
-打开生成的 nginx 配置文件，设置伪静态规则：
-
-```
-location / {
-    if (!-f $request_filename) {
-   	    rewrite  ^(.*)$  /index.php?r=/$1  last;
-    }
-}
-```
 
 ### 生成代码和API文档
 

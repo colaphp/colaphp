@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Bundles\Auth\Controllers\User\Requests\Wechat;
+namespace App\Bundles\Auth\Controllers\Member\Requests\Wechat;
 
 use Flame\Validation\Validator;
 use OpenApi\Attributes as OA;

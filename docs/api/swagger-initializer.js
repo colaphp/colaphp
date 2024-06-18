@@ -6,7 +6,7 @@ window.onload = function() {
     // url: "https://petstore.swagger.io/v2/swagger.json",
     urls: [
         {name: '公共模块', url: '/api/common.json'},
-        {name: '用户模块', url: '/api/user.json'},
+        {name: '会员模块', url: '/api/member.json'},
         {name: '运营模块', url: '/api/admin.json'}
     ],
     dom_id: '#swagger-ui',

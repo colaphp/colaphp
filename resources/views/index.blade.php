@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    welcome page.<br><br>
-
-    <a href="{{ url('category') }}">category</a>
+    <br><br>
+    这里是首页模板: /resources/views/index.blade.php
 @endsection

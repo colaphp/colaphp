@@ -12,7 +12,15 @@
     <script src="{{ asset('assets/vue/dist/vue.min.js?v=2.6.14') }}"></script>
 </head>
 <body>
+<div style="padding: 10px">这里是布局页面的头部</div>
+
+    <a href="{{ url('/') }}">首页</a>  | 
+    <a href="{{ url('category') }}">去类目页面</a> | 
+    <a href="{{ url('login') }}">去登录</a>
+
 @yield('content')
+
+<div style="padding: 10px">这里是布局页面的尾部</div>
 <script src="{{ asset('themes/default/js/app.js') }}"></script>
 </body>
 </html>

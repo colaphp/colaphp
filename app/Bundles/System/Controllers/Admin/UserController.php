@@ -8,5 +8,4 @@ use App\API\Admin\Controllers\BaseController;
 
 class UserController extends BaseController
 {
-
 }

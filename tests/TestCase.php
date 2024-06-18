@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace Tests;
 
 use Exception;
-use Flame\Config\Config;
 use Flame\Http\HttpClient;
-use Flame\Support\Facade\DB;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
@@ -16,9 +14,9 @@ abstract class TestCase extends BaseTestCase
     {
         require dirname(__DIR__).'/bootstrap/app.php';
 
-        Config::init();
+        // Config::init();
 
-        DB::setConfig(Config::get('database'));
+        // DB::init();
     }
 
     /**

@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    category page.<br><br>
-
-    <a href="{{ url('/') }}">go back home</a>
+    <br><br>这里是类目页面模板: /resources/views/category.blade.php
 @endsection

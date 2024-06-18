@@ -13,7 +13,7 @@ class MailTest extends TestCase
     {
         try {
             $mail = new MailManager();
-            $mail->sendByTemplate('wanganlin@xhchuxing.com', 'mail template test', 'signup', [
+            $mail->sendByTemplate('w@domain.com', 'mail template test', 'signup', [
                 'aa' => 'aaaaa',
                 'bb' => 'bbbbb',
                 'cc' => 'ccccc',
