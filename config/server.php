@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'listen' => 'http://'.env('APP_LISTEN', '127.0.0.1:8000'),
+    'listen' => 'http://'.env('SERVER_HOST', '127.0.0.1').':'.env('SERVER_PORT', '8000'),
     'transport' => 'tcp',
     'context' => [],
     'name' => env('APP_NAME', 'ColaPHP'),
