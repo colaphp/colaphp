@@ -13,7 +13,7 @@
         "laravel/pint": "^1.16",
         "phpstan/phpstan": "^1.11",
         "phpunit/phpunit": "^11.2",
-        "zircote/swagger-php": "^4.10"
+        "zircote/swagger-php": "^6.0"
     },
     "autoload": {
         "psr-4": {
